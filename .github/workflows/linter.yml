@@ -1,4 +1,4 @@
-name: Linting 
+name: Linting
 on: push
 jobs:
   build:
@@ -6,7 +6,7 @@ jobs:
     steps:
       # checkout Super-Linter
       - uses: actions/checkout@v2
-      
+
       # run Linter
       - name: Super-Linter
         uses: github/super-linter/slim@v4
