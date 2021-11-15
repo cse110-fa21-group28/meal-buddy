@@ -30,4 +30,4 @@ auth.onAuthStateChanged(user => {
         document.getElementById("whenSignedOut").hidden = false;
         document.getElementById("userDetail").innerHTML = ``;
     }
-})s
+})
