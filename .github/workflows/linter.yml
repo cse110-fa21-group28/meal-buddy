@@ -1,4 +1,4 @@
-name: Linting 
+name: Linting
 on: push
 jobs:
   build:
@@ -6,16 +6,13 @@ jobs:
     steps:
       # checkout Super-Linter
       - uses: actions/checkout@v2
-      
+
       # run Linter
       - name: Super-Linter
         uses: github/super-linter/slim@v4
         env:
-          VALIDATE_ALL_CODEBASE: true
-          # VALIDATE_JAVASCRIPT_STANDARD: true
-          VALIDATE_JAVASCRIPT_ES: true
-          VALIDATE_HTML: true
-          VALIDATE_CSS: true
-
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_NATURAL_LANGUAGE: false
+          
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
