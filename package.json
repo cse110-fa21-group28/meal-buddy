@@ -1,4 +1,10 @@
 {
     "name": "meal-prep-app",
-    "description": "the meal prep app"
+    "description": "the meal prep app",
+    "dependencies": {
+        "standard": "*"
+    },
+    "scripts": {
+        "styling": "standard"
+    }
 }
