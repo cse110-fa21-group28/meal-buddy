@@ -17,5 +17,5 @@ jobs:
         uses: docker://github/super-linter:latest
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: ${{ steps.myref.outputs.branch }}
+          DEFAULT_BRANCH: $GITHUB_REF
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
