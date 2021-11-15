@@ -1,6 +1,6 @@
 # meal-prep-app
 
-## Local setup:
+## Local setup
 
 1. Clone this repo
 2. `npm ci`
@@ -8,7 +8,7 @@
 
 (Updating)
 
-## Workplace:
+## Workplace
 
 - Everything we need to do is in the [public](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public) directory, the rest is the configuration files. Please look over [index.html](https://github.com/cse110-fa21-group28/meal-prep-app/blob/main/public/index.html), this is the starting point of this project. And make sure to put your work in correct directories: 
   + [/frontend](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public/frontend) 
