@@ -4,11 +4,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+
+      # checkout Super-Linter
       - uses: actions/checkout@v2
       
+      # run Linter
       - name: Super-Linter
         uses: docker://github/super-linter:latest
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
+          DEFAULT_BRANCH: ${{ steps.extract_branch.outs.branch }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
