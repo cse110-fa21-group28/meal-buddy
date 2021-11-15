@@ -4,10 +4,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get current branch
-        id: extract_branch
-        run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
-
+      - name: Get the current branch name
+        shell: bash
+        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+        id: myref
 
       # checkout Super-Linter
       - uses: actions/checkout@v2
@@ -17,5 +17,5 @@ jobs:
         uses: docker://github/super-linter:latest
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
+          DEFAULT_BRANCH: ${{ steps.myref.outputs.branch }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
