@@ -4,10 +4,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # extract branch name
+      - name: Extract branch name
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      # extract branch name on pull request
+      - name: Print branch name
+        if: github.event_name == 'pull_request'
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
+
+      # print branch name
+      - name: Get branch name
+        run: echo 'The branch name is' $BRANCH_NAME
+
+      # checkout Super-Linter
       - uses: actions/checkout@v2
       
+      # run Linter
       - name: Super-Linter
         uses: docker://github/super-linter:latest
         env:
-          VALIDATE_ALL_CODEBASE: GITHUB_REF
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: $BRANCH_NAME
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
