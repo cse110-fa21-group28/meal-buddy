@@ -14,4 +14,8 @@
   + [/frontend](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public/frontend) 
   + [/backend](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public/backend)
 
+## Pre-implementation
+
+- Make sure you understand our [development practices](https://docs.google.com/document/d/1dFS2DS8PwIx1vWgwY4m3hb6lBa2rxWlP7e4EZS3B-WE/edit)
+
 Please let me know if you have anything question!
