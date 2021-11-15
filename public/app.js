@@ -9,7 +9,7 @@ function googleLogin() {
             const user = result.user;
             console.log(user);
         })
-        .catch(console.log)
+        .catch(console.log);
 }
 
 function googleLogout() {
