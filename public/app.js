@@ -1,6 +1,6 @@
 const auth = firebase.auth();
 
-function googleLogin() {
+function googleLogIn() {
 
     const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -12,7 +12,7 @@ function googleLogin() {
         .catch(console.log);
 }
 
-function googleLogout() {
+function googleLogOut() {
     auth.signOut()
         .then( function() {
             console.log("signed out")
@@ -26,7 +26,7 @@ auth.onAuthStateChanged(user => {
         document.getElementById("whenSignedOut").hidden = true;
         document.getElementById("userDetail").innerHTML = `<h3> "Hello"  ${user.displayName} !<h3> <p>User ID: ${user.uid} </p>`;
     } else {
-                    document.getElementById("whenSignedIn").hidden = true;
+        document.getElementById("whenSignedIn").hidden = true;
         document.getElementById("whenSignedOut").hidden = false;
         document.getElementById("userDetail").innerHTML = ``;
     }
