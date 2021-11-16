@@ -6,6 +6,6 @@
         "standard": "*"
     },
     "scripts": {
-        "styling": "standard"
+        "styling": "standard --fix"
     }
 }
