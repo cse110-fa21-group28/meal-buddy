@@ -11,8 +11,9 @@ jobs:
       - name: Super-Linter
         uses: github/super-linter/slim@v4
         env:
-          VALIDATE_JAVASCRIPT_STANDARD: false
-          VALIDATE_NATURAL_LANGUAGE: false
-          
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Rules
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_NATURAL_LANGUAGE: false
