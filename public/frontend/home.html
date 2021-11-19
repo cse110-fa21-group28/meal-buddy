@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+/* Navigation */
+            #navigation-bar{
+                width: 100%;
+                display: flex;
+                max-height: 20%;
+                background-color:lightcoral;
+            }
+
+            #company{
+                width: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            #navigation{
+                width:70%;
+                position:relative;
+                left: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+            .navigate{
+                width:10%;
+                border-style:double;
+                border-width:1px;
+                border-color:black;
+            }
+            .navigate_but{
+                text-align:center;
+            }
+
+/* Home Page */
+            #home-page{
+                display:flex;
+                flex-direction:column;
+            }
+            .recipe-list{
+                display:flex;
+                flex-direction:row;
+                flex-wrap:wrap;
+            }
+            .recipe{
+                background-color:lightgreen;
+                text-align:center;
+                width: 400px;
+                margin-right: 5%;
+                margin-top: 30px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "navigation-bar">
+            <div id = "company">
+                <div id = "company-logo">
+                    <img src="code_duck.png" alt="code_duck logo">
+                </div>
+                <div id = "company-name">
+                    <h1>Meal Buddy</h1>
+                </div>
+            </div>
+            
+            <div id = navigation>
+                <div class = "navigate" id = "home">
+                    <h2 class = "navigate_but">Home</h2>
+                </div>
+                <div class = "navigate" id = "recipes">
+                    <h2 class = "navigate_but">Recipes</h2>
+                </div>
+                <div class = "navigate" id = "my-recipes">
+                    <h2 class = "navigate_but">My Recipes</h2>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id = "home-page">
+            <div id="upcoming-meals">
+                <h1>Upcoming Meals</h1>
+            </div>
+            <div id="today">
+                <h2>Today | Nov 9, 2021</h2>
+            </div>
+            <div class="recipe-list">
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+            </div>
+            <div id="tomorrow">
+                <h2>Tomorrow | Nov 10, 2021</h2>
+            </div>
+            <div class="recipe-list">
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+                <div class = "recipe">
+                    <p>Chicken Kebab</p>
+                </div>
+            </div>
+            <div id="previous-meals">
+                <h1>Previous Meals</h1>
+            </div>
+            
+        </div>
+    </body>
+</html>
