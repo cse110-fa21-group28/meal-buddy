@@ -1,0 +1,16 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px 60px;
+}
+
+#recipeSearch {
+    display: block;
+    margin: auto;
+}
+
+.recipe-card {
+    flex-basis: 25%;
+}
