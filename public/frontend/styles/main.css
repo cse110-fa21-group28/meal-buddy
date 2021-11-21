@@ -4,7 +4,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     padding: 5px 60px;
-  }
+}
 
 #recipeSearch {
     display: block;
