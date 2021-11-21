@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="public\frontend\test.html">
+        <style>
+            #navigation-bar{
+                width: 100%;
+                display: flex;
+                max-height: 20%;
+                background-color:lightcoral;
+            }
+
+            #company{
+                width: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            #navigation{
+                width:70%;
+                position:relative;
+                left: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+            .navigate{
+                width:10%;
+                border-style:double;
+                border-width:1px;
+                border-color:black;
+            }
+            .navigate_but{
+                text-align:center;
+            }
+
+            #recipe-details{
+                display:flex;
+                flex-direction:column;
+            }
+
+            #recipe-requirements{
+                display:flex;
+                flex-direction:row;
+            }
+
+            #ingredients, #tools{
+                width: 45%;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "navigation-bar">
+            <div id = "company">
+                <div id = "company-logo">
+                    <img src="code_duck.png" alt="code_duck logo">
+                </div>
+                <div id = "company-name">
+                    <h1>Meal Buddy</h1>
+                </div>
+            </div>
+            
+            <div id = navigation>
+                <div class = "navigate" id = "home">
+                    <h2 class = "navigate_but">Home</h2>
+                </div>
+                <div class = "navigate" id = "recipes">
+                    <h2 class = "navigate_but">Recipes</h2>
+                </div>
+                <div class = "navigate" id = "my-recipes">
+                    <h2 class = "navigate_but">My Recipes</h2>
+                </div>
+            </div>
+        </div>
+        <div id = "recipe-details">
+            <div id = "recipe-title">
+                <h1>
+                    Chicken Kebab
+                </h1>
+            </div>
+            <div id = "recipe-link">
+                <a href = "https://www.dinneratthezoo.com/grilled-chicken-kabobs/">
+                    Recipe Source
+                </a>
+            </div>
+            <div id = "recipe-img">
+                <img src = "", alt = "Chicken Kebab"/>
+            </div>
+            <div id = "more-details">
+                <div id = "recipe-description">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in ante eget diam mattis euismod. Nulla consectetur enim vel cursus auctor. Sed vitae elit non dolor maximus dapibus. Nullam dignissim, ligula eu placerat facilisis, nisl elit consectetur mi, at consequat nibh enim in ipsum. Praesent dui urna, pharetra nec ipsum vitae, aliquet consequat ante. Morbi laoreet neque non sodales viverra. Nunc ipsum nisi, porta a feugiat id, vestibulum ac erat. Nulla varius odio quam, a consectetur sapien euismod id. Proin lectus nisi, pharetra et sapien aliquam, tincidunt vestibulum libero. Donec vehicula tempor libero sed ultrices. Aenean commodo magna a imperdiet cursus. Cras turpis erat, iaculis in congue non, laoreet semper augue.
+                    </p>
+                </div>
+                <div id = "time">
+                    <p>50 minutes</p>
+                </div>
+                <div id = "calories">
+                    <p>581 calories</p>
+                </div>
+                <div id = "add-button">
+                    <button title = "Add to Plan"> Add to Plan</button>
+                </div>
+            </div>
+            <div id = "recipe-requirements">
+                <div id = "ingredients">
+                    <h2>Ingredients</h2>
+                    <ul>
+                        <li>3 chicken fillets</li>
+                        <li>2 red bell peppers</li>
+                        <li>2 green bell peppers</li>
+                        <li>1 red onion</li>
+                    </ul>
+                </div>
+                <div id = "tools">
+                    <h2>Tools</h2>
+                    <ul>
+                        <li>Blenders</li>
+                        <li>Cheese grater</li>
+                        <li>Bowl</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
