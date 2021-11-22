@@ -45,6 +45,6 @@ function init(){
         updatePrivateRecipe(parsedData.id, obj);
 
         // Does this reload the page? Fetch the new data from database?
-        window.location.href = "my-recipes.html";
+        //window.location.href = "my-recipes.html";
     });
 }
