@@ -1,5 +1,5 @@
 // RecipeCard.js
-
+import {deletePrivateRecipe} from '../../backend/private_recipe.js';
 class RecipeCard extends HTMLElement {
     constructor() {
       super(); // Inheret everything from HTMLElement
@@ -47,30 +47,30 @@ class RecipeCard extends HTMLElement {
         }
 
         article > img {
-          height: 120px;
+          height: 160px;
           object-fit: cover;
           width: 200px;
-          grid-row: 1/4
-          grid-column: 1/2
+          grid-row: 1/ span 3;
+          grid-column: 1;
           
         }
 
         p.title {
-          grid-row: 1/2
-          grid-column: 2/3
+          grid-row: 1;
+          grid-column: 2;
           
         }
         p:not(.title), span, time {
           color: #70757A;
           font-size: 12px;
-          grid-row: 2/3
-          grid-column: 2/3
+          grid-row: 2;
+          grid-column: 2;
 
         }
 
         button{
-          grid-row: 3/4
-          grid-column: 2/3
+          
+          grid-column: 2;
         }
       `;
   
@@ -85,6 +85,7 @@ class RecipeCard extends HTMLElement {
       const image = document.createElement('img');
       image.setAttribute('src', imageUrl);
       image.setAttribute('alt', titleText);
+
   
       // Grab the total time
       // const totalTime = searchForKey(data, 'totalTime');
@@ -106,6 +107,7 @@ class RecipeCard extends HTMLElement {
       editButton.innerText = 'Edit recipe';
       editButton.addEventListener('click', () => {
         window.location.href = "templateEditRecipe.html"; // how to pass in the ID of the recipe?
+        localStorage.setItem( 'currentRecipeData', JSON.stringify(data) );
         // TODO: fetch the data that's already on the database, place it in the template textareas
 
         console.log('edit recipe clicked');
@@ -115,9 +117,10 @@ class RecipeCard extends HTMLElement {
       const deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete recipe';
       deleteButton.addEventListener('click', () => {
-        db.collection('farnia').doc('2').delete()
         console.log('delete recipe clicked');
         // TODO: go to the backend and delete the recipe
+
+        deletePrivateRecipe(data.id);
       });
   
       // Add all of the elements to the card

@@ -4,7 +4,7 @@
 
 import { Router } from './Router.js';
 
-const recipes = [
+var recipes = [
   // 'components/example.json'
   // 'https://introweb.tech/assets/json/birthdayCake.json',
   // 'https://introweb.tech/assets/json/chocolateChip.json',
@@ -41,6 +41,7 @@ var flag = false;
 
 // Initialize function, begins all of the JS code in this file
 async function init() {
+  console.log("apple");
   // initializeServiceWorker();
 
   try {
@@ -63,23 +64,33 @@ async function init() {
  * inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthdayCake': ..., etc }
  */
 
-async function fetchRecipes() {
-  const db = firebase.firestore();
-  const res = db.collection('farnia').doc('1');
-  new Promise((resolve, reject) => {res.get()
-    .then(doc => {
-      const data = doc.data();
-      recipes.push(data);
-      recipeData['1'] = data;
-      if (recipes.length == 1){
-        createRecipeCards();
-        resolve();
-      }
-    })
-    .catch(error => {
-      reject(error);
-    });
-  });
+function fetchRecipes() {
+  const auth = firebase.auth();
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      throw "Error";
+    } else {
+      console.log("user" + user.uid);
+      const db = firebase.firestore()
+      // Create with random ID
+      const res = db.collection(user.uid).get().then((querySnapshot) => {
+        recipes = [];
+        console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+            const data = doc.data();
+            data["id"] = doc.id;
+            recipes.push(data);
+        });
+        if (recipes.length >= 1){
+          createRecipeCards();
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+  })
 }
   // const { prvatgetPrivateRecipes } = require('./temp.js');
   // console.log(getPrivateRecipes());
@@ -124,6 +135,7 @@ async function fetchRecipes() {
  */
 function createRecipeCards() {
   // Makes a new recipe card
+  console.log(recipes.length)
   for(let i = 0; i <recipes.length;i++){
     const recipeCard = document.createElement('recipe-card');
     // Inputs the data for the card. This is just the first recipe in the recipes array,

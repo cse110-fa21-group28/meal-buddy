@@ -1,3 +1,4 @@
+import {addPrivateRecipe} from './backend/private_recipe.js';
 window.addEventListener('DOMContentLoaded', init);
 
 var title, img, calorie, descr, ings, instrucs; // maybe add cook time
@@ -39,7 +40,7 @@ function init(){
 
     saveButton.addEventListener('click', function(){
         console.log("The JSON Object: " + JSON.stringify(obj));
-        // addPrivateRecipe(obj);
-        window.location.href = "my-recipes.html";
+        addPrivateRecipe(obj);
+        //window.location.href = "my-recipes.html";
     });
 }

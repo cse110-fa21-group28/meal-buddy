@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', init);
+import {updatePrivateRecipe} from './backend/private_recipe.js';
 
 var title, img, calorie, descr, ings, instrucs; // maybe add cook time
 var obj = {};
@@ -38,10 +39,12 @@ function init(){
     });
 
     saveButton.addEventListener('click', function(){
+        const data = localStorage['currentRecipeData'];
+        const parsedData = JSON.parse(data);
         console.log("The JSON Object: " + JSON.stringify(obj));
-        // updatePrivateRecipe(id, obj)
+        updatePrivateRecipe(parsedData.id, obj);
 
         // Does this reload the page? Fetch the new data from database?
-        window.location.href = "my-recipes.html";
+        //window.location.href = "my-recipes.html";
     });
 }
