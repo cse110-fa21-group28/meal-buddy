@@ -30,6 +30,5 @@ auth.onAuthStateChanged(user => {
     document.getElementById('whenSignedIn').hidden = true
     document.getElementById('whenSignedOut').hidden = false
     document.getElementById('userDetail').innerHTML = ''
-    window.location.href = "index.html";
   }
 })
