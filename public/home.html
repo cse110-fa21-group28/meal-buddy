@@ -60,6 +60,10 @@
                 display: flex;
                 flex-direction: row;
             }
+            #navigation button{
+                width: 100px;
+                background-color:PaleGreen;
+            }
             .navigate{
                 width:10%;
                 border-style:double;
@@ -106,7 +110,7 @@
             </div>
             
             <div id = navigation>
-                <div class = "navigate" id = "home">
+                <!--<div class = "navigate" id = "home">
                     <a href= home.html>Home</a>
                 </div>
                 <div class = "navigate" id = "recipe">
@@ -114,10 +118,11 @@
                 </div>
                 <div class = "navigate" id = "my-recipes">
                     <a href= my-recipes.html>My Recipes</a>
-                </div>
-                <button onclick="googleLogOut()">
-                    Logout with Google
-                </button>
+                </div>-->
+                <button onclick="window.location.href = 'home.html'">Home</button>
+                <button onclick="window.location.href = 'recipes.html'">Recipes</button>
+                <button onclick="window.location.href = 'my-recipes.html'">My Recipes</button>
+                <button onclick="googleLogOut()">Logout</button>
             </div>
         </div>
 

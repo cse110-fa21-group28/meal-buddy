@@ -21,6 +21,9 @@ function googleLogOut () {
 }
 
 auth.onAuthStateChanged(user => {
+  if(!document.getElementById('whenSignedIn')){
+    return
+  }
   if (user) {
     document.getElementById('whenSignedIn').hidden = false
     document.getElementById('whenSignedOut').hidden = true
