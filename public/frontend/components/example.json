@@ -1,0 +1,13 @@
+{
+    "name" : "chicken soup",
+    "image_url" : "https://upload.wikimedia.org/wikipedia/commons/b/b3/Chicken_Noodle_Soup.jpg",
+    "calories" : "300",
+    "recipe_category": ["soup", "chicken", "warm"],
+    "description" : "Now found exclusively at one well-known pizza garden in Gravesend, Brooklyn, this style of pizza was once found in neighborhood bakeries. This pizza is deceivingly light, crisp, and slightly spicy. Enjoy with a can of soda.",
+    "instructions" : ["cut chicken", "brine chicken", "fill pot with water", "salt water", "put the chicken in the pot when boiling", "simmer for 1 hr", "cut vegetables", "put vegetables"],
+    "recipe_ingredient" : [
+                            "chicken", 
+                            "onion",
+                            "salt and pepper"
+                          ]
+}

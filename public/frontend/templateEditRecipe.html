@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Meal Buddy | Create New Recipe</title>
+        <!-- <link rel = "icon" href = ""> -->
+        <link rel="stylesheet" href="template.css">
+        <script src="templateAddRecipe.js" type="module"></script>
+
+        <style>
+            /* Navigation */
+                #navigation-bar{
+                    width: 100%;
+                    display: flex;
+                    max-height: 20%;
+                    background-color:PaleGreen;
+                }
+    
+                #company{
+                    width: 30%;
+                    display: flex;
+                    flex-direction: row;
+                }
+    
+                #navigation{
+                    width:70%;
+                    position:relative;
+                    left: 30%;
+                    display: flex;
+                    flex-direction: row;
+                }
+                .navigate{
+                    width:10%;
+                    border-style:double;
+                    border-width:1px;
+                    border-color:black;
+                }
+                .navigate_but{
+                    text-align:center;
+                }
+        </style>
+    </head>
+
+    <div id = "navigation-bar">
+        <div id = "company">
+            <!-- <div id = "company-logo">
+                <img src="code_duck.png" alt="code_duck logo">
+            </div> -->
+            <div id = "company-name">
+                <h1>Meal Buddy</h1>
+            </div>
+        </div>
+        
+        <div id = navigation>
+            <div class = "navigate" id = "home">
+                <a href= home.html>Home</a>
+            </div>
+            <div class = "navigate" id = "recipes">
+                <a href= recipes.html>Recipes</a>
+            </div>
+            <div class = "navigate" id = "my-recipes">
+                <a href= my-recipes.html>My Recipes</a>
+            </div>
+        </div>
+            </div>
+        </nav>
+    </div>
+    <body>
+        <main>
+            <form>
+                <div>
+                    <label for="title">Title: </label>
+                    <textarea id="titleInput"></textarea>
+                </div>
+
+                <div>
+                    <label for="imgUrl">Image URL: </label>
+                    <textarea id="imgUrlInput"></textarea>
+                </div>
+                <div>
+                    <label for="calorie">Calories: </label>
+                    <textarea id="calorieInput"></textarea>
+                </div>
+    
+                <div>
+                    <label for="description">Description: </label>
+                    <textarea id="descriptionInput" rows="5"></textarea>
+                </div>
+                <div>
+                    <label for="ingredients">Ingredients: </label>
+                    <textarea id="ingredientsInput" rows="4"></textarea>
+                </div>
+                <div>
+                    <label for="instructions">Instructions: </label>
+                    <textarea id="instructionsInput" rows="5"></textarea>
+                </div>
+                <button type="reset" id="saveButton">Save</button>
+            </form>
+        </main>
+    </body>
+</html>

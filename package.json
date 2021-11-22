@@ -1,6 +1,7 @@
 {
     "name": "meal-prep-app",
     "description": "the meal prep app",
+    "type": "module",
     "dependencies": {
         "firebase": "^9.4.1",
         "standard": "*"

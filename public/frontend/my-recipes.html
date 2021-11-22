@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/public/frontend/styles/main.css" /> -->
+    <title>Meal Buddy | My Recipes</title>
+    
+    <script src="components/recipeCard.js" type="module"></script>
+    <script src="components/recipeExpand.js" type="module"></script>
+    <script src="components/Router.js" type="module"></script>
+    <script src="components/main.js" type="module"></script>
+    <link rel="stylesheet" href="components/main.css" />
+
+    <style>
+        /* Navigation */
+            #navigation-bar{
+                width: 100%;
+                display: flex;
+                max-height: 20%;
+                background-color:PaleGreen;
+            }
+
+            #company{
+                width: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            #navigation{
+                width:70%;
+                position:relative;
+                left: 30%;
+                display: flex;
+                flex-direction: row;
+            }
+            .navigate{
+                width:10%;
+                border-style:double;
+                border-width:1px;
+                border-color:black;
+            }
+            .navigate_but{
+                text-align:center;
+            }
+
+            .right{
+                float: right;
+            }
+    </style>
+</head>
+<body>
+    <div id = "navigation-bar">
+        <div id = "company">
+            <!-- <div id = "company-logo">
+                <img src="code_duck.png" alt="code_duck logo">
+            </div> -->
+            <div id = "company-name">
+                <h1>Meal Buddy</h1>
+            </div>
+        </div>
+        
+        <div id = navigation>
+            <div class = "navigate" id = "home">
+                <a href= home.html>Home</a>
+            </div>
+            <div class = "navigate" id = "recipes">
+                <a href= recipes.html>Recipes</a>
+            </div>
+            <div class = "navigate" id = "my-recipes">
+                <a href= my-recipes.html>My Recipes</a>
+            </div>
+        </div>
+            </div>
+        </nav>
+    </div>
+
+    <span class="right">
+        <!-- <textarea name="Search" id="recipeSearch" cols="30" rows="1">Search</textarea> -->
+        <button>Add Recipe</button>
+    </span>
+
+    <main>
+        <section class="section--recipe-cards shown">
+            <div class="recipe-cards--wrapper">
+              <!-- Recipes Added Here -->
+            </div>
+            <!-- <div class="button--wrapper">
+              <img src="assets/images/icons/arrow-down.png" alt="Arrow down" />
+              <button>Show more</button>
+            </div> -->
+            <div class="button--horizontal-line"></div>
+          </section>
+          <section class="section--recipe-expand">
+            <recipe-expand></recipe-expand>
+        </section>
+
+        <!-- <p class="recipe-card">Recipes go here</p>
+        <p class="recipe-card">Recipes go here</p>
+        <p class="recipe-card">Recipes go here</p>
+        <p class="recipe-card">Recipes go here</p>
+        <p class="recipe-card">Recipes go here</p> -->
+    </main>
+</body>
+<script>
+    window.addEventListener('DOMContentLoaded', init);
+    function init(){
+        let addRecipeButton = document.querySelector('button');
+        addRecipeButton.addEventListener('click', function(){
+            window.location.href = "templateAddRecipe.html";
+        });
+    }
+</script>
+</html>
