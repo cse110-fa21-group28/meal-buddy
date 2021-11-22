@@ -73,11 +73,13 @@ function public_recipe (name, recipe_category, description, calories, image_url,
     if (!doc.exists) {
       console.log('No such document!')
     } else {
-      console.log('Document data:', doc.data())
+      console.log("hi");
+      return doc.data()
+      // console.log('Document data:', doc.data())
     }
   }
     
-    const obj=JSON.parse(data);
+    // const obj=JSON.parse(data);
        
     
 

@@ -28,25 +28,32 @@
 
   <!-- <script defer src="app.js" > </script>  -->
   <script src="app.js" defer> </script>
-  <script defer src="frontend/components/main.js"> </script>
+  <script defer src="components/main.js"> </script>
   <script defer src="backend/public_recipe.js"></script>
   <script defer src="backend/private_recipe.js"></script>
   </head>
   <body>
-    
+
     <section id="whenSignedIn" hidden="true">
       <div id="userDetail"></div>
       <button onclick="googleLogOut()">
         Logout with Google
       </button>
     </section>
-    
 
     <section id="whenSignedOut">
       <button onclick="googleLogIn()">
         Login with Google
       </button>
     </section>
+
+    <button onclick="window.location.href = 'home.html'">
+      Test1
+    </button>
+
+    <button onclick="fetchRecipes()">
+      Test2
+    </button>
 
   </body>
 </html>

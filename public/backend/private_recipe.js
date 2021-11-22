@@ -8,9 +8,8 @@ function private_recipe (UID, name, recipe_ingredient, calories, description, in
     this.image_url = image_url
 }
 
-async function getPrivateRecipes () {
+async function getPrivatasdfeRecipes () {
   const user = firebase.auth().currentUser;
-  console.log(user);
   try {
     let data = []
     
@@ -22,6 +21,7 @@ async function getPrivateRecipes () {
         let temp = doc.data()
         temp["id"] = doc.id
         data.push(temp)
+        return temp;
       })
     })
     .catch((error) => {
@@ -29,8 +29,8 @@ async function getPrivateRecipes () {
     });
 
     return data;
-  } catch {
-    return "helloooo"
+  } catch(error) {
+    return error;
   }
 }
 

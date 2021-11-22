@@ -2,12 +2,10 @@
 
 // import { getPrivateRecipes } from '../../backend/private_recipe.js';
 
-// import { Router } from './Router.js';
-console.log("hello");
-// fetch the data 
+import { Router } from './Router.js';
 
 const recipes = [
-  'components/example.json'
+  // 'components/example.json'
   // 'https://introweb.tech/assets/json/birthdayCake.json',
   // 'https://introweb.tech/assets/json/chocolateChip.json',
   // 'https://introweb.tech/assets/json/stuffing.json',
@@ -16,24 +14,30 @@ const recipes = [
 ];
 const recipeData = {} // You can access all of the Recipe Data from the JSON files in this variable
 
-// const router = new Router(function () {
-//   /** 
-//    * TODO - Part 1 - Step 1
-//    * Select the 'section.section--recipe-cards' element and add the "shown" class
-//    * Select the 'section.section--recipe-expand' element and remove the "shown" class
-//    * 
-//    * You should be using DOM selectors such as document.querySelector() and
-//    * class modifications with the classList API (e.g. element.classList.add(),
-//    * element.classList.remove())
-//    * 
-//    * This will only be two single lines
-//    * If you did this right, you should see just 1 recipe card rendered to the screen
-//    */
-//    document.querySelector('section.section--recipe-cards').classList.add('shown');
-//    document.querySelector('section.section--recipe-expand').classList.remove('shown');
-// });
+const router = new Router(function () {
+  /** 
+   * TODO - Part 1 - Step 1
+   * Select the 'section.section--recipe-cards' element and add the "shown" class
+   * Select the 'section.section--recipe-expand' element and remove the "shown" class
+   * 
+   * You should be using DOM selectors such as document.querySelector() and
+   * class modifications with the classList API (e.g. element.classList.add(),
+   * element.classList.remove())
+   * 
+   * This will only be two single lines
+   * If you did this right, you should see just 1 recipe card rendered to the screen
+   */
+   document.querySelector('section.section--recipe-cards').classList.add('shown');
+   document.querySelector('section.section--recipe-expand').classList.remove('shown');
+});
+
+// let button = document.getElementById('test2Button');
+// button.addEventListener('click', () => {
+//   init();
+// })
 
 window.addEventListener('DOMContentLoaded', init);
+var flag = false;
 
 // Initialize function, begins all of the JS code in this file
 async function init() {
@@ -41,50 +45,51 @@ async function init() {
 
   try {
     await fetchRecipes();
+    flag = true;
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`);
     return;
   }
-
-  console.log(recipeData);
-
-  createRecipeCards();
-  // bindShowMore();
-  // bindEscKey();
+  
+  // createRecipeCards();
   bindPopstate();
+
 }
 
-/**
- * Detects if there's a service worker, then loads it and begins the process
- * of installing it and getting it running
- */
-function initializeServiceWorker() {
-  /**
-   *  TODO - Part 2 Step 1
-   *  Initialize the service worker set up in sw.js
-   */
-   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
-        // Registration was successful
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-        // registration failed :(
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
-}
 
 /**
  * Loading JSON into a JS file is oddly not super straightforward (for now), so
  * I built a function to load in the JSON files for you. It places all of the recipe data
  * inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthdayCake': ..., etc }
  */
-async function fetchRecipes() { // TODO: fetch all the user recipes 
+
+async function fetchRecipes() {
+  const db = firebase.firestore();
+  const res = db.collection('farnia').doc('1');
+  new Promise((resolve, reject) => {res.get()
+    .then(doc => {
+      const data = doc.data();
+      recipes.push(data);
+      recipeData['1'] = data;
+      if (recipes.length == 1){
+        createRecipeCards();
+        resolve();
+      }
+    })
+    .catch(error => {
+      reject(error);
+    });
+  });
+}
   // const { prvatgetPrivateRecipes } = require('./temp.js');
-  console.log(getPrivateRecipes());
-  return getPrivateRecipes();
+  // console.log(getPrivateRecipes());
+  
+  // getPrivateRecipes()
+  //   .then(response => response.json())
+  //   .then(res => {
+  //   console.log(res);
+  // })
+  
   // getPrivateRecipes()
   //   .then(response => {
   //     recipeData = response;
@@ -112,7 +117,6 @@ async function fetchRecipes() { // TODO: fetch all the user recipes
   //       });
   //   });
   // });
-}
 
 /**
  * Generates the <recipe-card> elements from the fetched recipes and
@@ -124,23 +128,19 @@ function createRecipeCards() {
     const recipeCard = document.createElement('recipe-card');
     // Inputs the data for the card. This is just the first recipe in the recipes array,
     // being used as the key for the recipeData object
-    recipeCard.data = recipeData[recipes[i]];
+    recipeCard.data = recipes[i];
 
     // This gets the page name of each of the arrays - which is basically
     // just the filename minus the .json. Since this is the first element
     // in our recipes array, the ghostCookies URL, we will receive the .json
     // for that ghostCookies URL since it's a key in the recipeData object, and
     // then we'll grab the 'page-name' from it - in this case it will be 'ghostCookies'
-    const page = recipeData[recipes[i]]['page-name'];
+    const page = recipes[i]['name'];
     router.addPage(page, function() {
       document.querySelector('.section--recipe-cards').classList.remove('shown');
       document.querySelector('.section--recipe-expand').classList.add('shown');
-      document.querySelector('recipe-expand').data = recipeData[recipes[i]];
+      document.querySelector('recipe-expand').data = recipes[i];
     });
-
-    if (i > 2){
-      recipeCard.classList.add('hidden');
-    }
 
     bindRecipeCard(recipeCard, page);
     document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
@@ -158,34 +158,6 @@ function createRecipeCards() {
 }
 
 /**
- * Binds the click event listeners to the "Show more" button so that when it is
- * clicked more recipes will be shown
- */
-function bindShowMore() {
-  const showMore = document.querySelector('.button--wrapper > button');
-  const arrow = document.querySelector('.button--wrapper > img');
-  const cardsWrapper = document.querySelector('.recipe-cards--wrapper');
-
-  showMore.addEventListener('click', () => {
-    const cards = Array.from(cardsWrapper.children);
-    // The .flipped class rotates the little arrow on the button
-    arrow.classList.toggle('flipped');
-    // Check if it's extended or not
-    if (showMore.innerText == 'Show more') {
-      for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove('hidden');
-      }
-      showMore.innerText = 'Show less';
-    } else {
-      for (let i = 3; i < cards.length; i++) {
-        cards[i].classList.add('hidden');
-      }
-      showMore.innerText = 'Show more';
-    }
-  });
-}
-
-/**
  * Binds the click event listener to the <recipe-card> elements added to the page
  * so that when they are clicked, their card expands into the full recipe view mode
  * @param {Element} recipeCard the <recipe-card> element you wish to bind the event
@@ -199,23 +171,6 @@ function bindRecipeCard(recipeCard, pageName) {
   });
 }
 
-/**
- * Binds the 'keydown' event listener to the Escape key (esc) such that when
- * it is clicked, the home page is returned to
- */
-function bindEscKey() {
-  /**
-   * TODO - Part 1 Step 5
-   * For this step, add an event listener to document for the 'keydown' event,
-   * if the escape key is pressed, use your router to navigate() to the 'home'
-   * page. This will let us go back to the home page from the detailed page.
-   */
-  document.addEventListener('keydown', function(event){
-    if (event.key == 'Escape'){
-      router.navigate('home', false);
-    }
-  });
-}
 
 /**
  * Binds the 'popstate' event on the window (which fires when the back &

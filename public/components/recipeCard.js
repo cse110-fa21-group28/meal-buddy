@@ -115,7 +115,7 @@ class RecipeCard extends HTMLElement {
       const deleteButton = document.createElement('button');
       deleteButton.innerText = 'Delete recipe';
       deleteButton.addEventListener('click', () => {
-        delete_private_recipe(); // how to pass in the ID of the recipe?
+        db.collection('farnia').doc('2').delete()
         console.log('delete recipe clicked');
         // TODO: go to the backend and delete the recipe
       });

@@ -2,11 +2,40 @@
 <html>
     <head>
         <title>Meal Buddy | Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to Firebase Hosting</title>
+
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-functions-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-messaging-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
+        
+
+        <!--<script defer src="backend/public_recipe.js"></script>
+        
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
         <script src="components/recipeCard.js" type="module"></script>
         <script src="components/recipeExpand.js" type="module"></script>
         <script src="components/Router.js" type="module"></script>
         <script src="components/main.js" type="module"></script>
         <link rel="stylesheet" href="components/main.css" />
+
+        <!-- <script defer src="app.js" > </script>  -->
+        <script defer src="components/main.js"> </script>
+        <script defer src="backend/public_recipe.js"></script>
+        <script defer src="backend/private_recipe.js"></script>
 
         <style>
             /* Navigation */
@@ -83,7 +112,7 @@
                     <a href= recipes.html>Recipes</a>
                 </div>
                 <div class = "navigate" id = "my-recipes">
-                    <a href= public/frontend/my-recipes.html>My Recipes</a>
+                    <a href= my-recipes.html>My Recipes</a>
                 </div>
             </div>
                 </div>
@@ -99,70 +128,21 @@
                 <h2>Today | Nov 22, 2021</h2>
                     <p>Add planned dishes here</p>
                     <p>Add planned dishes here</p>
-                    <!-- <section class="section--recipe-cards shown">
-                        <div class="recipe-cards--wrapper">
-                        </div>
-                        <div class="button--horizontal-line"></div>
-                      </section>
-                      <section class="section--recipe-expand">
-                        <recipe-expand></recipe-expand>
-                    </section> -->
             </div>
-            <!-- <div class="recipe-list">
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-            </div> -->
-
             <div id="tomorrow" class="day">
                 <h2>Tomorrow | Nov. 23, 2021</h2>
                     <p>Add planned dishes here</p>
                     <p>Add planned dishes here</p>
             </div>
-
-            <!-- <div class="recipe-list">
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-                <div class = "recipe">
-                    <p>Chicken Kebab</p>
-                </div>
-            </div> -->
             <br>
             <div id="previous-meals">
                 <h1>Previous Meals</h1>
             </div>
             
         </div>
+
+        <button onclick="fetchRecipes()">
+            Test2
+        </button>
     </body>
 </html>
