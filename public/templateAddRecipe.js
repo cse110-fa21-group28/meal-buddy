@@ -41,6 +41,6 @@ function init(){
     saveButton.addEventListener('click', function(){
         console.log("The JSON Object: " + JSON.stringify(obj));
         addPrivateRecipe(obj);
-        //window.location.href = "my-recipes.html";
+        window.location.href = "my-recipes.html";
     });
 }
