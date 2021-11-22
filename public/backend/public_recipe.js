@@ -1,4 +1,3 @@
-
 function public_recipe (name, recipe_category, description, calories, image_url, recipe_url, recipe_ingredient) {
   this.name = name
   this.recipe_category = recipe_category
@@ -61,7 +60,6 @@ const p_recipe5 = new public_recipe(5, 'Mushroom Beef Burgers', ['Main Dishes', 
     '½ teaspoon ground black pepper',
     'cooking spray'])
 
-const db = firebase.firestore()
 // const {res} =  db.collection('public_recipe').add(Object.assign({},p_recipe1));
 // const res = db.collection('public_recipe').add(Object.assign({},p_recipe1));
 

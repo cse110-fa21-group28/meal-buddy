@@ -1,3 +1,5 @@
+const db = firebase.firestore()
+
 function private_recipe (UID, name, recipe_ingredient, calories, category, description, image_url) {
   this.UID = UID
   this.name = name
@@ -8,51 +10,91 @@ function private_recipe (UID, name, recipe_ingredient, calories, category, descr
   this.category = category
 }
 
-async function get_private_recipe (id) {
-  const docRef = db.collection('private_recipe').doc(id.toString())
-  docRef.get().then((doc) => {
-    if (!doc.exists) {
-      console.log('No such document!')
-    } else {
-      console.log('Document data:', doc.data())
-      return doc.data()
-    }
-  })
+async function getPrivateRecipes () {
+  try {
+    const user = firebase.auth().currentUser
+    const data = []
+    await db
+      .collection('private_recipe')
+      .where('UID', '==', user.uid.toString())
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const temp = doc.data()
+          temp.id = doc.data().id
+          data.push(temp)
+        })
+      })
+      .catch((error) => {
+        return error
+      })
+    return data
+  } catch (error) {
+    return error
+  }
 }
-get_private_recipe('a7uJR9yCmsYUhiN64uOA')
 
-const test_recipe = new private_recipe('wPZjlYHOCFeKUGiFSnujkAxXqSs2', 'chicken', ['pot', 'chickent'], 99999, ['chicken'], 'it is a chicken', 'www.google.com')
-// console.log(test_recipe);
-add_private_recipe(test_recipe)
+async function getPrivateRecipe (recipeId) {
+  try {
+    const user = firebase.auth().currentUser
+    let res
+    await db
+      .collection('private_recipe')
+      .doc(recipeId)
+      .get()
+      .then((docRef) => {
+        res = docRef.data()
+      })
+      .catch((error) => {
+        return error
+      })
+    if (res.UID != user.uid) {
+      throw 'User does not have access, something went wrong!'
+    }
+    return res
+  } catch (error) {
+    return error
+  }
+}
 
-async function add_private_recipe (recipe) {
-  const db = firebase.firestore()
+/**
+ *
+ * @param {*} recipe => this is  JSON
+ */
+async function addPrivateRecipe (recipe) {
   // Create with random ID
-  const res = db.collection('private_recipe').add(Object.assign({}, recipe))
+  await db.collection('private_recipe').add(recipe)
 }
 
-async function update_private_recipe (id, new_recipe) {
+/**
+ *
+ * @param {*} id => Id of recipe that need to update
+ * @param {*} new_recipe => this is a JSON
+ */
+async function updatePrivateRecipe (id, newRecipe) {
   const batch = db.batch()
+  const docRef = await db.collection('private_recipe').doc(id.toString())
+  await docRef
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        throw 'some error'
+      }
 
-  const docRef = db.collection('private_recipe').doc(id.toString())
-  docRef.get().then((doc) => {
-    if (!doc.exists) {
-      console.log('Failed to update, no new info')
-      throw 'some error'
-    }
-    // console.log(doc.data())
-
-    for (const att in doc.data()) {
-      // console.log(att, new_recipe[att]);
-      batch.update(docRef, att, new_recipe[att])
-    }
-    batch.commit()
-  })
+      for (const att in doc.data()) {
+        batch.update(docRef, att, newRecipe[att])
+      }
+      batch.commit()
+    })
+    .catch((error) => {
+      return error
+    })
 }
 
-async function delete_private_recipe (id) {
-  const res = db.collection('private_recipe').doc(id.toString()).delete()
+/**
+ *
+ * @param {*} id
+ */
+async function deletePrivateRecipe (id) {
+  await db.collection('private_recipe').doc(id.toString()).delete()
 }
-// delete_private_recipe(3)
-
-// update_private_recipe('a7uJR9yCmsYUhiN64uOA',test_recipe);
