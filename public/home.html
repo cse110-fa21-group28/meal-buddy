@@ -36,6 +36,7 @@
         <script defer src="components/main.js"> </script>
         <script defer src="backend/public_recipe.js"></script>
         <script defer src="backend/private_recipe.js"></script>
+        <script  type="text/javascript" src="/app.js" defer> </script>
 
         <style>
             /* Navigation */
@@ -114,9 +115,10 @@
                 <div class = "navigate" id = "my-recipes">
                     <a href= my-recipes.html>My Recipes</a>
                 </div>
+                <button onclick="googleLogOut()">
+                    Logout with Google
+                </button>
             </div>
-                </div>
-            </nav>
         </div>
 
         
@@ -140,9 +142,5 @@
             </div>
             
         </div>
-
-        <button onclick="fetchRecipes()">
-            Test2
-        </button>
     </body>
 </html>

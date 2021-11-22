@@ -15,6 +15,7 @@ function googleLogOut () {
   auth.signOut()
     .then(function () {
       console.log('signed out')
+      window.location.href = "index.html";
     })
     .catch(console.log)
 }
@@ -29,5 +30,6 @@ auth.onAuthStateChanged(user => {
     document.getElementById('whenSignedIn').hidden = true
     document.getElementById('whenSignedOut').hidden = false
     document.getElementById('userDetail').innerHTML = ''
+    window.location.href = "index.html";
   }
 })
