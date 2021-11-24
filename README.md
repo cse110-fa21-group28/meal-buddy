@@ -1,6 +1,6 @@
-# Meal Buddy
+# meal-buddy
 
-This is a source code of [Meal Buddy](https://meal-prep-web-app.web.app/)
+This is a source code of [meal-buddy](https://meal-prep-web-app.web.app/)
 
 ## Local setup
 
