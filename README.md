@@ -2,7 +2,7 @@
 
 his is a source code of [meal-prep-app](https://meal-prep-web-app.web.app/)
 
-## Local setup
+# Local setup
 
 1. Clone this repository
 2. `npm ci` to install all dependencies (including firebase) of this project.
