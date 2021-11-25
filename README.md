@@ -1,6 +1,6 @@
 # meal-prep-app
 
-This is a source code of [meal-prep-app](https://meal-prep-web-app.web.app/)
+his is a source code of [meal-prep-app](https://meal-prep-web-app.web.app/)
 
 ## Local setup
 

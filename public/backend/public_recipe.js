@@ -60,7 +60,6 @@ const p_recipe5 = new public_recipe(5, 'Mushroom Beef Burgers', ['Main Dishes', 
     '½ teaspoon ground black pepper',
     'cooking spray'])
 
-
 async function get_public_recipe (id) {
   const res = db.collection('public_recipe').doc(id)
   const doc = await res.get()
@@ -70,4 +69,3 @@ async function get_public_recipe (id) {
     console.log('Document data:', doc.data())
   }
 }
-

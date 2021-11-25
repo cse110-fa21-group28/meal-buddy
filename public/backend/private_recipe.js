@@ -11,7 +11,7 @@ function private_recipe (UID, name, recipe_ingredient, calories, category, descr
 }
 
 /**
- * 
+ *
  * @returns user's private recipes
  */
 async function getPrivateRecipes () {
@@ -39,8 +39,8 @@ async function getPrivateRecipes () {
 }
 
 /**
- * 
- * @param {*} recipeId 
+ *
+ * @param {*} recipeId
  * @returns recipe with recipeId
  */
 async function getPrivateRecipe (recipeId) {
