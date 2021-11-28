@@ -1,12 +1,13 @@
-# meal-prep-app
+# Meal Buddy
 
-This is a source code of [meal-prep-app](https://meal-prep-web-app.web.app/)
+This is a source code of [Meal Buddy](https://meal-prep-web-app.web.app/)
 
 ## Local setup
 
 1. Clone this repository
-2. `npm ci`
-3. `firebase serve` to run locally. If doesn't work, try with `sudo`
+2. `npm ci` to install all dependencies (including firebase) of this project.
+3. `sudo firebase login` to login firebase. Make sure you login with ucsd account.
+4. `sudo firebase serve` to run locally.
 
 (Updating)
 
