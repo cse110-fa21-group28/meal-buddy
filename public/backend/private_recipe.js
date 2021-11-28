@@ -1,16 +1,6 @@
 const db = firebase.firestore()
 const auth = firebase.auth()
 
-function private_recipe (UID, name, recipe_ingredient, calories, category, description, image_url) {
-  this.UID = UID
-  this.name = name
-  this.recipe_ingredient = recipe_ingredient
-  this.description = description
-  this.calories = calories
-  this.image_url = image_url
-  this.category = category
-}
-
 /**
  * This is a function that GETs all private recipes that belong to the current user. It will return empty
  * array if current user have no private recipe.
