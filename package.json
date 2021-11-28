@@ -2,8 +2,15 @@
     "name": "meal-prep-app",
     "description": "the meal prep app",
     "dependencies": {
+        "-": "^0.0.1",
         "firebase": "^9.4.1",
+        "firebase-tools": "^9.23.0",
+        "g": "^2.0.1",
         "standard": "*"
+    },
+    "devDependencies": {
+        "json-schema": ">=0.4.0",
+        "json-ptr": ">=3.0.0"
     },
     "scripts": {
         "styling": "standard --fix"
