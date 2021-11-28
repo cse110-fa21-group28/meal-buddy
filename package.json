@@ -8,6 +8,10 @@
         "g": "^2.0.1",
         "standard": "*"
     },
+    "devDependencies": {
+        "json-schema": ">=0.4.0",
+        "json-ptr": ">=3.0.0"
+    },
     "scripts": {
         "styling": "standard --fix"
     }
