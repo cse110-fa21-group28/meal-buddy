@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Meal Buddy | Create New Recipe</title>
+        <!-- <link rel = "icon" href = ""> -->
+        <link rel="stylesheet" href="template.css">
+
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-functions-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-messaging-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-storage-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
+        <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
+        
+
+        <!--<script defer src="backend/public_recipe.js"></script>
+        
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+        <script src="templateAddRecipe.js" type="module"></script>
+
+        <style>
+            /* Navigation */
+                #navigation-bar{
+                    width: 100%;
+                    display: flex;
+                    max-height: 20%;
+                    background-color:PaleGreen;
+                }
+    
+                #company{
+                    width: 30%;
+                    display: flex;
+                    flex-direction: row;
+                }
+    
+                #navigation{
+                    width:70%;
+                    position:relative;
+                    left: 30%;
+                    display: flex;
+                    flex-direction: row;
+                }
+                .navigate{
+                    width:10%;
+                    border-style:double;
+                    border-width:1px;
+                    border-color:black;
+                }
+                .navigate_but{
+                    text-align:center;
+                }
+        </style>
+    </head>
+
+    <div id = "navigation-bar">
+        <div id = "company">
+            <!-- <div id = "company-logo">
+                <img src="code_duck.png" alt="code_duck logo">
+            </div> -->
+            <div id = "company-name">
+                <h1>Meal Buddy</h1>
+            </div>
+        </div>
+        
+        <div id = navigation>
+            <div class = "navigate" id = "home">
+                <a href= home.html>Home</a>
+            </div>
+            <div class = "navigate" id = "recipes">
+                <a href= recipes.html>Recipes</a>
+            </div>
+            <div class = "navigate" id = "my-recipes">
+                <a href= my-recipes.html>My Recipes</a>
+            </div>
+        </div>
+            </div>
+        </nav>
+    </div>
+    <body>
+        <main>
+            <form>
+                <div>
+                    <label for="title">Title: </label>
+                    <textarea id="titleInput" placeholder="Add the title of your recipe here!"></textarea>
+                </div>
+    
+                <div>
+                    <label for="imgUrl">Image URL: </label>
+                    <textarea id="imgUrlInput" placeholder="Add the URL of a picture of the dish here!" ></textarea>
+                </div>
+                <div>
+                    <label for="calorie">Calories: </label>
+                    <textarea id="calorieInput" placeholder="Add calories here!" ></textarea>
+                </div>
+    
+                <div>
+                    <label for="description">Description: </label>
+                    <textarea id="descriptionInput" placeholder="Write a description of your food here!" rows="5"></textarea>
+                </div>
+                <div>
+                    <label for="ingredients">Ingredients: </label>
+                    <textarea id="ingredientsInput" placeholder="Write the list of the ingredients of your food here!" rows="4"></textarea>
+                </div>
+                <div>
+                    <label for="instructions">Instructions: </label>
+                    <textarea id="instructionsInput" placeholder="Write the instructions of your recipe here!" rows="5"></textarea>
+                </div>
+                <button type="button" id="saveButton">Save</button>
+            </form>
+        </main>
+    </body>
+</html>

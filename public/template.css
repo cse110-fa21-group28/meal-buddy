@@ -1,0 +1,31 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, main {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+form div{
+    display: grid; 
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+form textarea, form input{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body form{
+    display: grid; 
+    margin-right: 20vw;
+    margin-left: 20vw;
+}
+
+#saveButton{
+    margin-left: auto;
+}
