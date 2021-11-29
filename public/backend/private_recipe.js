@@ -49,23 +49,23 @@ async function getPrivateRecipe (recipeId) {
       throw 'RecipeID expected!'
     }
     const user = await auth.currentUser
-    let res
+    if (!user) {
+      throw 'User not sign in'
+    }
     await db
       .collection('private_recipe')
       .doc(recipeId)
       .get()
       .then((docRef) => {
         res = docRef.data()
+        if (res.UID !== user.uid) {
+          throw 'User does not have access to this recipe, something went wrong!'
+        }
+        return res
       })
       .catch((error) => {
         return error
       })
-    if (!res) {
-      return res
-    } else if (res.UID != user.uid) {
-      throw 'User does not have access to this recipe, something went wrong!'
-    }
-    return res
   } catch (error) {
     return error
   }
@@ -78,7 +78,7 @@ async function getPrivateRecipe (recipeId) {
 async function addPrivateRecipe (recipe) {
   // Create with random ID
   try {
-    const user = firebase.auth().currentUser
+    const user = await auth.currentUser
     if (!user) {
       throw 'User not sign in'
     }
@@ -97,6 +97,9 @@ async function addPrivateRecipe (recipe) {
 async function updatePrivateRecipe (recipeId, newRecipe) {
   try {
     const user = await auth.currentUser
+    if (!user) {
+      throw 'User not sign in'
+    }
     const batch = db.batch()
     const docRef = await db.collection('private_recipe').doc(recipeId.toString())
     await docRef
@@ -124,7 +127,15 @@ async function updatePrivateRecipe (recipeId, newRecipe) {
  * @param {*} id
  */
 async function deletePrivateRecipe (id) {
-  await db.collection('private_recipe').doc(id.toString()).delete()
+  try {
+    const user = await auth.currentUser
+    if (!user) {
+      throw 'User not sign in'
+    }
+    db.collection('private_recipe').doc(id.toString()).delete()
+  } catch (error) {
+    return error;
+  }
 }
 
 export { getPrivateRecipes, getPrivateRecipe, addPrivateRecipe, deletePrivateRecipe, updatePrivateRecipe }
