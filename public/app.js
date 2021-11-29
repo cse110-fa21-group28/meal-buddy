@@ -1,5 +1,8 @@
 const auth = firebase.auth()
 
+/**
+ * Logs in the user with Google authentication
+ */
 function googleLogIn () {
   const provider = new firebase.auth.GoogleAuthProvider()
 
@@ -11,6 +14,9 @@ function googleLogIn () {
     .catch(console.log)
 }
 
+/**
+ * Logs out the user
+ */
 function googleLogOut () {
   auth.signOut()
     .then(function () {
