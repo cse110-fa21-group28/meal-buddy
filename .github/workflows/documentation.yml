@@ -1,37 +1,3 @@
-# name: GitHub pages
-
-# on: push
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
-
-#       - name: Install jsdoc
-#         run: npm install jsdoc
-      
-#       - name: Create doc
-#         run: npm run doc
-
-#       - name: Build
-#         uses: andstor/jsdoc-action@v1
-#         with:
-#           source_dir: ./public
-#           # output_dir: ./out
-#           # config_file: conf.json
-#           template_dir: ./jsdoc-template/publish.js
-#           # front_page: README.md
-#           # recurse: true
-
-#       - name: Deploy
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./out
-
 name: jsdoc
 on:
  push:
