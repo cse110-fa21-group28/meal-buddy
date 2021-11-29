@@ -45,7 +45,7 @@ jobs:
     - name: Build
       uses: codevise/documentation-js-action@v1
       with:
-        input: ./public
+        input: ./public/*
         output: ./docs
 
     # For example:
