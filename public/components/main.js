@@ -76,7 +76,7 @@ async function fetchRecipes () {
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             const temp = doc.data()
-            temp.id = doc.data().id
+            temp.id = doc.id
             recipes.push(temp)
           })
           if (recipes.length >= 1) {
@@ -139,7 +139,10 @@ function createRecipeCards () {
 function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
-    router.navigate(pageName)
+    else{
+      router.navigate(pageName)
+      console.log("lolbby")
+    }
   })
 }
 
@@ -164,6 +167,7 @@ function bindPopstate () {
    */
   window.addEventListener('popstate', function (event) {
     if (event.state) {
+      console.log("yesbbay")
       router.navigate(event.state.page, true)
     } else {
       router.navigate('home', true)

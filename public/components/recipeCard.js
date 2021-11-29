@@ -114,8 +114,9 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
-    deleteButton.addEventListener('click', () => {
+    deleteButton.addEventListener('click', (e) => {
       console.log('delete recipe clicked')
+      e.stopPropagation()
       // TODO: go to the backend and delete the recipe
       deletePrivateRecipe(data.id)
     })
