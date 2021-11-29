@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Router.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Router.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// router.js
+
+/** Some hints for this router:
+  *   - the functions being passed in should mostly be stored so that
+  *     you can call them later when you want to navigate to a page
+  *   - you should be pushing to history (only when the 'popstate' event
+  *     hasn't fired) so that you can use forward / backward buttons
+  *   - You should be using hashes to update the URL (e.g. 
+  *     https://somewebsite.com#somePage) - the hash is the #somePage part.
+  *     It's accessible via window.location.hash and using them lets you
+  *     easily modify the URL without refreshing the page or anything
+  */
+
+ export class Router {
+    static routes = {};
+  
+    /**
+     * Sets up the home function, the page name should always be 'home', which
+     * is why no page name variable is passed in.
+     * @param {Function} homeFunc The function to run to set the home route
+     *                            visually
+     */
+    constructor(homeFunc) {
+      this['home'] = homeFunc;
+    }
+  
+    /**
+     * Adds a page name &amp; function so to the router so that the function
+     * can be called later when the page is passed in
+     * @param {String} page The name of the page to route to (this is used
+     *                      as the page's hash as well in the URL)
+     * @param {Function} pageFunc The function to run when the page is called
+     */
+    addPage(page, pageFunc) {
+      /**
+       * TODO Part 1 - Step 2
+       * Just like in the constructor above, store the pageFunc variable inside this
+       * router instance using the 'this' keyword. Substitute 'home' for the variable
+       * page
+       */
+      this[page] = pageFunc;
+    }
+  
+    /**
+     * Changes the page visually to the page that has been passed in. statePopped
+     * is used to avoid pushing a new history state on back/forward button presses
+     * @param {String} page The name of the page to route to
+     * @param {Boolean} statePopped True if this function is being called from a
+     *                              'popstate' event instead of a normal card click
+     */
+    navigate(page, statePopped) {
+      console.log(`navigate() function called, requested page: ${page}`);
+      if (!this[page]){
+        console.log('The function was not found.');
+        return;
+      }
+  
+      var hash;
+      if (page == 'home'){
+        hash = '';
+      } else {
+        hash = '#' + page;
+      }
+  
+      if (!statePopped &amp;&amp; window.location.hash != hash){
+        history.pushState({'page' : page},'',window.location.origin + window.location.pathname + hash);
+      }
+  
+      this[page](); // call the function 
+      
+      /**
+       * TODO - Part 1 - Step 4
+       * Now, we are going to call the functions that we stored earlier based on 
+       * what page is being requested. For this function:
+       * 
+       *  1. First, check to see if the function exists, if it doesn't log an error
+       *     and return out of the function. 'this' is a global variable, so you can 
+       *     check to see if it exists nearly the same way you assigned it
+       *  2. Create a variable called hash. If page == 'home' set hash to be an empty
+       *     string, if page is anything else set it to be the string '#' + page, e.g.
+       *     '#ghostCookies'
+       *  3. Next, if statePopped is false and window.location.hash does NOT match the
+       *     hash that you just made, use history.pushState() to add the current state
+       *     and URL + hash to history
+       *  4. Finally, call the stored function for the given page
+       */
+    }
+  }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#convertTime">convertTime</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getCategories">getCategories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getOrganization">getOrganization</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 06:35:47 GMT-0800 (Pacific Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

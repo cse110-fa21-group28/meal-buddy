@@ -6,11 +6,15 @@
         "firebase": "^9.4.1",
         "firebase-tools": "^9.6.1",
         "g": "^2.0.1",
-        "standard": "*",
         "json-ptr": ">=3.0.0",
-        "json-schema": ">=0.4.0"
+        "json-schema": ">=0.4.0",
+        "standard": "*"
     },
     "scripts": {
-        "styling": "standard --fix"
+        "styling": "standard --fix",
+        "doc": "jsdoc -c conf.json"
+    },
+    "devDependencies": {
+        "jsdoc": "^3.6.7"
     }
 }
