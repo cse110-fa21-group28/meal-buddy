@@ -23,7 +23,7 @@ jobs:
           # config_file: conf.json
           template_dir: ./jsdoc-template/publish.js
           # front_page: README.md
-          recurse: true
+          # recurse: true
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
