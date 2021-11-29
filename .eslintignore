@@ -1,5 +1,5 @@
-./docs/**
+# ./docs/**
 ./docs/*.html
-./docs/styles/**
-./docs/scripts/**
-./docs/scripts/prettify/**
+./docs/styles/*.css
+./docs/scripts/*.js
+./docs/scripts/prettify/*.js
