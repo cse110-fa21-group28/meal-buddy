@@ -15,7 +15,7 @@ jobs:
           source_dir: ./public
           output_dir: ./out
           config_file: conf.json
-          template: custom-template
+          template_dir: ./custom-template
           # front_page: README.md
           recurse: true
 
