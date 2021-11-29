@@ -21,7 +21,7 @@ jobs:
           source_dir: ./public
           # output_dir: ./out
           # config_file: conf.json
-          template_dir: ./jsdoc-template/publish.js
+          template_dir: jsdoc-template
           # front_page: README.md
           recurse: true
 
