@@ -9,49 +9,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install jsdoc
-        run: npm install jsdoc
-      
-      - name: Create doc
-        run: npm run doc
-
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./public
-          # output_dir: ./out
-          # config_file: conf.json
           template_dir: jsdoc-template
-          # front_page: README.md
           recurse: true
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-
-# name: jsdoc
-# on: push
-
-# jobs:
-#   publish:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v1
-
-#     - name: Build
-#       uses: codevise/documentation-js-action@v1
-#       with:
-#         input: ./public/*
-#         output: ./docs
-
-#     # For example:
-#     - name: Deploy
-#       uses: peaceiris/actions-gh-pages@v2
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         PUBLISH_BRANCH: jsdoc-gh-pages
-#         PUBLISH_DIR: ./docs
