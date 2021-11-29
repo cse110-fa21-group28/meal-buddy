@@ -8,9 +8,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Install jsdoc
+        run: npm install jsdoc
       
       - name: Create doc
-        run: npm ci && npm run doc
+        run: npm run doc
 
       - name: Build
         uses: andstor/jsdoc-action@v1
