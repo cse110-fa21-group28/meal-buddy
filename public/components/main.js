@@ -76,7 +76,7 @@ async function fetchRecipes () {
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             const temp = doc.data()
-            temp.id = doc.data().id
+            temp.id = doc.id
             recipes.push(temp)
           })
           if (recipes.length >= 1) {
@@ -95,7 +95,7 @@ async function fetchRecipes () {
  */
 function createRecipeCards () {
   // Makes a new recipe card
-  console.log(recipes.length)
+  console.log(recipes)
   for (let i = 0; i < recipes.length; i++) {
     const recipeCard = document.createElement('recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
