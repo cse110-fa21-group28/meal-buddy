@@ -1,27 +1,53 @@
-name: GitHub pages
+# name: GitHub pages
 
-on: push
+# on: push
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Build
+#         uses: andstor/jsdoc-action@v1
+#         with:
+#           source_dir: ./public
+#           output_dir: ./out
+#           config_file: conf.json
+#           template: custom-template
+#           # front_page: README.md
+#           recurse: true
+
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./out
+name: jsdoc
+on:
+ push:
+   branches:
+     - master
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v1
 
-      - name: Build
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./public
-          output_dir: ./out
-          config_file: conf.json
-          template: custom-template
-          # front_page: README.md
-          recurse: true
+    - name: Build
+      uses: codevise/documentation-js-action@v1
+      with:
+        input: ./src
+        output: ./docs
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+    # For example:
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_PAT }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./docs
