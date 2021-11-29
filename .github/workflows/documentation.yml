@@ -15,7 +15,7 @@ jobs:
           source_dir: ./public
           output_dir: ./out
           config_file: conf.json
-          template: minami
+          template: custom-template
           # front_page: README.md
           recurse: true
 
