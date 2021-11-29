@@ -12,6 +12,6 @@
     "opts": {
         "recurse": true,
         "destination": "./docs/",
-        "template": "./jsdoc-template"
+        "template": "./jsdoc-template/"
     }
 }
