@@ -13,9 +13,9 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./public
-          output_dir: ./out
+          # output_dir: ./out
           # config_file: conf.json
-          template_dir: ../../jsdoc-template
+          template_dir: ./jsdoc-template/publish.js
           # front_page: README.md
           recurse: true
 
