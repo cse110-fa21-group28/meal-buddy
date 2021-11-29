@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: app.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,61 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: app.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const auth = firebase.auth()
 
+/**
+ * Logs in the user with Google authentication
+ */
+function googleLogIn () {
+  const provider = new firebase.auth.GoogleAuthProvider()
 
-    <h3> </h3>
+  auth.signInWithPopup(provider)
+    .then(result => {
+      const user = result.user
+      console.log(user)
+    })
+    .catch(console.log)
+}
 
+/**
+ * Logs out the user
+ */
+function googleLogOut () {
+  auth.signOut()
+    .then(function () {
+      console.log('signed out')
+      window.location.href = 'index.html'
+    })
+    .catch(console.log)
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+auth.onAuthStateChanged(user => {
+  if (!document.getElementById('whenSignedIn')) {
+    return
+  }
+  if (user) {
+    document.getElementById('whenSignedIn').hidden = false
+    document.getElementById('whenSignedOut').hidden = true
+    document.getElementById('userDetail').innerHTML = `&lt;h3> "Hello"  ${user.displayName} !&lt;h3> &lt;p>User ID: ${user.uid} &lt;/p>`
+    window.location.href = 'home.html'
+  } else {
+    document.getElementById('whenSignedIn').hidden = true
+    document.getElementById('whenSignedOut').hidden = false
+    document.getElementById('userDetail').innerHTML = ''
+  }
+})
+</code></pre>
+        </article>
+    </section>
 
 
 
