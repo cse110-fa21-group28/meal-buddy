@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Create doc
-        runs: npm ci && npm run doc
+        run: npm ci && npm run doc
 
       - name: Build
         uses: andstor/jsdoc-action@v1
