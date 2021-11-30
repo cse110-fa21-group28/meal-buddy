@@ -118,14 +118,13 @@ class RecipeCard extends HTMLElement {
 
     deleteButton.addEventListener('click', (e) => {
       console.log('delete recipe clicked')
-      e.stopPropagation() 
+      e.stopPropagation()
       // TODO: go to the backend and delete the recipe
       deletePrivateRecipe(data.id)
-        // then(() => {
-        //   window.location.href = 'my-recipes.html'
-        // })
-      });
-      
+      // then(() => {
+      //   window.location.href = 'my-recipes.html'
+      // })
+    })
 
     // Add all of the elements to the card
     card.appendChild(image)
