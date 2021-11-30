@@ -11,9 +11,11 @@
         "standard": "*"
     },
     "scripts": {
-        "styling": "standard --fix"
+        "styling": "standard --fix",
+        "test": "jest"
     },
     "devDependencies": {
+        "jest": "^27.4.0",
         "jsdoc": "^3.6.7"
     }
 }
