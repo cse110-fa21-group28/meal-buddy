@@ -1,6 +1,6 @@
 name: Tests
 
-on: [push]
+on: push
 
 jobs:
   build:
@@ -12,5 +12,5 @@ jobs:
     - run: npm ci
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.3
-      with:
-        jestArgs: ./unit-tests/sum.test.js
+      # with:
+      #   jestArgs: [./unit-tests/sum.test.js, ./unit-tests/sum1.test.js]
