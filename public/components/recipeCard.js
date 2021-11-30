@@ -117,14 +117,16 @@ class RecipeCard extends HTMLElement {
     deleteButton.innerText = 'Delete recipe'
 
     deleteButton.addEventListener('click', (e) => {
-      console.log('delete recipe clicked')
+      var confirmDelete = confirm("Are you sure to delete this recipe?");
       e.stopPropagation() 
-      // TODO: go to the backend and delete the recipe
-      deletePrivateRecipe(data.id)
-        // then(() => {
-        //   window.location.href = 'my-recipes.html'
-        // })
-      });
+      if(confirmDelete){
+        console.log('delete recipe clicked')
+        deletePrivateRecipe(data.id)
+        setTimeout(() => {
+          location.reload(true);
+        }, 500);
+      }
+    });
       
 
     // Add all of the elements to the card
