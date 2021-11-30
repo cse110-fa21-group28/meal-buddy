@@ -1,4 +1,4 @@
-import { updatePrivateRecipe } from './backend/private_recipe.js'
+//import { updatePrivateRecipe } from './backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
 let title, img, calorie, descr, ings, instrucs // maybe add cook time
@@ -48,11 +48,41 @@ function init () {
   })
 
   saveButton.addEventListener('click', function () {
+    
     console.log('The JSON Object: ' + JSON.stringify(obj))
+   
     updatePrivateRecipe(parsedData.id, obj)
 
     // Does this reload the page? Fetch the new data from database?
 
     // window.location.href = "my-recipes.html";
   })
+}
+
+async function updatePrivateRecipe (recipeId, newRecipe) {
+  try {
+    firebase.auth().onAuthStateChanged(async(user) => {
+      if (!user) {
+        throw "User not signed in"
+      }
+      const db = firebase.firestore()
+      const batch = db.batch()
+      const docRef = await db.collection('private_recipe').doc(recipeId.toString())
+      await docRef
+        .get()
+        .then((doc) => {
+          for (const att in doc.data()) {
+            if (newRecipe[att]) {
+              batch.update(docRef, att, newRecipe[att])
+            }   
+          }
+          batch.commit()
+        })
+        .catch((error) => {
+          return error
+        })
+    });
+  } catch (error) {
+    return error
+  }
 }
