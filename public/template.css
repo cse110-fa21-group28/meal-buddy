@@ -9,23 +9,23 @@ body, main {
     width: 100%;
 }
 
-form div{
+form div {
     display: grid; 
     padding-top: 10px;
     padding-bottom: 15px;
 }
 
-form textarea, form input{
+form textarea, form input {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body form{
+body form {
     display: grid; 
     margin-right: 20vw;
     margin-left: 20vw;
 }
 
-#saveButton{
+#saveButton {
     margin-left: auto;
 }

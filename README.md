@@ -21,4 +21,8 @@ This is a source code of [meal-buddy](https://meal-prep-web-app.web.app/)
 
 - Make sure you understand our [development practices](https://docs.google.com/document/d/1dFS2DS8PwIx1vWgwY4m3hb6lBa2rxWlP7e4EZS3B-WE/edit)
 
+## Documentation
+
+- Here is the [link](https://cse110-fa21-group28.github.io/meal-buddy/) to the documentation
+
 Please let me know if you have anything question!

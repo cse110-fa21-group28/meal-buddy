@@ -103,7 +103,8 @@ class RecipeCard extends HTMLElement {
     // Button to edit recipe
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit recipe'
-    editButton.addEventListener('click', () => {
+    editButton.addEventListener('click', (e) => {
+      e.stopPropagation()
       window.location.href = 'templateEditRecipe.html' // how to pass in the ID of the recipe?
       localStorage.setItem('currentRecipeData', JSON.stringify(data))
       // TODO: fetch the data that's already on the database, place it in the template textareas
@@ -114,6 +115,7 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
+<<<<<<< HEAD
     deleteButton.addEventListener('click', (e) => {
       console.log('delete recipe clicked')
       e.stopPropagation()
@@ -125,6 +127,19 @@ class RecipeCard extends HTMLElement {
         
       
     })
+=======
+
+    deleteButton.addEventListener('click', (e) => {
+      console.log('delete recipe clicked')
+      e.stopPropagation() 
+      // TODO: go to the backend and delete the recipe
+      deletePrivateRecipe(data.id)
+        // then(() => {
+        //   window.location.href = 'my-recipes.html'
+        // })
+      });
+      
+>>>>>>> main
 
     // Add all of the elements to the card
     card.appendChild(image)
