@@ -11,8 +11,7 @@
         "standard": "*"
     },
     "scripts": {
-        "styling": "standard --fix",
-        "doc": "jsdoc -c conf.json"
+        "styling": "standard --fix"
     },
     "devDependencies": {
         "jsdoc": "^3.6.7"
