@@ -119,6 +119,11 @@ class RecipeCard extends HTMLElement {
       e.stopPropagation()
       // TODO: go to the backend and delete the recipe
       deletePrivateRecipe(data.id)
+      setTimeout(() => {
+        location.reload(true);
+      }, 500);
+        
+      
     })
 
     // Add all of the elements to the card
