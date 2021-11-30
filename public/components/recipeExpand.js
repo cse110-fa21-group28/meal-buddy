@@ -199,7 +199,7 @@ class RecipeExpand extends HTMLElement {
 
     // Set Instructions
     const instructions = getInstructions(data)
-    
+
     instructions.forEach(instruction => {
       const listItem = document.createElement('li')
       listItem.innerHTML = instruction

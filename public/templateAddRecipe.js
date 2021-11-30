@@ -1,7 +1,7 @@
 import { addPrivateRecipe } from './backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
-let title, img, calorie, descr, ings, instrucs // maybe add cook time
+let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
 const obj = {}
 
 async function init () {
@@ -39,13 +39,20 @@ async function init () {
   })
 
   saveButton.addEventListener('click', function () {
-    if (Object.keys(obj).length !== 0) {
+    while (Object.keys(obj).length != 6) {
+      if (!('name' in obj)) { obj.name = '' }
+      if (!('name' in obj)) { obj.image_url = '' }
+      if (!('name' in obj)) { obj.calories = '' }
+      if (!('name' in obj)) { obj.description = '' }
+    }
+
+    if (Object.keys(obj).length == 6) {
       addPrivateRecipe(obj)
         .then(() => {
           window.location.href = 'my-recipes.html'
         })
     } else {
-
+      console.log('Error: Not all the fields are filled out!')
     }
   })
 }
