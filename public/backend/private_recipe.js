@@ -94,7 +94,7 @@ async function addPrivateRecipe (recipe) {
  * @param {*} id => Id of recipe that need to update
  * @param {*} new_recipe => this is a JSON
  */
- async function updatePrivateRecipe (recipeId, newRecipe) {
+async function updatePrivateRecipe (recipeId, newRecipe) {
   try {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) {
