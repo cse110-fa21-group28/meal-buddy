@@ -96,9 +96,9 @@ async function addPrivateRecipe (recipe) {
  */
  async function updatePrivateRecipe (recipeId, newRecipe) {
   try {
-    firebase.auth().onAuthStateChanged(async(user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) {
-        throw "User not signed in"
+        throw 'User not signed in'
       }
       const batch = db.batch()
       const docRef = await db.collection('private_recipe').doc(recipeId.toString())
@@ -108,14 +108,14 @@ async function addPrivateRecipe (recipe) {
           for (const att in doc.data()) {
             if (newRecipe[att]) {
               batch.update(docRef, att, newRecipe[att])
-            }   
+            }
           }
           batch.commit()
         })
         .catch((error) => {
           return error
         })
-    });
+    })
   } catch (error) {
     return error
   }
@@ -133,7 +133,7 @@ async function deletePrivateRecipe (id) {
     }
     db.collection('private_recipe').doc(id.toString()).delete()
   } catch (error) {
-    return error;
+    return error
   }
 }
 
