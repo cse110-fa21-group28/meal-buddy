@@ -491,166 +491,6 @@ so that when they are clicked, their card expands into the full recipe view mode
     
 
     
-    <h4 class="name" id="convertTime"><span class="type-signature"></span>convertTime<span class="signature">(time)</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Converts ISO 8061 time strings to regular english time strings.
-Not perfect but it works for this lab
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>time</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">time string to format</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line243">line 243</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    formatted time string
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="createIngredientList"><span class="type-signature"></span>createIngredientList<span class="signature">(ingredientArr)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
 
@@ -754,7 +594,7 @@ formatted comma separated list.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line272">line 272</a>
+        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -1225,7 +1065,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line276">line 276</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -1283,7 +1123,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
 
     
-    <h4 class="name" id="getCategories"><span class="type-signature"></span>getCategories<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="getCalories"><span class="type-signature"></span>getCalories<span class="signature">(data)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
@@ -1291,7 +1131,166 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
 
 
 <div class="description">
-    Extract the categories of the recipe from the given recipe schema JSON obejct
+    Extract the calories of the recipe from the given recipe JSON object
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Raw recipe JSON to find the calories of</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line230">line 230</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    If found, returns the calories of the recipe
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getDescription"><span class="type-signature"></span>getDescription<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extract the description of the recipe from the given recipe schema JSON obejct
 </div>
 
 
@@ -1384,7 +1383,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line331">line 331</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -1413,7 +1412,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
 
         
 <div class="param-desc">
-    If found, returns the recipe categories
+    If found, returns the recipe description
 </div>
 
 
@@ -1543,7 +1542,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line287">line 287</a>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line240">line 240</a>
     </li></ul></dd>
     
 
@@ -1702,7 +1701,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line186">line 186</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -1861,7 +1860,166 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line298">line 298</a>
+        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line165">line 165</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    If found, returns the URL of the image as a string, otherwise null
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getImage"><span class="type-signature"></span>getImage<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extract a usable image from the given recipe schema JSON object
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Raw recipe JSON to find the image of</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line250">line 250</a>
     </li></ul></dd>
     
 
@@ -2020,7 +2178,166 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line351">line 351</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    If found, returns the recipe ingredients
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getIngredients"><span class="type-signature"></span>getIngredients<span class="signature">(data)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extract the ingredients of the recipe from the given recipe schema JSON obejct
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Raw recipe JSON to find the image of</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line280">line 280</a>
     </li></ul></dd>
     
 
@@ -2179,7 +2496,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line320">line 320</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -2237,7 +2554,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
     
 
     
-    <h4 class="name" id="getOrganization"><span class="type-signature"></span>getOrganization<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="getInstructions"><span class="type-signature"></span>getInstructions<span class="signature">(data)</span><span class="type-signature"> &rarr; {Array}</span></h4>
     
 
     
@@ -2245,8 +2562,7 @@ inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthday
 
 
 <div class="description">
-    Similar to getUrl(), this function extracts the organizations name from the
-schema JSON object. It's not in a standard location so this function helps.
+    Extract the instructions of the recipe from the given recipe schema JSON object
 </div>
 
 
@@ -2298,7 +2614,7 @@ schema JSON object. It's not in a standard location so this function helps.
 
             
 
-            <td class="description last">Raw recipe JSON to find the org string of</td>
+            <td class="description last">Raw recipe JSON to find the instructions of</td>
         </tr>
 
     
@@ -2339,7 +2655,7 @@ schema JSON object. It's not in a standard location so this function helps.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line225">line 225</a>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line270">line 270</a>
     </li></ul></dd>
     
 
@@ -2368,7 +2684,7 @@ schema JSON object. It's not in a standard location so this function helps.
 
         
 <div class="param-desc">
-    If found, it retuns the name of the org as a string, otherwise null
+    If found, returns the recipe instructions
 </div>
 
 
@@ -2379,7 +2695,7 @@ schema JSON object. It's not in a standard location so this function helps.
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type">Array</span>
 
 
     </dd>
@@ -2740,7 +3056,7 @@ array if current user have no private recipe.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line169">line 169</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -2899,7 +3215,7 @@ array if current user have no private recipe.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line309">line 309</a>
+        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -2957,7 +3273,7 @@ array if current user have no private recipe.
     
 
     
-    <h4 class="name" id="getUrl"><span class="type-signature"></span>getUrl<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    <h4 class="name" id="getTitle"><span class="type-signature"></span>getTitle<span class="signature">(data)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
 
     
@@ -2965,7 +3281,7 @@ array if current user have no private recipe.
 
 
 <div class="description">
-    Extract the URL from the given recipe schema JSON object
+    Extract the title of the recipe from the given recipe schema JSON obejct
 </div>
 
 
@@ -3017,7 +3333,7 @@ array if current user have no private recipe.
 
             
 
-            <td class="description last">Raw recipe JSON to find the URL of</td>
+            <td class="description last">Raw recipe JSON to find the image of</td>
         </tr>
 
     
@@ -3058,7 +3374,7 @@ array if current user have no private recipe.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line209">line 209</a>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -3087,7 +3403,7 @@ array if current user have no private recipe.
 
         
 <div class="param-desc">
-    If found, it returns the URL as a string, otherwise null
+    If found, returns the recipe title
 </div>
 
 
@@ -3416,7 +3732,7 @@ array if current user have no private recipe.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line149">line 149</a>
+        <a href="components_functions.js.html">components/functions.js</a>, <a href="components_functions.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -3598,7 +3914,189 @@ array if current user have no private recipe.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line244">line 244</a>
+        <a href="components_recipeCard.js.html">components/recipeCard.js</a>, <a href="components_recipeCard.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    the value of the found key
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="searchForKey"><span class="type-signature"></span>searchForKey<span class="signature">(object, key)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Recursively search for a key nested somewhere inside an object
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>object</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object with which you'd like to search</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the key that you are looking for in the object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_recipeExpand.js.html">components/recipeExpand.js</a>, <a href="components_recipeExpand.js.html#line211">line 211</a>
     </li></ul></dd>
     
 
@@ -3822,13 +4320,13 @@ array if current user have no private recipe.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#convertTime">convertTime</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getCategories">getCategories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getOrganization">getOrganization</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Dec 01 2021 00:54:59 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Dec 01 2021 06:46:59 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
