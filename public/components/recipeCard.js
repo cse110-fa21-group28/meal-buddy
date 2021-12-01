@@ -117,23 +117,11 @@ class RecipeCard extends HTMLElement {
     deleteButton.innerText = 'Delete recipe'
 
     deleteButton.addEventListener('click', (e) => {
-<<<<<<< Updated upstream
-      console.log('delete recipe clicked')
-      e.stopPropagation()
-      // TODO: go to the backend and delete the recipe
-      deletePrivateRecipe(data.id)
-      setTimeout(() => {
-        location.reload(true);
-      }, 500);
-    })
-    
-=======
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
         window.location.href = 'my-recipes.html'
       })
     })
->>>>>>> Stashed changes
 
     // Add all of the elements to the card
     card.appendChild(image)

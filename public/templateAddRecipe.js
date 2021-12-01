@@ -41,8 +41,7 @@ async function init () {
   saveButton.addEventListener('click', function () {
     if (Object.keys(obj).length == 6) {
       addPrivateRecipe(obj)
-        .then((val) => {
-          console.log(val)
+        .then(() => {
           window.location.href = 'my-recipes.html'
         })
     } else {
