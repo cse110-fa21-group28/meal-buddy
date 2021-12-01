@@ -8,8 +8,8 @@
         "g": "^2.0.1",
         "json-ptr": ">=3.0.0",
         "json-schema": ">=0.4.0",
-        "standard": "*",
-        "puppeteer-core": "^11.0.0"
+        "puppeteer-core": "^11.0.0",
+        "standard": "*"
     },
     "scripts": {
         "test": "jest",
@@ -23,9 +23,5 @@
         "jest-puppeteer": "^6.0.2",
         "jsdoc": "^3.6.7",
         "puppeteer": "^11.0.0"
-    },
-    "jest": {
-        "preset": "jest-puppeteer",
-        "verbose": true
     }
 }
