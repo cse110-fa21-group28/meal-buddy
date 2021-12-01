@@ -23,9 +23,5 @@
         "jest-puppeteer": "^6.0.2",
         "jsdoc": "^3.6.7",
         "puppeteer": "^11.0.0"
-    },
-    "jest": {
-        "preset": "jest-puppeteer",
-        "verbose": true
     }
 }
