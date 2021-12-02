@@ -13,9 +13,9 @@ This is a source code of [Meal Buddy](https://meal-prep-web-app.web.app/)
 
 ## Workplace
 
-- Everything we need to do is in the [public](https://github.com/cse110-fa21-group28/meal-buddy/tree/main/public) directory, the rest is the configuration files. Please look over [index.html](https://github.com/cse110-fa21-group28/meal-buddy/blob/main/public/index.html), this is the starting point of this project. And make sure to put your work in correct directories:
-  + [/frontend](https://github.com/cse110-fa21-group28/meal-buddy/tree/main/public/frontend)
-  + [/backend](https://github.com/cse110-fa21-group28/meal-buddyp/tree/main/public/backend)
+- Everything we need to do is in the [public](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public) directory, the rest is the configuration files. Please look over [index.html](https://github.com/cse110-fa21-group28/meal-prep-app/blob/main/public/index.html), this is the starting point of this project. And make sure to put your work in correct directories:
+  + [/frontend](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public/frontend)
+  + [/backend](https://github.com/cse110-fa21-group28/meal-prep-app/tree/main/public/backend)
 
 ## Pre-implementation
 
