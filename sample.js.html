@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app.js</title>
+    <title>JSDoc: Source: sample.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app.js</h1>
+    <h1 class="page-title">Source: sample.js</h1>
 
     
 
@@ -26,50 +26,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const auth = firebase.auth()
-
-/**
- * Logs in the user with Google authentication
+            <pre class="prettyprint source linenums"><code>/**
+ * Gets the sum of two numbers
+ * @param {Number} a - the first operand
+ * @param {Number} b - the second operand
+ * @returns the sum of a + b
  */
-function googleLogIn () {
-  const provider = new firebase.auth.GoogleAuthProvider()
-
-  auth.signInWithPopup(provider)
-    .then(result => {
-      const user = result.user
-      console.log(user)
-    })
-    .catch(console.log)
-}
-
-/**
- * Logs out the user
- */
-function googleLogOut () {
-  auth.signOut()
-    .then(function () {
-      console.log('signed out')
-      window.location.href = 'index.html'
-    })
-    .catch(console.log)
-}
-
-auth.onAuthStateChanged(user => {
-  if (!document.getElementById('whenSignedIn')) {
-    return
-  }
-  if (user) {
-    document.getElementById('whenSignedIn').hidden = false
-    document.getElementById('whenSignedOut').hidden = true
-    document.getElementById('userDetail').innerHTML = `&lt;h3> "Hello"  ${user.displayName} !&lt;h3> &lt;p>User ID: ${user.uid} &lt;/p>`
-    window.location.href = 'home.html'
-  } else {
-    document.getElementById('whenSignedIn').hidden = true
-    document.getElementById('whenSignedOut').hidden = false
-    document.getElementById('userDetail').innerHTML = ''
-  }
-})
-</code></pre>
+function sum(a, b) {
+    return a + b;
+}</code></pre>
         </article>
     </section>
 
