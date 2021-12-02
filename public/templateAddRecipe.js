@@ -39,13 +39,20 @@ async function init () {
   })
 
   saveButton.addEventListener('click', function () {
+    while (Object.keys(obj).length != 6) {
+      if (!('name' in obj)) { obj.name = '' }
+      if (!('name' in obj)) { obj.image_url = '' }
+      if (!('name' in obj)) { obj.calories = '' }
+      if (!('name' in obj)) { obj.description = '' }
+    }
+
     if (Object.keys(obj).length == 6) {
       addPrivateRecipe(obj)
         .then(() => {
           window.location.href = 'my-recipes.html'
         })
     } else {
-      alert('Error: Not all the fields are filled out!')
+      console.log('Error: Not all the fields are filled out!')
     }
   })
 }
