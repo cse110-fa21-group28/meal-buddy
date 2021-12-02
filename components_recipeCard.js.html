@@ -26,8 +26,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// // RecipeCard.js
-
+            <pre class="prettyprint source linenums"><code>// RecipeCard.js
+import { deletePrivateRecipe } from '../../backend/private_recipe.js'
 class RecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement
@@ -114,7 +114,19 @@ class RecipeCard extends HTMLElement {
     image.setAttribute('src', imageUrl)
     image.setAttribute('alt', titleText)
 
+    // Grab the total time
+    // const totalTime = searchForKey(data, 'totalTime');
+    // const time = document.createElement('time');
+    // time.innerText = convertTime(totalTime);
+
     // TODO: Grab the calories
+
+    // Button to add to plan
+    // const addButton = document.createElement('button');
+    // addButton.innerText = 'Add to plan';
+    // addButton.addEventListener('click', () => {
+    //   console.log('added to plan');
+    // });
 
     // Button to edit recipe
     const editButton = document.createElement('button')
@@ -131,17 +143,23 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
-
     deleteButton.addEventListener('click', (e) => {
+      console.log('delete recipe clicked')
       e.stopPropagation()
-      firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
-        window.location.href = 'my-recipes.html'
-      })
+      // TODO: go to the backend and delete the recipe
+      deletePrivateRecipe(data.id)
+      setTimeout(() => {
+        location.reload(true);
+      }, 500);
+        
+      
     })
 
     // Add all of the elements to the card
     card.appendChild(image)
     card.appendChild(title)
+    // card.appendChild(time);
+    // card.appendChild(addButton);
     card.appendChild(editButton)
     card.appendChild(deleteButton)
     this.shadowRoot.append(style, card)
@@ -182,6 +200,13 @@ function searchForKey (object, key) {
    */
 function getTitle (data) {
   if (data.name) return data.name
+  // if (data['@graph']) {
+  //   for (let i = 0; i &lt; data['@graph'].length; i++) {
+  //     if (data['@graph'][i]['@type'] == 'Recipe') {
+  //       if (data['@graph'][i]['name']) return data['@graph'][i]['name'];
+  //     };
+  //   }
+  // }
   return null
 }
 
@@ -191,8 +216,82 @@ function getTitle (data) {
    * @returns {String} If found, returns the URL of the image as a string, otherwise null
    */
 function getImage (data) {
+  // if (data.image?.url)
   if (data.image_url) return data.image_url
   return null
+  // if (data.image?.contentUrl) return data.image.contentUrl;
+  // if (data.image?.thumbnail) return data.image.thumbnail;
+  // if (data['@graph']) {
+  //   for (let i = 0; i &lt; data['@graph'].length; i++) {
+  //     if (data['@graph'][i]['@type'] == 'ImageObject') {
+  //       if (data['@graph'][i]['url']) return data['@graph'][i]['url'];
+  //       if (data['@graph'][i]['contentUrl']) return data['@graph'][i]['contentUrl'];
+  //       if (data['@graph'][i]['thumbnailUrl']) return data['@graph'][i]['thumbnailUrl'];
+  //     };
+  //   }
+  // }
+  // return null;
+}
+
+/**
+   * Extract the URL from the given recipe schema JSON object
+   * @param {Object} data Raw recipe JSON to find the URL of
+   * @returns {String} If found, it returns the URL as a string, otherwise null
+   */
+function getUrl (data) {
+  if (data.url) return data.url
+  if (data['@graph']) {
+    for (let i = 0; i &lt; data['@graph'].length; i++) {
+      if (data['@graph'][i]['@type'] == 'Recipe') return data['@graph'][i]['@id']
+    }
+  };
+  return null
+}
+
+/**
+   * Similar to getUrl(), this function extracts the organizations name from the
+   * schema JSON object. It's not in a standard location so this function helps.
+   * @param {Object} data Raw recipe JSON to find the org string of
+   * @returns {String} If found, it retuns the name of the org as a string, otherwise null
+   */
+function getOrganization (data) {
+  if (data.publisher?.name) return data.publisher?.name
+  if (data['@graph']) {
+    for (let i = 0; i &lt; data['@graph'].length; i++) {
+      if (data['@graph'][i]['@type'] == 'WebSite') {
+        return data['@graph'][i].name
+      }
+    }
+  };
+  return null
+}
+
+/**
+   * Converts ISO 8061 time strings to regular english time strings.
+   * Not perfect but it works for this lab
+   * @param {String} time time string to format
+   * @return {String} formatted time string
+   */
+function convertTime (time) {
+  let timeStr = ''
+
+  // Remove the 'PT'
+  time = time.slice(2)
+
+  const timeArr = time.split('')
+  if (time.includes('H')) {
+    for (let i = 0; i &lt; timeArr.length; i++) {
+      if (timeArr[i] == 'H') return `${timeStr} hr`
+      timeStr += timeArr[i]
+    }
+  } else {
+    for (let i = 0; i &lt; timeArr.length; i++) {
+      if (timeArr[i] == 'M') return `${timeStr} min`
+      timeStr += timeArr[i]
+    }
+  }
+
+  return ''
 }
 
 /**
@@ -239,13 +338,13 @@ customElements.define('recipe-card', RecipeCard)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#convertTime">convertTime</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getCategories">getCategories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getOrganization">getOrganization</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Dec 01 2021 23:23:49 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Dec 02 2021 02:41:30 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
