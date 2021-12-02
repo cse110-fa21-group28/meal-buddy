@@ -8,12 +8,20 @@
         "g": "^2.0.1",
         "json-ptr": ">=3.0.0",
         "json-schema": ">=0.4.0",
+        "puppeteer-core": "^11.0.0",
         "standard": "*"
     },
     "scripts": {
+        "test": "jest",
         "styling": "standard --fix"
     },
     "devDependencies": {
-        "jsdoc": "^3.6.7"
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
+        "babel-jest": "^27.4.2",
+        "jest": "^27.4.2",
+        "jest-puppeteer": "^6.0.2",
+        "jsdoc": "^3.6.7",
+        "puppeteer": "^11.0.0"
     }
 }
