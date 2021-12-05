@@ -26,6 +26,7 @@
         -->
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
+        <script  type="text/javascript" src="/app.js" defer> </script>
         <script src="templateEditRecipe.js" type="module"></script>
         <link rel="stylesheet" href="styles/navBar.css" />
     </head>
@@ -44,7 +45,7 @@
             <button onclick="window.location.href = 'home.html'">Home</button>
             <button onclick="window.location.href = 'recipes.html'">Recipes</button>
             <button onclick="window.location.href = 'myRecipes.html'">My Recipes</button>
-            <button onclick="googleLogOut()">Logout</button>
+            <button class=logout onclick="googleLogOut()">Logout</button>
         </div>
     </div>
     <body>

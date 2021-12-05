@@ -31,13 +31,13 @@ class RecipeCard extends HTMLElement {
     const imageUrl = getImage(data)
     const image = document.createElement('img')
     image.setAttribute('src', imageUrl)
-    image.setAttribute('alt', titleText)
+    image.setAttribute('alt', 'recipe-image')
 
     // Grab the calories
     const calorieText = getCalories(data)
     const calorie = document.createElement('p')
     calorie.classList.add('calories')
-    calorie.innerText = calorieText
+    calorie.innerText = calorieText + " calories"
 
     // Button to edit recipe
     const editButton = document.createElement('button')
@@ -67,6 +67,7 @@ class RecipeCard extends HTMLElement {
     card.appendChild(style);
     card.appendChild(image)
     card.appendChild(title)
+    card.appendChild(calorie)
     card.appendChild(editButton)
     card.appendChild(deleteButton)
     
@@ -80,30 +81,10 @@ class RecipeCard extends HTMLElement {
   }
 }
 
-/**
-   * Recursively search for a key nested somewhere inside an object
-   * @param {Object} object the object with which you'd like to search
-   * @param {String} key the key that you are looking for in the object
-   * @returns {*} the value of the found key
-   */
-function searchForKey (object, key) {
-  let value
-  Object.keys(object).some(function (k) {
-    if (k === key) {
-      value = object[k]
-      return true
-    }
-    if (object[k] && typeof object[k] === 'object') {
-      value = searchForKey(object[k], key)
-      return value !== undefined
-    }
-  })
-  return value
-}
 
 /**
    * Extract the title of the recipe from the given recipe schema JSON obejct
-   * @param {Object} data Raw recipe JSON to find the image of
+   * @param {Object} data Raw recipe JSON to find the recipe title
    * @returns {String} If found, returns the recipe title
    */
 function getTitle (data) {
@@ -113,7 +94,7 @@ function getTitle (data) {
 
 /**
    * Extract a usable image from the given recipe schema JSON object
-   * @param {Object} data Raw recipe JSON to find the image of
+   * @param {Object} data Raw recipe JSON to find the image
    * @returns {String} If found, returns the URL of the image as a string, otherwise null
    */
 function getImage (data) {
@@ -121,41 +102,14 @@ function getImage (data) {
   return null
 }
 
+/**
+   * Extract the title of the recipe from the given recipe schema JSON obejct
+   * @param {Object} data Raw recipe JSON to find the calories
+   * @returns {String} If found, returns the calories
+   */
 function getCalories (data) {
   if (data.calories) return data.calories
   return null
-}
-
-/**
-   * Takes in a list of ingredients raw from imported data and returns a neatly
-   * formatted comma separated list.
-   * @param {Array} ingredientArr The raw unprocessed array of ingredients from the
-   *                              imported data
-   * @return {String} the string comma separate list of ingredients from the array
-   */
-function createIngredientList (ingredientArr) {
-  let finalIngredientList = ''
-
-  /**
-     * Removes the quantity and measurement from an ingredient string.
-     * This isn't perfect, it makes the assumption that there will always be a quantity
-     * (sometimes there isn't, so this would fail on something like '2 apples' or 'Some olive oil').
-     * For the purposes of this lab you don't have to worry about those cases.
-     * @param {String} ingredient the raw ingredient string you'd like to process
-     * @return {String} the ingredient without the measurement & quantity
-     * (e.g. '1 cup flour' returns 'flour')
-     */
-  function _removeQtyAndMeasurement (ingredient) {
-    return ingredient.split(' ').splice(2).join(' ')
-  }
-
-  ingredientArr.forEach(ingredient => {
-    ingredient = _removeQtyAndMeasurement(ingredient)
-    finalIngredientList += `${ingredient}, `
-  })
-
-  // The .slice(0,-2) here gets ride of the extra ', ' added to the last ingredient
-  return finalIngredientList.slice(0, -2)
 }
 
 // Define the Class so you can use it as a custom element

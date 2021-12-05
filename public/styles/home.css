@@ -23,3 +23,11 @@ body{
 .day{
     text-indent: 50px
 }
+
+#home-page{
+    padding-top: 117px;
+}
+
+img{
+    margin: 20vh, 20vw, 20vh, 20vw;
+}
