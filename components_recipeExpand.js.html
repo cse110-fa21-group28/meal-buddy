@@ -148,7 +148,7 @@ class RecipeExpand extends HTMLElement {
             &lt;ul>&lt;/ul>
           &lt;/section>
           &lt;section class="section--instructions">
-            &lt;!--&lt;h2>INSTRUCTIONS&lt;/h2>-->
+            &lt;h2>INSTRUCTIONS&lt;/h2>
             &lt;ol>&lt;/ol>
           &lt;/section>
         &lt;/main>
@@ -213,32 +213,13 @@ class RecipeExpand extends HTMLElement {
       this.shadowRoot.querySelector('.section--ingredients > ul').append(listItem)
     })
 
-    // Set Instructions / URL
+    // Set Instructions
     const instructions = getInstructions(data)
-    const url = getUrl(data);
-    if(instructions) {
-      // const instructionHeading = document.createElement('h2');
-      // instructionHeading.innerHTML = 'INSTRUCTIONS';
-      // const referenceNode = this.shadowRoot.querySelector('.section--instructions > ol');
-      // referenceNode.parentNode.insertBefore(instructionHeading, referenceNode);
-
-      instructions.forEach(instruction => {
-        const listItem = document.createElement('li')
-        listItem.innerHTML = instruction
-        this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
-      })
-    } else {
-      const header = this.shadowRoot.querySelector('.section--instructions > h2');
-      const list = this.shadowRoot.querySelector('.section--instructions > ol');
-      // header.parentElement.removeChild(header);
-      header.innerHTML = 'Recipe URL';
-      list.parentElement.removeChild(list);
-      const recipe_url = document.createElement('a');
-      recipe_url.setAttribute('href', url);
-      recipe_url.setAttribute('target', '_blank');
-      recipe_url.innerHTML = url;
-      this.shadowRoot.querySelector('.section--instructions').append(recipe_url);
-    }
+    instructions.forEach(instruction => {
+      const listItem = document.createElement('li')
+      listItem.innerHTML = instruction
+      this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
+    })
   }
 
   /**
@@ -330,17 +311,6 @@ function getIngredients (data) {
   return null
 }
 
-/**
- * Extract the url of the recipe from the given recipe schema JSON obejct
- * @param {Object} data Raw recipe JSON to find the url of
- * @returns {String} If found, returns the url of the recipe
- */
-function getUrl (data) {
-  if(data.recipe_url) return data.recipe_url;
-
-  return null;
-}
-
 
 customElements.define('recipe-expand', RecipeExpand)
 </code></pre>
@@ -353,13 +323,13 @@ customElements.define('recipe-expand', RecipeExpand)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 01:34:28 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 02:30:16 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
