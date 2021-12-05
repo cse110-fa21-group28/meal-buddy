@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Meal Buddy | Home</title>
+    <title>Meal Buddy | My Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Welcome to Firebase Hosting</title>
 
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
@@ -32,52 +31,74 @@
         <script src="components/main.js" type="module"></script>
         <link rel="stylesheet" href="components/main.css" />
 
+        <link rel="stylesheet" href="styles/myRecipes.css" />
+
         <!-- <script defer src="app.js" > </script>  -->
         <script type="module" defer src="components/main.js"> </script>
         <script type="module" defer src="backend/public_recipe.js"></script>
         <script type="module" defer src="backend/private_recipe.js"></script>
         <script  type="text/javascript" src="/app.js" defer> </script>
 
-    <style>
+    <!--<style>
         /* Navigation */
             #navigation-bar{
-                width: 100%;
                 display: flex;
                 max-height: 20%;
-                background-color:PaleGreen;
+                background-color: #c3ec9d;
+                position: fixed;
+                width: 100%;
+                justify-content: space-between;
             }
-
             #company{
-                width: 30%;
                 display: flex;
                 flex-direction: row;
             }
 
             #navigation{
-                width:70%;
                 position:relative;
-                left: 30%;
                 display: flex;
                 flex-direction: row;
             }
             #navigation button{
-                width: 100px;
-                background-color:PaleGreen;
+                width: 120px;
+                background-color: #c3ec9d;
+                text-align: center;
             }
-            .navigate{
-                width:10%;
-                border-style:double;
-                border-width:1px;
-                border-color:black;
+            #navigation #myRecipes{
+                background-color: #94d359;
             }
-            .navigate_but{
-                text-align:center;
+            #navigation button:hover{
+                background-color: #94d359;
+            }
+            button{
+                all:unset;
+            }
+            /* End of Navigation */
+
+            body{
+                margin: 0px;
             }
 
-            .right{
-                float: right;
+            main{
+                padding-top: 80px;
             }
-    </style>
+
+            #addButton{
+                font-size: 18px;
+                color: whitesmoke;
+                background-color: indianred;
+                padding: 10px 18px;
+                border-radius: 10px;
+                margin: 5px;
+                float:right;
+            }
+
+            #addButton:hover{
+                background-color: red;
+            }
+
+            
+    </style> -->
 </head>
 <body>
     <div id = "navigation-bar">
@@ -91,32 +112,25 @@
         </div>
         
         <div id = navigation>
-            <!--<div class = "navigate" id = "home">
-                    <a href= home.html>Home</a>
+                <div id = navigation>
+                    <button class =navigate_but id = "home" onclick="window.location.href = 'home.html'">Home</button>
+                    <button class =navigate_but id = "recipe" onclick="window.location.href = 'recipes.html'">Recipes</button>
+                    <button class =navigate_but id = "myRecipes" onclick="window.location.href = 'myRecipes.html'">My Recipes</button>
+                    <button class =navigate_but id = "logout" onclick="googleLogOut()">Logout</button>
                 </div>
-                <div class = "navigate" id = "recipe">
-                    <a href= recipes.html>Recipes</a>
-                </div>
-                <div class = "navigate" id = "my-recipes">
-                    <a href= my-recipes.html>My Recipes</a>
-                </div>-->
-                <button onclick="window.location.href = 'home.html'">Home</button>
-                <button onclick="window.location.href = 'recipes.html'">Recipes</button>
-                <button onclick="window.location.href = 'my-recipes.html'">My Recipes</button>
-                <button onclick="googleLogOut()">Logout</button>
         </div>
     </div>
-
-    <span class="right">
-        <!-- <textarea name="Search" id="recipeSearch" cols="30" rows="1">Search</textarea> -->
-        <button onclick="window.location.href = 'templateAddRecipe.html'">Add Recipe</button>
-    </span>
 
     <!-- <button id="test2Button" onclick='fetchRecipes()'>
         test
     </button> -->
 
     <main>
+        <span class="right">
+            <!-- <textarea name="Search" id="recipeSearch" cols="30" rows="1">Search</textarea> -->
+            <button id= addButton onclick="window.location.href = 'templateAddRecipe.html'"> + Add Recipe</button>
+        </span>
+
         <section class="section--recipe-cards shown">
             <div class="recipe-cards--wrapper">
               <!-- Recipes Added Here -->

@@ -1,4 +1,4 @@
-import { addPrivateRecipe } from './backend/private_recipe.js'
+import { addPrivateRecipe } from '../backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
 let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
@@ -42,7 +42,7 @@ async function init () {
     if (Object.keys(obj).length == 6) {
       addPrivateRecipe(obj)
         .then(() => {
-          window.location.href = 'my-recipes.html'
+          window.location.href = 'myRecipes.html'
         })
     } else {
       alert('Error: Not all the fields are filled out!')
