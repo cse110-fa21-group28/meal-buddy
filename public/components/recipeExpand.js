@@ -283,5 +283,4 @@ function getIngredients (data) {
   return null
 }
 
-
 customElements.define('recipe-expand', RecipeExpand)

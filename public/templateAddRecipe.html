@@ -3,7 +3,7 @@
     <head>
         <title>Meal Buddy | Create New Recipe</title>
         <!-- <link rel = "icon" href = ""> -->
-        <link rel="stylesheet" href="template.css">
+        <link rel="stylesheet" href="styles/template.css">
 
         <!-- update the version number as needed -->
         <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
@@ -27,64 +27,25 @@
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
         <script src="templateAddRecipe.js" type="module"></script>
-
-        <style>
-            /* Navigation */
-                #navigation-bar{
-                    width: 100%;
-                    display: flex;
-                    max-height: 20%;
-                    background-color:PaleGreen;
-                }
-    
-                #company{
-                    width: 30%;
-                    display: flex;
-                    flex-direction: row;
-                }
-    
-                #navigation{
-                    width:70%;
-                    position:relative;
-                    left: 30%;
-                    display: flex;
-                    flex-direction: row;
-                }
-                .navigate{
-                    width:10%;
-                    border-style:double;
-                    border-width:1px;
-                    border-color:black;
-                }
-                .navigate_but{
-                    text-align:center;
-                }
-        </style>
+        <link rel="stylesheet" href="styles/navBar.css" />
     </head>
 
     <div id = "navigation-bar">
         <div id = "company">
-            <!-- <div id = "company-logo">
-                <img src="code_duck.png" alt="code_duck logo">
-            </div> -->
+            <div id = "company-logo">
+                <img src="../images/logo.png" alt="logo">
+            </div>
             <div id = "company-name">
                 <h1>Meal Buddy</h1>
             </div>
         </div>
         
         <div id = navigation>
-            <div class = "navigate" id = "home">
-                <a href= home.html>Home</a>
-            </div>
-            <div class = "navigate" id = "recipes">
-                <a href= recipes.html>Recipes</a>
-            </div>
-            <div class = "navigate" id = "my-recipes">
-                <a href= my-recipes.html>My Recipes</a>
-            </div>
+            <button onclick="window.location.href = 'home.html'">Home</button>
+            <button onclick="window.location.href = 'recipes.html'">Recipes</button>
+            <button onclick="window.location.href = 'myRecipes.html'">My Recipes</button>
+            <button onclick="googleLogOut()">Logout</button>
         </div>
-            </div>
-        </nav>
     </div>
     <body>
         <main>
@@ -115,8 +76,8 @@
                     <label for="instructions">Instructions: </label>
                     <textarea id="instructionsInput" placeholder="Write the instructions of your recipe here!" rows="5"></textarea>
                 </div>
-                <button type="button" id="saveButton">Save</button>
             </form>
+            <button type="button" id="saveButton">Save</button>
         </main>
     </body>
 </html>

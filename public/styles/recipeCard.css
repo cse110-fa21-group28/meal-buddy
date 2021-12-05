@@ -1,0 +1,82 @@
+* {
+    font-family: sans-serif;
+    margin: 5;
+    padding: 5; 
+  }
+
+  article {
+    align-items: center;
+    border: 1px solid rgb(223, 225, 229);
+    border-radius: 8px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+
+    height: 160px;
+    width: 400px;
+    background-color: LemonChiffon;
+  }
+
+  article > img {
+    height: 100%;
+    /* overflow: auto; */
+    object-fit: cover;
+    width: 200px;
+    grid-row: 1/ span 3;
+    grid-column: 1;
+    
+  }
+
+  p.title {
+    margin-left: 10px;
+    font-size: 18px;
+    grid-row: 1;
+    grid-column: 2;
+    
+  }
+  p.calories{
+    color: #70757A;
+    font-size: 12px;
+    grid-row: 2;
+    grid-column: 2;
+
+  }
+
+button{
+    all:unset;
+}
+
+.editButton{
+    grid-column: 2;
+    font-size: 16px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #f1b458;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float:right;
+}
+
+.editButton:hover{
+    background-color: rgb(240, 139, 23);
+}
+
+.deleteButton{
+    grid-column: 2;
+    font-size: 16px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #f17958;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float:right;
+}
+
+.deleteButton:hover{
+    background-color: #e24d24;
+}

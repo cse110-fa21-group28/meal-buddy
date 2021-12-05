@@ -1,0 +1,25 @@
+body{
+    margin: 0px;
+}
+#home-page{
+    display:flex;
+    flex-direction:column;
+    padding-top: 80px;
+    padding-left: 20px;
+}
+.recipe-list{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+.recipe{
+    background-color:lightyellow;
+    text-align:center;
+    width: 400px;
+    margin-right: 5%;
+    margin-top: 30px;
+    height: 300px;
+}
+.day{
+    text-indent: 50px
+}

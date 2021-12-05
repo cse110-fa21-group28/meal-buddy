@@ -11,71 +11,29 @@
     <script src="components/Router.js" type="module"></script>
     <script src="components/main.js" type="module"></script>
     <link rel="stylesheet" href="components/main.css" />
+    <link rel="stylesheet" href="styles/recipes.css" />
+    <link rel="stylesheet" href="styles/navBar.css" />
     <script  type="text/javascript" src="/app.js" defer> </script>
 
-    <style>
-        /* Navigation */
-            #navigation-bar{
-                width: 100%;
-                display: flex;
-                max-height: 20%;
-                background-color:PaleGreen;
-            }
-
-            #company{
-                width: 30%;
-                display: flex;
-                flex-direction: row;
-            }
-
-            #navigation{
-                position:relative;
-                left: 30%;
-                display: flex;
-                flex-direction: row;
-                float: right;
-            }
-
-            #navigation button{
-                width: 100px;
-                background-color:PaleGreen;
-            }
-            .navigate{
-                width:10%;
-                border-style:double;
-                border-width:1px;
-                border-color:black;
-            }
-            .navigate_but{
-                text-align:center;
-            }
-    </style>
 </head>
 <body>
     <div id = "navigation-bar">
         <div id = "company">
-            <!-- <div id = "company-logo">
-                <img src="code_duck.png" alt="code_duck logo">
-            </div> -->
+            <div id = "company-logo">
+                <img src="../images/logo.png" alt="logo">
+            </div> 
             <div id = "company-name">
                 <h1>Meal Buddy</h1>
             </div>
         </div>
         
         <div id = navigation>
-            <!--<div class = "navigate" id = "home">
-                    <a href= home.html>Home</a>
+                <div id = navigation>
+                    <button onclick="window.location.href = 'home.html'">Home</button>
+                    <button class = active onclick="window.location.href = 'recipes.html'">Recipes</button>
+                    <button onclick="window.location.href = 'myRecipes.html'">My Recipes</button>
+                    <button class=logout onclick="googleLogOut()">Logout</button>
                 </div>
-                <div class = "navigate" id = "recipe">
-                    <a href= recipes.html>Recipes</a>
-                </div>
-                <div class = "navigate" id = "my-recipes">
-                    <a href= my-recipes.html>My Recipes</a>
-                </div>-->
-                <button onclick="window.location.href = 'home.html'">Home</button>
-                <button onclick="window.location.href = 'recipes.html'">Recipes</button>
-                <button onclick="window.location.href = 'my-recipes.html'">My Recipes</button>
-                <button onclick="googleLogOut()">Logout</button>
         </div>
         
     </div>

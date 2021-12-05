@@ -139,9 +139,9 @@ function createRecipeCards () {
 function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
-    else{
+    else {
       router.navigate(pageName)
-      console.log("lolbby")
+      console.log('lolbby')
     }
   })
 }
@@ -167,7 +167,7 @@ function bindPopstate () {
    */
   window.addEventListener('popstate', function (event) {
     if (event.state) {
-      console.log("yesbbay")
+      console.log('yesbbay')
       router.navigate(event.state.page, true)
     } else {
       router.navigate('home', true)

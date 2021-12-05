@@ -4,6 +4,6 @@
  * @param {Number} b - the second operand
  * @returns the sum of a + b
  */
-function sum(a, b) {
-    return a + b;
+function sum (a, b) {
+  return a + b
 }
