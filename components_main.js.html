@@ -40,6 +40,9 @@ const recipes = [
   // 'https://introweb.tech/assets/json/turkey.json',
   // 'https://introweb.tech/assets/json/pumpkinPie.json'
 ]
+
+const public_recipes = []
+
 const recipeData = {} // You can access all of the Recipe Data from the JSON files in this variable
 
 const router = new Router(function () {
@@ -73,7 +76,10 @@ async function init () {
   // initializeServiceWorker();
 
   try {
-    await fetchRecipes()
+    await fetchRecipes();
+    console.log('banana')
+    await fetchPublicRecipes();
+    console.log('strawberry')
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -113,10 +119,57 @@ async function fetchRecipes () {
         })
         .catch((error) => {
           return error
-        })
-    }
+        });
+      }
   })
 }
+
+async function fetchPublicRecipes() {
+  await firebase.firestore()
+  .collection('public_recipe')
+  .get()
+  .then((querySnapshot) => {
+    // const tempDoc = [];
+    querySnapshot.forEach((doc) => {
+      console.log(1, doc.data());
+      console.log('asldifkhasdf')
+      public_recipes.push(doc.data());
+    })
+    if (public_recipes.length >= 1) {
+      createPublicRecipeCards()
+    }
+  })
+  .catch((error) => {
+    return error;
+  });
+}
+
+function createPublicRecipeCards() {
+  // console.log(recipes)
+  for (let i = 0; i &lt; public_recipes.length; i++) {
+    const recipeCard = document.createElement('public-recipe-card')
+    // Inputs the data for the card. This is just the first recipe in the recipes array,
+    // being used as the key for the recipeData object
+    console.log(public_recipes[i]);
+    recipeCard.data = public_recipes[i]
+
+    // This gets the page name of each of the arrays - which is basically
+    // just the filename minus the .json. Since this is the first element
+    // in our recipes array, the ghostCookies URL, we will receive the .json
+    // for that ghostCookies URL since it's a key in the recipeData object, and
+    // then we'll grab the 'page-name' from it - in this case it will be 'ghostCookies'
+    const page = public_recipes[i].name
+    router.addPage(page, function () {
+      document.querySelector('.section--recipe-cards').classList.remove('shown')
+      document.querySelector('.section--recipe-expand').classList.add('shown')
+      document.querySelector('recipe-expand').data = public_recipes[i]
+    })
+
+    bindRecipeCard(recipeCard, page)
+    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard)
+  }
+}
+
 /**
  * Generates the &lt;recipe-card> elements from the fetched recipes and
  * appends them to the page
@@ -145,16 +198,6 @@ function createRecipeCards () {
     bindRecipeCard(recipeCard, page)
     document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard)
   }
-  /**
-   * TODO - Part 1 - Step 3
-   * Above I made an example card and added a route for the recipe at index 0 in
-   * the recipes array. First, please read through the code in this function to
-   * understand what it is doing. Then, turn this into a for loop to iterate over
-   * all the recipes. (bonus - add the class 'hidden' to every recipe card with
-   * an index greater  than 2 in your for loop to make show more button functional)
-   * After this step you should see multiple cards rendered like the end of the last
-   * lab
-   */
 }
 
 /**
@@ -167,9 +210,9 @@ function createRecipeCards () {
 function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
-    else {
+    else{
       router.navigate(pageName)
-      console.log('lolbby')
+      console.log("lolbby")
     }
   })
 }
@@ -195,7 +238,7 @@ function bindPopstate () {
    */
   window.addEventListener('popstate', function (event) {
     if (event.state) {
-      console.log('yesbbay')
+      console.log("yesbbay")
       router.navigate(event.state.page, true)
     } else {
       router.navigate('home', true)
@@ -212,13 +255,13 @@ function bindPopstate () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 07:15:08 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Dec 06 2021 05:21:43 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

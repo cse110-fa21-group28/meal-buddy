@@ -43,11 +43,64 @@ class RecipeCard extends HTMLElement {
     // Used to access the actual data object
     this.json = data
 
-    const style = document.createElement('link')
-    style.rel = 'stylesheet'
-    style.type = 'text/css'
-    style.href = '../styles/recipeCard.css'
+    const style = document.createElement('style')
     const card = document.createElement('article')
+    style.innerHTML = `
+        * {
+          font-family: sans-serif;
+          margin: 5;
+          padding: 5;
+        }
+
+        article {
+          align-items: center;
+          border: 1px solid rgb(223, 225, 229);
+          display: grid;
+          grid-template-rows: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+
+          height: 160px;
+          width: 400px;
+          background-color: LemonChiffon;
+          transition: all 0.2s ease;
+          user-select: none;
+        }
+
+        article:hover {
+          border-radius: 8px;
+          cursor: pointer;
+          filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+          transition: all 0.2s ease;
+          transform: scale(1.02);
+        }
+
+        article > img {
+          height: 160px;
+          object-fit: cover;
+          width: 200px;
+          grid-row: 1/ span 3;
+          grid-column: 1;
+          
+        }
+
+        p.title {
+          grid-row: 1;
+          grid-column: 2;
+          
+        }
+        p:not(.title), span, time {
+          color: #70757A;
+          font-size: 12px;
+          grid-row: 2;
+          grid-column: 2;
+
+        }
+
+        button{
+          
+          grid-column: 2;
+        }
+      `
 
     // Grab the title
     const titleText = getTitle(data)
@@ -59,18 +112,13 @@ class RecipeCard extends HTMLElement {
     const imageUrl = getImage(data)
     const image = document.createElement('img')
     image.setAttribute('src', imageUrl)
-    image.setAttribute('alt', 'recipe-image')
+    image.setAttribute('alt', titleText)
 
-    // Grab the calories
-    const calorieText = getCalories(data)
-    const calorie = document.createElement('p')
-    calorie.classList.add('calories')
-    calorie.innerText = calorieText + " calories"
+    // TODO: Grab the calories
 
     // Button to edit recipe
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit recipe'
-    editButton.classList.add("editButton");
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
       window.location.href = 'templateEditRecipe.html' // how to pass in the ID of the recipe?
@@ -83,23 +131,19 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
-    deleteButton.classList.add("deleteButton");
     deleteButton.addEventListener('click', (e) => {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
-        window.location.href = 'myRecipes.html'
+        window.location.href = 'my-recipes.html'
       })
     })
 
     // Add all of the elements to the card
-    card.appendChild(style);
     card.appendChild(image)
     card.appendChild(title)
-    card.appendChild(calorie)
     card.appendChild(editButton)
     card.appendChild(deleteButton)
-    
-    this.shadowRoot.append(card)
+    this.shadowRoot.append(style, card)
   }
 
   get data () {
@@ -109,10 +153,30 @@ class RecipeCard extends HTMLElement {
   }
 }
 
+/**
+   * Recursively search for a key nested somewhere inside an object
+   * @param {Object} object the object with which you'd like to search
+   * @param {String} key the key that you are looking for in the object
+   * @returns {*} the value of the found key
+   */
+function searchForKey (object, key) {
+  let value
+  Object.keys(object).some(function (k) {
+    if (k === key) {
+      value = object[k]
+      return true
+    }
+    if (object[k] &amp;&amp; typeof object[k] === 'object') {
+      value = searchForKey(object[k], key)
+      return value !== undefined
+    }
+  })
+  return value
+}
 
 /**
    * Extract the title of the recipe from the given recipe schema JSON obejct
-   * @param {Object} data Raw recipe JSON to find the recipe title
+   * @param {Object} data Raw recipe JSON to find the image of
    * @returns {String} If found, returns the recipe title
    */
 function getTitle (data) {
@@ -122,7 +186,7 @@ function getTitle (data) {
 
 /**
    * Extract a usable image from the given recipe schema JSON object
-   * @param {Object} data Raw recipe JSON to find the image
+   * @param {Object} data Raw recipe JSON to find the image of
    * @returns {String} If found, returns the URL of the image as a string, otherwise null
    */
 function getImage (data) {
@@ -131,13 +195,35 @@ function getImage (data) {
 }
 
 /**
-   * Extract the title of the recipe from the given recipe schema JSON obejct
-   * @param {Object} data Raw recipe JSON to find the calories
-   * @returns {String} If found, returns the calories
+   * Takes in a list of ingredients raw from imported data and returns a neatly
+   * formatted comma separated list.
+   * @param {Array} ingredientArr The raw unprocessed array of ingredients from the
+   *                              imported data
+   * @return {String} the string comma separate list of ingredients from the array
    */
-function getCalories (data) {
-  if (data.calories) return data.calories
-  return null
+function createIngredientList (ingredientArr) {
+  let finalIngredientList = ''
+
+  /**
+     * Removes the quantity and measurement from an ingredient string.
+     * This isn't perfect, it makes the assumption that there will always be a quantity
+     * (sometimes there isn't, so this would fail on something like '2 apples' or 'Some olive oil').
+     * For the purposes of this lab you don't have to worry about those cases.
+     * @param {String} ingredient the raw ingredient string you'd like to process
+     * @return {String} the ingredient without the measurement &amp; quantity
+     * (e.g. '1 cup flour' returns 'flour')
+     */
+  function _removeQtyAndMeasurement (ingredient) {
+    return ingredient.split(' ').splice(2).join(' ')
+  }
+
+  ingredientArr.forEach(ingredient => {
+    ingredient = _removeQtyAndMeasurement(ingredient)
+    finalIngredientList += `${ingredient}, `
+  })
+
+  // The .slice(0,-2) here gets ride of the extra ', ' added to the last ingredient
+  return finalIngredientList.slice(0, -2)
 }
 
 // Define the Class so you can use it as a custom element
@@ -152,13 +238,13 @@ customElements.define('recipe-card', RecipeCard)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createIngredientList">createIngredientList</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Dec 05 2021 07:15:08 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Dec 06 2021 05:21:43 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
