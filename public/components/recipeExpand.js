@@ -1,5 +1,3 @@
-// RecipeExpand.js
-
 class RecipeExpand extends HTMLElement {
   constructor () {
     super()
@@ -189,11 +187,6 @@ class RecipeExpand extends HTMLElement {
     const instructions = getInstructions(data)
     const url = getUrl(data);
     if(instructions) {
-      // const instructionHeading = document.createElement('h2');
-      // instructionHeading.innerHTML = 'INSTRUCTIONS';
-      // const referenceNode = this.shadowRoot.querySelector('.section--instructions > ol');
-      // referenceNode.parentNode.insertBefore(instructionHeading, referenceNode);
-
       instructions.forEach(instruction => {
         const listItem = document.createElement('li')
         listItem.innerHTML = instruction
@@ -202,7 +195,6 @@ class RecipeExpand extends HTMLElement {
     } else {
       const header = this.shadowRoot.querySelector('.section--instructions > h2');
       const list = this.shadowRoot.querySelector('.section--instructions > ol');
-      // header.parentElement.removeChild(header);
       header.innerHTML = 'Recipe URL';
       list.parentElement.removeChild(list);
       const recipe_url = document.createElement('a');
@@ -309,9 +301,7 @@ function getIngredients (data) {
  */
 function getUrl (data) {
   if(data.recipe_url) return data.recipe_url;
-
   return null;
 }
-
 
 customElements.define('recipe-expand', RecipeExpand)

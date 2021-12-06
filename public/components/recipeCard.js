@@ -1,9 +1,6 @@
-// // RecipeCard.js
-
 class RecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement
-
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
     this.attachShadow({ mode: 'open' })
@@ -11,7 +8,6 @@ class RecipeCard extends HTMLElement {
 
   set data (data) {
     if (!data) return
-
     // Used to access the actual data object
     this.json = data
 
@@ -30,7 +26,6 @@ class RecipeCard extends HTMLElement {
           display: grid;
           grid-template-rows: repeat(3, 1fr);
           grid-template-columns: repeat(2, 1fr);
-
           height: 160px;
           width: 400px;
           background-color: LemonChiffon;
@@ -68,8 +63,7 @@ class RecipeCard extends HTMLElement {
 
         }
 
-        button{
-          
+        button{ 
           grid-column: 2;
         }
       `
@@ -86,18 +80,14 @@ class RecipeCard extends HTMLElement {
     image.setAttribute('src', imageUrl)
     image.setAttribute('alt', titleText)
 
-    // TODO: Grab the calories
-
     // Button to edit recipe
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit recipe'
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
-      window.location.href = 'templateEditRecipe.html' // how to pass in the ID of the recipe?
+      window.location.href = 'templateEditRecipe.html'
       localStorage.setItem('currentRecipeData', JSON.stringify(data))
-      // TODO: fetch the data that's already on the database, place it in the template textareas
-
-      console.log('edit recipe clicked')
+      // Takes the user back to the myrecipe page after editing the recipe
     })
 
     // Button to delete recipe
@@ -107,6 +97,8 @@ class RecipeCard extends HTMLElement {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
         window.location.href = 'my-recipes.html'
+        // Deletes the recipe by deleting the recipe data's id in the database
+        // Automatically refreshes the page after recipe deletion
       })
     })
 
