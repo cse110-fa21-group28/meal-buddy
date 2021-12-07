@@ -50,22 +50,8 @@ const p_recipe4 = new public_recipe(4, 'Fancy Ramen', ['Soups, Stews and Chili R
   '2 (3 ounce) packages chicken-flavored ramen noodles'
 ])
 
-// const p_recipe5 = new public_recipe(5, 'Mushroom Beef Burgers', ['Main Dishes', 'Burger Recipes', 'Hamburgers'], 'Simple yet flavorful mushroom and beef burgers that can be made on an indoor grill pan. The most natural beef you can find is best.', 215.5, 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F4538049.jpg', 'https://www.allrecipes.com/recipe/258947/mushroom-beef-burgers/',
-//   ['2 pounds ground beef',
-//     '1 (8 ounce) package mushrooms, chopped, or more to taste',
-//     '1 onion, chopped',
-//     '3 cloves garlic, minced',
-//     '1 teaspoon Italian seasoning',
-//     '1 teaspoon salt',
-//     '½ teaspoon ground black pepper',
-//     'cooking spray'])
 
 const db = firebase.firestore()
-// const {res} =  db.collection('public_recipe').add(Object.assign({},p_recipe1));
-// const res = db.collection('public_recipe').add(Object.assign({},p_recipe1));
-
-// const { id } = await db.collection("cities").add(newCity)
-//   console.log("the new city's id:", id)
 
 async function get_public_recipe (id) {
   const res = db.collection('public_recipe').doc(id)
@@ -75,27 +61,5 @@ async function get_public_recipe (id) {
   } else {
     console.log('hi')
     return doc.data()
-    // console.log('Document data:', doc.data())
   }
 }
-
-// const obj=JSON.parse(data);
-
-// const public_recipe_1 = {
-//   recipe_id: 10,
-//   name: 'bakery-style-pizza',
-//   recipe_category: ['Main Dishes','Pizza'],
-//   descirption: 'Now found exclusively at one well-known pizza garden in Gravesend, Brooklyn, this style of pizza was once found in neighborhood bakeries. This pizza is deceivingly light, crisp, and slightly spicy. Enjoy with a can of soda.',
-//   calories: 270.6,
-//   image_url: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F3474658.jpg',
-//   recipe_url: 'https://www.allrecipes.com/recipe/246553/bakery-style-pizza/',
-//   recipe_ingredient: ['1 ¼ cups warm water',
-//                       '1 teaspoon active dry yeast',
-//                       '3 cups bread flour',
-//                       '1 ½ teaspoons fine salt',
-//                       '¼ cup olive oil, divided',
-//                       '1 (28 ounce) can plain crushed tomatoes',
-//                       '1 (14 ounce) can pizza sauce (such as Don Peppino®)',
-//                       '8 ounces low-moisture whole-milk mozzarella, very thinly sliced',
-//                       '¼ cup grated Pecorino Romano cheese']
-// };

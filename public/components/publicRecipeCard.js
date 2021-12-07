@@ -2,7 +2,6 @@
 class PublicRecipeCard extends HTMLElement {
     constructor () {
       super() // Inheret everything from HTMLElement
-  
       // Attach the shadow DOM and append this markup / stlying inside
       // The shadow root will help us keep everything separated
       this.attachShadow({ mode: 'open' })
