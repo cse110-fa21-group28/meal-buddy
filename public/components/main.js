@@ -44,14 +44,30 @@ let flag = false
 
 // Initialize function, begins all of the JS code in this file
 async function init () {
-  console.log('apple')
+  //Initialize Time
+  const today = new Date();
+  const today_y = today.getFullYear();
+  const today_m = today.getMonth();
+  const today_d = today.getDate();
+  const today_m_str = fullMonth(today_m);
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tom_y = tomorrow.getFullYear();
+  const tom_m = tomorrow.getMonth();
+  const tom_d = tomorrow.getDate();
+  const tom_m_str = fullMonth(tom_m);
+
+  let today_h2 = document.getElementById("today_h2");
+  today_h2.innerHTML = today_m_str + " " + today_d + ", " + today_y;
+  let tomorrow_h2 = document.getElementById("tomorrow_h2");
+  tomorrow_h2.innerHTML = tom_m_str + " " + tom_d + ", " + tom_y;
   // initializeServiceWorker();
+
 
   try {
     await fetchRecipes();
-    console.log('banana')
     await fetchPublicRecipes();
-    console.log('strawberry')
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -114,6 +130,45 @@ async function fetchPublicRecipes() {
   .catch((error) => {
     return error;
   });
+}
+
+function fullMonth(m){
+  if(m == 0){
+    return "Jan";
+  }
+  else if(m == 1){
+    return "Feb"
+  }
+  else if(m == 2){
+    return "Mar"
+  }
+  else if(m == 3){
+    return "Apr"
+  }
+  else if(m == 4){
+    return "May"
+  }
+  else if(m == 5){
+    return "Jun"
+  }
+  else if(m == 6){
+    return "Jul"
+  }
+  else if(m == 7){
+    return "Aug"
+  }
+  else if(m == 8){
+    return "Sep"
+  }
+  else if(m == 9){
+    return "Oct"
+  }
+  else if(m == 10){
+    return "Nov"
+  }
+  else if(m == 11){
+    return "Dec"
+  }
 }
 
 function createPublicRecipeCards() {
