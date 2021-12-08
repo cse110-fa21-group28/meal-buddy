@@ -46,8 +46,8 @@ let flag = false
 async function init () {
   // initializeServiceWorker();
   try {
-    await fetchRecipes();
-    await fetchPublicRecipes();
+    await fetchRecipes()
+    await fetchPublicRecipes()
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -87,29 +87,29 @@ async function fetchRecipes () {
         })
         .catch((error) => {
           return error
-        });
-      }
-  })
-}
-
-async function fetchPublicRecipes() {
-  await firebase.firestore()
-  .collection('public_recipe')
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      public_recipes.push(doc.data());
-    })
-    if (public_recipes.length >= 1) {
-      createPublicRecipeCards()
+        })
     }
   })
-  .catch((error) => {
-    return error;
-  });
 }
 
-function createPublicRecipeCards() {
+async function fetchPublicRecipes () {
+  await firebase.firestore()
+    .collection('public_recipe')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        public_recipes.push(doc.data())
+      })
+      if (public_recipes.length >= 1) {
+        createPublicRecipeCards()
+      }
+    })
+    .catch((error) => {
+      return error
+    })
+}
+
+function createPublicRecipeCards () {
   for (let i = 0; i < public_recipes.length; i++) {
     const recipeCard = document.createElement('public-recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
