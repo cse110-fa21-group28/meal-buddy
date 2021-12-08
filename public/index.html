@@ -26,21 +26,20 @@
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <!-- <script defer src="app.js" > </script>  -->
-    <script  type="text/javascript" src="/app.js" defer> </script>
-    <link rel="stylesheet" href="styles/index.css" />
+    <script defer type="text/javascript" src="/public/app.js"></script>
+    <link rel="stylesheet" href="/public/assets/styles/index.css" />
   </head>
   <body>
     <div id = "loginContainer">
-      <img src="../images/logo.png" alt="logo">
-      <h1>Welcome to Meal Buddy!</h1>
+      <img src="/public/assets/images/logo.png" alt="logo">
+      <h1>Welcome to Meal Buddyasdf!</h1>
       <section id="whenSignedIn" hidden="true">
         <div id="userDetail"></div>
         <button onclick="googleLogOut()">
           Logout with Google
         </button>
       </section>
-      
+
       <section id="whenSignedOut">
         <button onclick="googleLogIn()">
           Login with Google

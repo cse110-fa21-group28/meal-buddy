@@ -1,4 +1,4 @@
-import { addPrivateRecipe } from '../backend/private_recipe.js'
+import { addPrivateRecipe } from '../../../../backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
 let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
