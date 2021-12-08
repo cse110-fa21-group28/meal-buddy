@@ -11,7 +11,7 @@ class RecipeExpand extends HTMLElement {
     const article = document.createElement('article')
 
     // Fill in styles and root element
-    styles.innerHTML = `
+    style.innerHTML = `
         article {
           background-color: LemonChiffon;
           box-shadow: 0 0 10px rgb(0 0 0 / 15%);

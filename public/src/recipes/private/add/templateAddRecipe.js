@@ -44,7 +44,7 @@ async function init () {
       console.log("1");
       addPrivateRecipe(obj)
         .then(() => {
-          window.location.href = 'myRecipes.html'
+          window.location.href = '../myRecipes.html'
         })
     } else {
       alert('Error: Not all the fields are filled out!')

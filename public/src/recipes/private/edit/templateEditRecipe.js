@@ -49,7 +49,7 @@ function init () {
 
   saveButton.addEventListener('click', async function () {
     firebase.firestore().collection('private_recipe').doc(parsedData.id.toString()).update(obj).then(function () {
-      window.location.href = 'myRecipes.html'
+      window.location.href = '../myRecipes.html'
     })
   })
 }

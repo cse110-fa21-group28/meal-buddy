@@ -14,7 +14,7 @@ class RecipeCard extends HTMLElement {
     const style = document.createElement('link')
     style.rel = 'stylesheet'
     style.type = 'text/css'
-    style.href = '../styles/recipeCard.css'
+    style.href = '/assets/styles/recipeCard.css'
     const card = document.createElement('article')
     
     // Grab the title
@@ -43,7 +43,7 @@ class RecipeCard extends HTMLElement {
     editButton.classList.add("editButton");
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
-      window.location.href = 'templateEditRecipe.html'
+      window.location.href = 'edit/templateEditRecipe.html'
       localStorage.setItem('currentRecipeData', JSON.stringify(data))
       // Takes the user back to the myrecipe page after editing the recipe
     })
@@ -55,9 +55,7 @@ class RecipeCard extends HTMLElement {
     deleteButton.addEventListener('click', (e) => {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
-
-        window.location.href = 'myRecipes.html'
-        window.location.href = 'my-recipes.html'
+        window.location.href = '../private/myRecipes.html'
         // Deletes the recipe by deleting the recipe data's id in the database
         // Automatically refreshes the page after recipe deletion
       })
