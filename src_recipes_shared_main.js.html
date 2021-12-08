@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/main.js</title>
+    <title>JSDoc: Source: src/recipes/shared/main.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/main.js</h1>
+    <h1 class="page-title">Source: src/recipes/shared/main.js</h1>
 
     
 
@@ -28,7 +28,7 @@
         <article>
             <pre class="prettyprint source linenums"><code>// main.js
 
-import { getPrivateRecipes } from '../../backend/private_recipe.js'
+// import { getPrivateRecipes } from '../../backend/private_recipe.js'
 
 import { Router } from './Router.js'
 
@@ -72,14 +72,10 @@ let flag = false
 
 // Initialize function, begins all of the JS code in this file
 async function init () {
-  console.log('apple')
   // initializeServiceWorker();
-
   try {
     await fetchRecipes();
-    console.log('banana')
     await fetchPublicRecipes();
-    console.log('strawberry')
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -129,10 +125,7 @@ async function fetchPublicRecipes() {
   .collection('public_recipe')
   .get()
   .then((querySnapshot) => {
-    // const tempDoc = [];
     querySnapshot.forEach((doc) => {
-      console.log(1, doc.data());
-      console.log('asldifkhasdf')
       public_recipes.push(doc.data());
     })
     if (public_recipes.length >= 1) {
@@ -145,12 +138,10 @@ async function fetchPublicRecipes() {
 }
 
 function createPublicRecipeCards() {
-  // console.log(recipes)
   for (let i = 0; i &lt; public_recipes.length; i++) {
     const recipeCard = document.createElement('public-recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
     // being used as the key for the recipeData object
-    console.log(public_recipes[i]);
     recipeCard.data = public_recipes[i]
 
     // This gets the page name of each of the arrays - which is basically
@@ -176,7 +167,6 @@ function createPublicRecipeCards() {
  */
 function createRecipeCards () {
   // Makes a new recipe card
-  console.log(recipes)
   for (let i = 0; i &lt; recipes.length; i++) {
     const recipeCard = document.createElement('recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
@@ -255,13 +245,13 @@ function bindPopstate () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#sum">sum</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 08 2021 04:05:24 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 08 2021 07:57:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
