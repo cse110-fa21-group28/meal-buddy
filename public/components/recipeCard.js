@@ -1,9 +1,6 @@
-// // RecipeCard.js
-
 class RecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement
-
     // Attach the shadow DOM and append this markup / stlying inside
     // The shadow root will help us keep everything separated
     this.attachShadow({ mode: 'open' })
@@ -11,7 +8,6 @@ class RecipeCard extends HTMLElement {
 
   set data (data) {
     if (!data) return
-
     // Used to access the actual data object
     this.json = data
 
@@ -20,7 +16,7 @@ class RecipeCard extends HTMLElement {
     style.type = 'text/css'
     style.href = '../styles/recipeCard.css'
     const card = document.createElement('article')
-
+    
     // Grab the title
     const titleText = getTitle(data)
     const title = document.createElement('p')
@@ -33,11 +29,13 @@ class RecipeCard extends HTMLElement {
     image.setAttribute('src', imageUrl)
     image.setAttribute('alt', 'recipe-image')
 
+
     // Grab the calories
     const calorieText = getCalories(data)
     const calorie = document.createElement('p')
     calorie.classList.add('calories')
     calorie.innerText = calorieText + " calories"
+
 
     // Button to edit recipe
     const editButton = document.createElement('button')
@@ -45,11 +43,9 @@ class RecipeCard extends HTMLElement {
     editButton.classList.add("editButton");
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
-      window.location.href = 'templateEditRecipe.html' // how to pass in the ID of the recipe?
+      window.location.href = 'templateEditRecipe.html'
       localStorage.setItem('currentRecipeData', JSON.stringify(data))
-      // TODO: fetch the data that's already on the database, place it in the template textareas
-
-      console.log('edit recipe clicked')
+      // Takes the user back to the myrecipe page after editing the recipe
     })
 
     // Button to delete recipe
@@ -59,7 +55,11 @@ class RecipeCard extends HTMLElement {
     deleteButton.addEventListener('click', (e) => {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
+
         window.location.href = 'myRecipes.html'
+        window.location.href = 'my-recipes.html'
+        // Deletes the recipe by deleting the recipe data's id in the database
+        // Automatically refreshes the page after recipe deletion
       })
     })
 

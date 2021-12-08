@@ -1,5 +1,3 @@
-// RecipeExpand.js
-
 class RecipeExpand extends HTMLElement {
   constructor () {
     super()
@@ -123,7 +121,7 @@ class RecipeExpand extends HTMLElement {
             <ul></ul>
           </section>
           <section class="section--instructions">
-            <h2>INSTRUCTIONS</h2>
+            <!--<h2>INSTRUCTIONS</h2>-->
             <ol></ol>
           </section>
         </main>
@@ -188,13 +186,26 @@ class RecipeExpand extends HTMLElement {
       this.shadowRoot.querySelector('.section--ingredients > ul').append(listItem)
     })
 
-    // Set Instructions
+    // Set Instructions / URL
     const instructions = getInstructions(data)
-    instructions.forEach(instruction => {
-      const listItem = document.createElement('li')
-      listItem.innerHTML = instruction
-      this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
-    })
+    const url = getUrl(data);
+    if(instructions) {
+      instructions.forEach(instruction => {
+        const listItem = document.createElement('li')
+        listItem.innerHTML = instruction
+        this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
+      })
+    } else {
+      const header = this.shadowRoot.querySelector('.section--instructions > h2');
+      const list = this.shadowRoot.querySelector('.section--instructions > ol');
+      header.innerHTML = 'Recipe URL';
+      list.parentElement.removeChild(list);
+      const recipe_url = document.createElement('a');
+      recipe_url.setAttribute('href', url);
+      recipe_url.setAttribute('target', '_blank');
+      recipe_url.innerHTML = url;
+      this.shadowRoot.querySelector('.section--instructions').append(recipe_url);
+    }
   }
 
   /**
@@ -284,6 +295,17 @@ function getIngredients (data) {
   if (data.recipe_ingredient) return data.recipe_ingredient
 
   return null
+}
+
+
+/**
+ * Extract the url of the recipe from the given recipe schema JSON obejct
+ * @param {Object} data Raw recipe JSON to find the url of
+ * @returns {String} If found, returns the url of the recipe
+ */
+function getUrl (data) {
+  if(data.recipe_url) return data.recipe_url;
+  return null;
 }
 
 customElements.define('recipe-expand', RecipeExpand)
