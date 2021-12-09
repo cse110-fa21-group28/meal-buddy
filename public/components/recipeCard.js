@@ -1,5 +1,5 @@
 /**
- * @module recipeCard.js
+ * @module recipeCard
  */
 
 class RecipeCard extends HTMLElement {

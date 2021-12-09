@@ -1,5 +1,5 @@
 /**
- * @module app.js
+ * @module app
  */
 
 const auth = firebase.auth()
