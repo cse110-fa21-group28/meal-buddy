@@ -1,13 +1,13 @@
-const { getTitle } = require('../public/components/functions.js')
-const { getImage } = require('../public/components/functions.js')
-const { searchForKey } = require('../public/components/functions.js')
-const { createIngredientList } = require('../public/components/functions.js')
+const { getTitle } = require('../public/src/recipes/private/functions.js')
+const { getImage } = require('../public/src/recipes/private/functions.js')
+const { searchForKey } = require('../public/src/recipes/private/functions.js')
+const { createIngredientList } = require('../public/src/recipes/private/functions.js')
 
-const { getIngredients } = require('../public/components/functions.js')
-const { getInstructions } = require('../public/components/functions.js')
-const { getCalories } = require('../public/components/functions.js')
-const { getDescription } = require('../public/components/functions.js')
-const { getUrl } = require('../public/components/functions.js')
+const { getIngredients } = require('.../public/src/recipes/private/functions.js')
+const { getInstructions } = require('.../public/src/recipes/private/functions.js')
+const { getCalories } = require('../public/src/recipes/private/functions.js')
+const { getDescription } = require('../public/src/recipes/private/functions.js')
+const { getUrl } = require('../public/src/recipes/private/functions.js')
 
 // __________________________ getTitle 1 __________________________
 test('Testing getTitle(data) function 1', () => {
