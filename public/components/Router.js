@@ -1,10 +1,6 @@
 // router.js
 
  export class Router {
-/**
- * @module Router
- */
-
     static routes = {};
   
     /**
