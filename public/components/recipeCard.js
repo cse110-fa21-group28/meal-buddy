@@ -1,3 +1,7 @@
+/**
+ * @module recipeCard.js
+ */
+
 class RecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement

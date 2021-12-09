@@ -1,5 +1,9 @@
 // main.js
 
+/**
+ * @module main.js
+ */
+
 import { getPrivateRecipes } from '../../backend/private_recipe.js'
 
 import { Router } from './Router.js'

@@ -1,5 +1,9 @@
 // router.js
 
+/**
+ * @module Router.js
+ */
+
  export class Router {
     static routes = {};
   

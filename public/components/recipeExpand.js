@@ -1,3 +1,7 @@
+/**
+ * @module recipeExpand.js
+ */
+
 class RecipeExpand extends HTMLElement {
   constructor () {
     super()

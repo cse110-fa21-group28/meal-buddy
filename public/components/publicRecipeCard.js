@@ -1,4 +1,8 @@
 // publicRecipeCard.js
+/**
+ * @module publicRecipeCard.js
+ */
+
 class PublicRecipeCard extends HTMLElement {
     constructor () {
       super() // Inheret everything from HTMLElement
