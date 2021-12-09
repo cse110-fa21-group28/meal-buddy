@@ -1,7 +1,7 @@
 // router.js
 
 /**
- * @module Router.js
+ @module Router
  */
 
  export class Router {

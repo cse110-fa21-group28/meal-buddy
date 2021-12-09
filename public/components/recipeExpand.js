@@ -1,5 +1,5 @@
 /**
- * @module recipeExpand.js
+  @module recipeExpand.js
  */
 
 class RecipeExpand extends HTMLElement {

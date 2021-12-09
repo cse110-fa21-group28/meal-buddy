@@ -1,7 +1,7 @@
 // main.js
 
 /**
- * @module main.js
+  @module main
  */
 
 import { getPrivateRecipes } from '../../backend/private_recipe.js'
