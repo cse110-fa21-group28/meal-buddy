@@ -1,7 +1,4 @@
 // router.js
-/**
- * @module Router
- */
 
  export class Router {
     static routes = {};
