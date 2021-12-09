@@ -1,37 +1,53 @@
 // main.js
 
-/**
- * @module main
- */
-
-import { getPrivateRecipes } from '../../backend/private_recipe.js'
+// import { getPrivateRecipes } from '../../backend/private_recipe.js'
 
 import { Router } from './Router.js'
 
-const recipes = []
+const recipes = [
+  // 'components/example.json'
+  // 'https://introweb.tech/assets/json/birthdayCake.json',
+  // 'https://introweb.tech/assets/json/chocolateChip.json',
+  // 'https://introweb.tech/assets/json/stuffing.json',
+  // 'https://introweb.tech/assets/json/turkey.json',
+  // 'https://introweb.tech/assets/json/pumpkinPie.json'
+]
 
 const public_recipes = []
 
 const recipeData = {} // You can access all of the Recipe Data from the JSON files in this variable
 
 const router = new Router(function () {
+  /**
+   * TODO - Part 1 - Step 1
+   * Select the 'section.section--recipe-cards' element and add the "shown" class
+   * Select the 'section.section--recipe-expand' element and remove the "shown" class
+   *
+   * You should be using DOM selectors such as document.querySelector() and
+   * class modifications with the classList API (e.g. element.classList.add(),
+   * element.classList.remove())
+   *
+   * This will only be two single lines
+   * If you did this right, you should see just 1 recipe card rendered to the screen
+   */
   document.querySelector('section.section--recipe-cards').classList.add('shown')
   document.querySelector('section.section--recipe-expand').classList.remove('shown')
 })
+
+// let button = document.getElementById('test2Button');
+// button.addEventListener('click', () => {
+//   init();
+// })
 
 window.addEventListener('DOMContentLoaded', init)
 let flag = false
 
 // Initialize function, begins all of the JS code in this file
 async function init () {
-  console.log('apple')
   // initializeServiceWorker();
-
   try {
-    await fetchRecipes();
-    console.log('banana')
-    await fetchPublicRecipes();
-    console.log('strawberry')
+    await fetchRecipes()
+    await fetchPublicRecipes()
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -43,9 +59,11 @@ async function init () {
 }
 
 /**
- * Fetches the private recipes from the firebase database as json
- * objects and stores them into the public_recipes array
+ * Loading JSON into a JS file is oddly not super straightforward (for now), so
+ * I built a function to load in the JSON files for you. It places all of the recipe data
+ * inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthdayCake': ..., etc }
  */
+
 async function fetchRecipes () {
   // TODO: call getPrivateRecipes() instead of this
   auth.onAuthStateChanged(user => {
@@ -69,46 +87,33 @@ async function fetchRecipes () {
         })
         .catch((error) => {
           return error
-        });
-      }
-  })
-}
-
-/**
- * Fetches the public recipes from the firebase database as json
- * objects and stores them into the public_recipes array
- */
-async function fetchPublicRecipes() {
-  await firebase.firestore()
-  .collection('public_recipe')
-  .get()
-  .then((querySnapshot) => {
-    // const tempDoc = [];
-    querySnapshot.forEach((doc) => {
-      console.log(1, doc.data());
-      console.log('asldifkhasdf')
-      public_recipes.push(doc.data());
-    })
-    if (public_recipes.length >= 1) {
-      createPublicRecipeCards()
+        })
     }
   })
-  .catch((error) => {
-    return error;
-  });
 }
 
-/**
- * Generates the <public-recipe-card> elements from the fetched recipes and
- * appends them to the private recipes page
- */
-function createPublicRecipeCards() {
-  // console.log(recipes)
+async function fetchPublicRecipes () {
+  await firebase.firestore()
+    .collection('public_recipe')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        public_recipes.push(doc.data())
+      })
+      if (public_recipes.length >= 1) {
+        createPublicRecipeCards()
+      }
+    })
+    .catch((error) => {
+      return error
+    })
+}
+
+function createPublicRecipeCards () {
   for (let i = 0; i < public_recipes.length; i++) {
     const recipeCard = document.createElement('public-recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
     // being used as the key for the recipeData object
-    console.log(public_recipes[i]);
     recipeCard.data = public_recipes[i]
 
     // This gets the page name of each of the arrays - which is basically
@@ -130,11 +135,10 @@ function createPublicRecipeCards() {
 
 /**
  * Generates the <recipe-card> elements from the fetched recipes and
- * appends them to the private recipes page
+ * appends them to the page
  */
 function createRecipeCards () {
   // Makes a new recipe card
-  console.log(recipes)
   for (let i = 0; i < recipes.length; i++) {
     const recipeCard = document.createElement('recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
@@ -168,9 +172,9 @@ function createRecipeCards () {
 function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
-    else{
+    else {
       router.navigate(pageName)
-      console.log("lolbby")
+      console.log('lolbby')
     }
   })
 }
@@ -183,9 +187,20 @@ function bindRecipeCard (recipeCard, pageName) {
  * info in your popstate function)
  */
 function bindPopstate () {
+  /**
+   * TODO - Part 1 Step 6
+   * Finally, add an event listener to the window object for the 'popstate'
+   * event - this fires when the forward or back buttons are pressed in a browser.
+   * If your event has a state object that you passed in, navigate to that page,
+   * otherwise navigate to 'home'.
+   *
+   * IMPORTANT: Pass in the boolean true as the second argument in navigate() here
+   * so your navigate() function does not add your going back action to the history,
+   * creating an infinite loop
+   */
   window.addEventListener('popstate', function (event) {
     if (event.state) {
-      console.log("yesbbay")
+      console.log('yesbbay')
       router.navigate(event.state.page, true)
     } else {
       router.navigate('home', true)

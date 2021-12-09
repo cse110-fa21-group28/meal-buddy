@@ -64,7 +64,6 @@ const p_recipe4 = new public_recipe(4, 'Fancy Ramen', ['Soups, Stews and Chili R
   '2 (3 ounce) packages chicken-flavored ramen noodles'
 ])
 
-
 const db = firebase.firestore()
 
 /**

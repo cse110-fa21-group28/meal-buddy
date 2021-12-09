@@ -41,7 +41,7 @@
         return;
       }
   
-      var hash;
+      let hash;
       if (page == 'home'){
         hash = '';
       } else {

@@ -25,7 +25,7 @@ function googleLogOut () {
   auth.signOut()
     .then(function () {
       console.log('signed out')
-      window.location.href = 'index.html'
+      window.location.href = '/index.html'
     })
     .catch(console.log)
 }
@@ -38,7 +38,7 @@ auth.onAuthStateChanged(user => {
     document.getElementById('whenSignedIn').hidden = false
     document.getElementById('whenSignedOut').hidden = true
     document.getElementById('userDetail').innerHTML = `<h3> "Hello"  ${user.displayName} !<h3> <p>User ID: ${user.uid} </p>`
-    window.location.href = 'home.html'
+    window.location.href = '../src/home.html'
   } else {
     document.getElementById('whenSignedIn').hidden = true
     document.getElementById('whenSignedOut').hidden = false
