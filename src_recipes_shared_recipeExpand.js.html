@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/recipeExpand.js</title>
+    <title>JSDoc: Source: src/recipes/shared/recipeExpand.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/recipeExpand.js</h1>
+    <h1 class="page-title">Source: src/recipes/shared/recipeExpand.js</h1>
 
     
 
@@ -26,21 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module recipeExpand
- */
-
-class RecipeExpand extends HTMLElement {
+            <pre class="prettyprint source linenums"><code>class RecipeExpand extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
 
     // Create styles and root element
-    const styles = document.createElement('style')
+    const style = document.createElement('style')
+    // style.rel = 'stylesheet'
+    // style.type = 'text/css'
+    // style.href = '../styles/recipeExpand.css'
     const article = document.createElement('article')
 
     // Fill in styles and root element
-    styles.innerHTML = `
+    style.innerHTML = `
         article {
           background-color: LemonChiffon;
           box-shadow: 0 0 10px rgb(0 0 0 / 15%);
@@ -157,7 +156,7 @@ class RecipeExpand extends HTMLElement {
       `
 
     // Append elements to the shadow root
-    this.shadowRoot.append(styles, article)
+    this.shadowRoot.append(style, article)
   }
 
   /**
@@ -217,23 +216,23 @@ class RecipeExpand extends HTMLElement {
 
     // Set Instructions / URL
     const instructions = getInstructions(data)
-    const url = getUrl(data);
-    if(instructions) {
+    const url = getUrl(data)
+    if (instructions) {
       instructions.forEach(instruction => {
         const listItem = document.createElement('li')
         listItem.innerHTML = instruction
         this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
       })
     } else {
-      const header = this.shadowRoot.querySelector('.section--instructions > h2');
-      const list = this.shadowRoot.querySelector('.section--instructions > ol');
-      header.innerHTML = 'Recipe URL';
-      list.parentElement.removeChild(list);
-      const recipe_url = document.createElement('a');
-      recipe_url.setAttribute('href', url);
-      recipe_url.setAttribute('target', '_blank');
-      recipe_url.innerHTML = url;
-      this.shadowRoot.querySelector('.section--instructions').append(recipe_url);
+      const header = this.shadowRoot.querySelector('.section--instructions > h2')
+      const list = this.shadowRoot.querySelector('.section--instructions > ol')
+      header.innerHTML = 'Recipe URL'
+      list.parentElement.removeChild(list)
+      const recipe_url = document.createElement('a')
+      recipe_url.setAttribute('href', url)
+      recipe_url.setAttribute('target', '_blank')
+      recipe_url.innerHTML = url
+      this.shadowRoot.querySelector('.section--instructions').append(recipe_url)
     }
   }
 
@@ -243,6 +242,26 @@ class RecipeExpand extends HTMLElement {
   get data () {
     return this.json
   }
+}
+
+/**
+   * Recursively search for a key nested somewhere inside an object
+   * @param {Object} object the object with which you'd like to search
+   * @param {String} key the key that you are looking for in the object
+   * @returns {*} the value of the found key
+   */
+function searchForKey (object, key) {
+  let value
+  for (k in object) {
+    if (k === key) {
+      value = object[k]
+      break
+    }
+    if (object[k] &amp;&amp; typeof object[k] === 'object') {
+      value = searchForKey(object[k], key)
+    }
+  }
+  return value
 }
 
 /**
@@ -312,8 +331,8 @@ function getIngredients (data) {
  * @returns {String} If found, returns the url of the recipe
  */
 function getUrl (data) {
-  if(data.recipe_url) return data.recipe_url;
-  return null;
+  if (data.recipe_url) return data.recipe_url
+  return null
 }
 
 customElements.define('recipe-expand', RecipeExpand)
@@ -327,13 +346,13 @@ customElements.define('recipe-expand', RecipeExpand)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-main.html">main</a></li><li><a href="module-private_recipe.html">private_recipe</a></li><li><a href="module-public_recipe.html">public_recipe</a></li><li><a href="module-publicRecipeCard.html">publicRecipeCard</a></li><li><a href="module-recipeCard.html">recipeCard</a></li><li><a href="module-recipeExpand.html">recipeExpand</a></li><li><a href="module-Router.html">Router</a></li></ul><h3>Classes</h3><ul><li><a href="module-Router.Router.html">Router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 01:49:01 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 05:55:04 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
