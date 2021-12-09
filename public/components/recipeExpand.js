@@ -4,108 +4,13 @@ class RecipeExpand extends HTMLElement {
     this.attachShadow({ mode: 'open' })
 
     // Create styles and root element
-    const style = document.createElement('style')
-    // style.rel = 'stylesheet'
-    // style.type = 'text/css'
-    // style.href = '../styles/recipeExpand.css'
+    const styles = document.createElement('link')
+    styles.rel = 'stylesheet'
+    styles.type = 'text/css'
+    styles.href = '../styles/recipeExpand.css'
     const article = document.createElement('article')
 
     // Fill in styles and root element
-    styles.innerHTML = `
-        article {
-          background-color: LemonChiffon;
-          box-shadow: 0 0 10px rgb(0 0 0 / 15%);
-          margin: 30px auto;
-          max-width: 720px;
-          padding: 25px;
-          transition: all 0.2s ease;
-          width: 80%;
-        }
-        div.rating--wrapper {
-          align-items: center;
-          column-gap: 5px;
-          display: flex;
-          justify-items: center;
-          margin-top: 10px;
-        }
-        
-        div.rating--wrapper > img {
-          height: auto;
-          display: inline-block;
-          object-fit: scale-down;
-          width: 78px;
-        }
-        header {
-          align-items: flex-start;
-          column-gap: 10px;
-          display: grid;
-          grid-template-areas:
-           'title title img'
-           'meta meta img'
-           'desc desc img';
-        }
-        header p {
-          margin: 0;
-        }
-        header > h1 {
-          font-size: 2rem;
-          font-weight: 500;
-          grid-area: title;
-          margin: -10px 0 0 0;
-          padding: 0;
-        }
-        h2 {
-          font-size: 1.5rem;
-          font-weight: 500;
-          margin: 35px 0 0 0;
-        }
-        header > div.meta--wrapper {
-          display: grid;
-          grid-area: meta;
-          margin: 10px 0;
-          row-gap: 4px;
-        }
-        header > div.meta--wrapper p,
-        main > div.rating--wrapper {
-          color: gray;
-          font-style: italic;
-        }
-        header img.thumbnail {
-          aspect-ratio: 1;
-          grid-area: img;
-          object-fit: cover;
-          overflow: hidden;
-          width: 230px;
-        }
-        header p.description {
-          height: 62px;
-          line-height: 20px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        main > .section--ingredients,
-        main > .section--instructions {
-          font-size: 1.1rem;
-        }
-        span.rating-total {
-          margin-left: -2px;
-        }
-        ol, ul {
-          margin-top: 10px;
-        }
-        ol li:not(:first-child) {
-          margin-top: 15px;
-        }
-        ol li::marker {
-          padding-right: 5px;
-        }
-        ul li {
-          padding-left: 2px;
-        }
-        ul li:not(:first-child) {
-          margin-top: 8px;
-        }
-      `
     article.innerHTML = `
         <header>
           <h1></h1>
@@ -128,7 +33,7 @@ class RecipeExpand extends HTMLElement {
       `
 
     // Append elements to the shadow root
-    this.shadowRoot.append(style, article)
+    this.shadowRoot.append(styles, article)
   }
 
   /**
@@ -140,28 +45,33 @@ class RecipeExpand extends HTMLElement {
 
     // Reset HTML
     this.shadowRoot.querySelector('article').innerHTML = `
-        <header>
-          <h1></h1>
-          <div class="meta--wrapper">
-            <p>calories: <span class="meta--calories"></span></p>
-          </div>
-          <p class="description"></p>
-          <img src="" alt="" class="thumbnail" />
-        </header>
-        <main>
-          <section class="section--ingredients">
-            <h2>INGREDIENTS</h2>
-            <ul></ul>
-          </section>
-          <section class="section--instructions">
-            <h2>INSTRUCTIONS</h2>
-            <ol></ol>
-          </section>
-        </main>
+        <body>
+          <header>
+            <h1></h1>
+            
+            <img src="" alt="" class="thumbnail" />
+            <p class="description"></p>
+            <div>
+              <p> Calories: <span class="meta--calories"></span></p>
+              <button> + Add to plan</button>
+            </div>
+          </header>
+          <hr>
+          <main>
+            <section class="section--ingredients">
+              <h2>Ingredients</h2>
+              <ul></ul>
+            </section>
+            <section class="section--instructions">
+              <h2>Instructions</h2>
+              <ol></ol>
+            </section>
+          </main>
+        </body>
       `
 
     // Set Title
-    const title = getTitle(data).toUpperCase()
+    const title = getTitle(data)
     this.shadowRoot.querySelector('header > h1').innerHTML = title
 
     // Set Calories

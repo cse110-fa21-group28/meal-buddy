@@ -13,65 +13,12 @@ class PublicRecipeCard extends HTMLElement {
       // Used to access the actual data object
       this.json = data
   
-      const style = document.createElement('style')
+      const style = document.createElement('link')
+      style.rel = 'stylesheet'
+      style.type = 'text/css'
+      style.href = '../styles/recipeCard.css' 
       const card = document.createElement('article')
-      style.innerHTML = `
-          * {
-            font-family: sans-serif;
-            margin: 5;
-            padding: 5;
-          }
-  
-          article {
-            align-items: center;
-            border: 1px solid rgb(223, 225, 229);
-            display: grid;
-            grid-template-rows: repeat(3, 1fr);
-            grid-template-columns: repeat(2, 1fr);
-  
-            height: 160px;
-            width: 400px;
-            background-color: LemonChiffon;
-            transition: all 0.2s ease;
-            user-select: none;
-          }
-  
-          article:hover {
-            border-radius: 8px;
-            cursor: pointer;
-            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            transition: all 0.2s ease;
-            transform: scale(1.02);
-          }
-  
-          article > img {
-            height: 160px;
-            object-fit: cover;
-            width: 200px;
-            grid-row: 1/ span 3;
-            grid-column: 1;
-            
-          }
-  
-          p.title {
-            grid-row: 1;
-            grid-column: 2;
-            
-          }
-          p:not(.title), span, time {
-            color: #70757A;
-            font-size: 12px;
-            grid-row: 2;
-            grid-column: 2;
-  
-          }
-  
-          button{
-            
-            grid-column: 2;
-          }
-        `
-  
+      
       // Grab the title
       const titleText = getTitle(data)
       const title = document.createElement('p')

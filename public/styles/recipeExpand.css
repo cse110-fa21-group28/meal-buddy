@@ -1,0 +1,99 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    padding-top: 117px;
+}
+
+button{
+    all: unset;
+}
+
+article {
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+
+header {
+    align-items: flex-start;
+    column-gap: 10px;
+    row-gap: 10px;
+    display: grid;
+    grid-template-areas:
+    'title title'
+    'img desc'
+    'img button';
+  }
+
+  header p{
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+
+  header > h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    grid-area: title;
+    margin: -10px 0 0 0;
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 35px 0 0 0;
+  }
+
+  header img.thumbnail {
+    aspect-ratio: 1.5;
+    grid-area: img;
+    object-fit: cover;
+    overflow: hidden;
+    width: 400px;
+  }
+  header p.description {
+    height: 62px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    grid-area: desc;
+  }
+
+  header div{
+      grid-area: button;
+  }
+
+  header button{
+    font-size: 16px;
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgb(36, 35, 35);
+    padding: 10px 18px;
+    border-radius: 5px;
+    float:right;
+  }
+
+  main > .section--ingredients,
+  main > .section--instructions {
+    font-size: 1.1rem;
+  }
+
+  ol, ul {
+    margin-top: 10px;
+  }
+  ol li:not(:first-child) {
+    margin-top: 15px;
+  }
+  ol li::marker {
+    padding-right: 5px;
+  }
+  ul li {
+    padding-left: 2px;
+  }
+  ul li:not(:first-child) {
+    margin-top: 8px;
+  }
+        
+      

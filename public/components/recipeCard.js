@@ -57,7 +57,6 @@ class RecipeCard extends HTMLElement {
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
 
         window.location.href = 'myRecipes.html'
-        window.location.href = 'my-recipes.html'
         // Deletes the recipe by deleting the recipe data's id in the database
         // Automatically refreshes the page after recipe deletion
       })

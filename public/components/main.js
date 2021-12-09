@@ -183,6 +183,7 @@ function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
     else {
+      
       router.navigate(pageName)
       console.log('lolbby')
     }
