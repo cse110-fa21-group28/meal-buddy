@@ -16,7 +16,7 @@ class PublicRecipeCard extends HTMLElement {
       const style = document.createElement('link')
       style.rel = 'stylesheet'
       style.type = 'text/css'
-      style.href = '../styles/recipeCard.css' 
+      style.href = '/assets/styles/recipeCard.css' 
       const card = document.createElement('article')
       
       // Grab the title
