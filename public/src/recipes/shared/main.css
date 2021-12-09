@@ -63,12 +63,14 @@
   }
   
   .recipe-cards--wrapper {
+    justify-content: center;
+    align-items: center;
     column-gap: 30px;
     display: flex;
     flex-wrap: wrap;
     height: auto;
-    margin: 10px 5vw 10px 5vw;
-    max-width: 1000px;
+    margin: 0px auto;
+    max-width: 80%;
     row-gap: 30px;
     width: 100%;
   }
