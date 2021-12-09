@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Module: app</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,65 +17,232 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Module: app</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module app
- */
+        
+    
+</header>
 
-const auth = firebase.auth()
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * Logs in the user with Google authentication
- */
-function googleLogIn () {
-  const provider = new firebase.auth.GoogleAuthProvider()
+        
+    
+    </div>
 
-  auth.signInWithPopup(provider)
-    .then(result => {
-      const user = result.user
-      console.log(user)
-    })
-    .catch(console.log)
-}
+    
 
-/**
- * Logs out the user
- */
-function googleLogOut () {
-  auth.signOut()
-    .then(function () {
-      console.log('signed out')
-      window.location.href = '/index.html'
-    })
-    .catch(console.log)
-}
+    
 
-auth.onAuthStateChanged(user => {
-  if (!document.getElementById('whenSignedIn')) {
-    return
-  }
-  if (user) {
-    document.getElementById('whenSignedIn').hidden = false
-    document.getElementById('whenSignedOut').hidden = true
-    document.getElementById('userDetail').innerHTML = `&lt;h3> "Hello"  ${user.displayName} !&lt;h3> &lt;p>User ID: ${user.uid} &lt;/p>`
-    window.location.href = '../src/home.html'
-  } else {
-    document.getElementById('whenSignedIn').hidden = true
-    document.getElementById('whenSignedOut').hidden = false
-    document.getElementById('userDetail').innerHTML = ''
-  }
-})
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~googleLogIn"><span class="type-signature">(inner) </span>googleLogIn<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Logs in the user with Google authentication
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_app.js.html">src/app.js</a>, <a href="src_app.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~googleLogOut"><span class="type-signature">(inner) </span>googleLogOut<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Logs out the user
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_app.js.html">src/app.js</a>, <a href="src_app.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

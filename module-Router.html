@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/app.js</title>
+    <title>JSDoc: Module: Router</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,65 +17,59 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/app.js</h1>
+    <h1 class="page-title">Module: Router</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module app
- */
+        
+    
+</header>
 
-const auth = firebase.auth()
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * Logs in the user with Google authentication
- */
-function googleLogIn () {
-  const provider = new firebase.auth.GoogleAuthProvider()
+        
+    
+    </div>
 
-  auth.signInWithPopup(provider)
-    .then(result => {
-      const user = result.user
-      console.log(user)
-    })
-    .catch(console.log)
-}
+    
 
-/**
- * Logs out the user
- */
-function googleLogOut () {
-  auth.signOut()
-    .then(function () {
-      console.log('signed out')
-      window.location.href = '/index.html'
-    })
-    .catch(console.log)
-}
+    
 
-auth.onAuthStateChanged(user => {
-  if (!document.getElementById('whenSignedIn')) {
-    return
-  }
-  if (user) {
-    document.getElementById('whenSignedIn').hidden = false
-    document.getElementById('whenSignedOut').hidden = true
-    document.getElementById('userDetail').innerHTML = `&lt;h3> "Hello"  ${user.displayName} !&lt;h3> &lt;p>User ID: ${user.uid} &lt;/p>`
-    window.location.href = '../src/home.html'
-  } else {
-    document.getElementById('whenSignedIn').hidden = true
-    document.getElementById('whenSignedOut').hidden = false
-    document.getElementById('userDetail').innerHTML = ''
-  }
-})
-</code></pre>
-        </article>
-    </section>
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-Router.Router.html">Router</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
