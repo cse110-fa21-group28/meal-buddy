@@ -1,14 +1,14 @@
 // main.js
 
-// import { getPrivateRecipes } from '../../backend/private_recipe.js'
+/**
+ * @module main
+ */
 
 import { Router } from './Router.js'
 
 const recipes = []
 
 const public_recipes = []
-
-const recipeData = {} // You can access all of the Recipe Data from the JSON files in this variable
 
 const router = new Router(function () {
   document.querySelector('section.section--recipe-cards').classList.add('shown')
