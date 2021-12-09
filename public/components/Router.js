@@ -1,10 +1,10 @@
 // router.js
+/**
+ * @module Router
+ */
 
  export class Router {
     static routes = {};
-    /**
-     * @module Router
-     */
   
     /**
      * Sets up the home function, the page name should always be 'home', which
