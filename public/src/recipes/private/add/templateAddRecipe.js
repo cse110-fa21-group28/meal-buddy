@@ -1,4 +1,4 @@
-import { addPrivateRecipe } from '../backend/private_recipe.js'
+import { addPrivateRecipe } from '../../../../backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
 let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
@@ -39,12 +39,12 @@ async function init () {
   })
 
   saveButton.addEventListener('click', function () {
-    console.log("0");
+    console.log('0')
     if (Object.keys(obj).length == 6) {
-      console.log("1");
+      console.log('1')
       addPrivateRecipe(obj)
         .then(() => {
-          window.location.href = 'myRecipes.html'
+          window.location.href = '../myRecipes.html'
         })
     } else {
       alert('Error: Not all the fields are filled out!')

@@ -1,6 +1,6 @@
 // main.js
 
-import { getPrivateRecipes } from '../../backend/private_recipe.js'
+// import { getPrivateRecipes } from '../../backend/private_recipe.js'
 
 import { Router } from './Router.js'
 
@@ -44,14 +44,10 @@ let flag = false
 
 // Initialize function, begins all of the JS code in this file
 async function init () {
-  console.log('apple')
   // initializeServiceWorker();
-
   try {
-    await fetchRecipes();
-    console.log('banana')
-    await fetchPublicRecipes();
-    console.log('strawberry')
+    await fetchRecipes()
+    await fetchPublicRecipes()
     flag = true
   } catch (err) {
     console.log(`Error fetching recipes: ${err}`)
@@ -91,38 +87,33 @@ async function fetchRecipes () {
         })
         .catch((error) => {
           return error
-        });
-      }
-  })
-}
-
-async function fetchPublicRecipes() {
-  await firebase.firestore()
-  .collection('public_recipe')
-  .get()
-  .then((querySnapshot) => {
-    // const tempDoc = [];
-    querySnapshot.forEach((doc) => {
-      console.log(1, doc.data());
-      console.log('asldifkhasdf')
-      public_recipes.push(doc.data());
-    })
-    if (public_recipes.length >= 1) {
-      createPublicRecipeCards()
+        })
     }
   })
-  .catch((error) => {
-    return error;
-  });
 }
 
-function createPublicRecipeCards() {
-  // console.log(recipes)
+async function fetchPublicRecipes () {
+  await firebase.firestore()
+    .collection('public_recipe')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        public_recipes.push(doc.data())
+      })
+      if (public_recipes.length >= 1) {
+        createPublicRecipeCards()
+      }
+    })
+    .catch((error) => {
+      return error
+    })
+}
+
+function createPublicRecipeCards () {
   for (let i = 0; i < public_recipes.length; i++) {
     const recipeCard = document.createElement('public-recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
     // being used as the key for the recipeData object
-    console.log(public_recipes[i]);
     recipeCard.data = public_recipes[i]
 
     // This gets the page name of each of the arrays - which is basically
@@ -148,7 +139,6 @@ function createPublicRecipeCards() {
  */
 function createRecipeCards () {
   // Makes a new recipe card
-  console.log(recipes)
   for (let i = 0; i < recipes.length; i++) {
     const recipeCard = document.createElement('recipe-card')
     // Inputs the data for the card. This is just the first recipe in the recipes array,
@@ -183,7 +173,6 @@ function bindRecipeCard (recipeCard, pageName) {
   recipeCard.addEventListener('click', e => {
     if (e.path[0].nodeName == 'A') return
     else {
-      
       router.navigate(pageName)
       console.log('lolbby')
     }

@@ -14,9 +14,9 @@ class RecipeCard extends HTMLElement {
     const style = document.createElement('link')
     style.rel = 'stylesheet'
     style.type = 'text/css'
-    style.href = '../styles/recipeCard.css'
+    style.href = '/assets/styles/recipeCard.css'
     const card = document.createElement('article')
-    
+
     // Grab the title
     const titleText = getTitle(data)
     const title = document.createElement('p')
@@ -29,21 +29,19 @@ class RecipeCard extends HTMLElement {
     image.setAttribute('src', imageUrl)
     image.setAttribute('alt', 'recipe-image')
 
-
     // Grab the calories
     const calorieText = getCalories(data)
     const calorie = document.createElement('p')
     calorie.classList.add('calories')
-    calorie.innerText = calorieText + " calories"
-
+    calorie.innerText = calorieText + ' calories'
 
     // Button to edit recipe
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit recipe'
-    editButton.classList.add("editButton");
+    editButton.classList.add('editButton')
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
-      window.location.href = 'templateEditRecipe.html'
+      window.location.href = 'edit/templateEditRecipe.html'
       localStorage.setItem('currentRecipeData', JSON.stringify(data))
       // Takes the user back to the myrecipe page after editing the recipe
     })
@@ -51,25 +49,24 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
-    deleteButton.classList.add("deleteButton");
+    deleteButton.classList.add('deleteButton')
     deleteButton.addEventListener('click', (e) => {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {
-
-        window.location.href = 'myRecipes.html'
+        window.location.href = '../private/myRecipes.html'
         // Deletes the recipe by deleting the recipe data's id in the database
         // Automatically refreshes the page after recipe deletion
       })
     })
 
     // Add all of the elements to the card
-    card.appendChild(style);
+    card.appendChild(style)
     card.appendChild(image)
     card.appendChild(title)
     card.appendChild(calorie)
     card.appendChild(editButton)
     card.appendChild(deleteButton)
-    
+
     this.shadowRoot.append(card)
   }
 
@@ -79,7 +76,6 @@ class RecipeCard extends HTMLElement {
     return this.json
   }
 }
-
 
 /**
    * Extract the title of the recipe from the given recipe schema JSON obejct
