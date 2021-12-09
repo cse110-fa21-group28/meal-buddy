@@ -4,40 +4,16 @@
 
 import { Router } from './Router.js'
 
-const recipes = [
-  // 'components/example.json'
-  // 'https://introweb.tech/assets/json/birthdayCake.json',
-  // 'https://introweb.tech/assets/json/chocolateChip.json',
-  // 'https://introweb.tech/assets/json/stuffing.json',
-  // 'https://introweb.tech/assets/json/turkey.json',
-  // 'https://introweb.tech/assets/json/pumpkinPie.json'
-]
+const recipes = []
 
 const public_recipes = []
 
 const recipeData = {} // You can access all of the Recipe Data from the JSON files in this variable
 
 const router = new Router(function () {
-  /**
-   * TODO - Part 1 - Step 1
-   * Select the 'section.section--recipe-cards' element and add the "shown" class
-   * Select the 'section.section--recipe-expand' element and remove the "shown" class
-   *
-   * You should be using DOM selectors such as document.querySelector() and
-   * class modifications with the classList API (e.g. element.classList.add(),
-   * element.classList.remove())
-   *
-   * This will only be two single lines
-   * If you did this right, you should see just 1 recipe card rendered to the screen
-   */
   document.querySelector('section.section--recipe-cards').classList.add('shown')
   document.querySelector('section.section--recipe-expand').classList.remove('shown')
 })
-
-// let button = document.getElementById('test2Button');
-// button.addEventListener('click', () => {
-//   init();
-// })
 
 window.addEventListener('DOMContentLoaded', init)
 let flag = false
@@ -54,18 +30,14 @@ async function init () {
     return
   }
 
-  // createRecipeCards();
   bindPopstate()
 }
 
 /**
- * Loading JSON into a JS file is oddly not super straightforward (for now), so
- * I built a function to load in the JSON files for you. It places all of the recipe data
- * inside the object recipeData like so: recipeData{ 'ghostcookies': ..., 'birthdayCake': ..., etc }
+ * Fetches the private recipes from the firebase database as json
+ * objects and stores them into the public_recipes array
  */
-
 async function fetchRecipes () {
-  // TODO: call getPrivateRecipes() instead of this
   auth.onAuthStateChanged(user => {
     if (!user) {
       throw 'User not login'
@@ -92,6 +64,10 @@ async function fetchRecipes () {
   })
 }
 
+/**
+ * Fetches the public recipes from the firebase database as json
+ * objects and stores them into the public_recipes array
+ */
 async function fetchPublicRecipes () {
   await firebase.firestore()
     .collection('public_recipe')
@@ -109,6 +85,10 @@ async function fetchPublicRecipes () {
     })
 }
 
+/**
+ * Generates the <public-recipe-card> elements from the fetched recipes and
+ * appends them to the private recipes page
+ */
 function createPublicRecipeCards () {
   for (let i = 0; i < public_recipes.length; i++) {
     const recipeCard = document.createElement('public-recipe-card')
@@ -187,17 +167,6 @@ function bindRecipeCard (recipeCard, pageName) {
  * info in your popstate function)
  */
 function bindPopstate () {
-  /**
-   * TODO - Part 1 Step 6
-   * Finally, add an event listener to the window object for the 'popstate'
-   * event - this fires when the forward or back buttons are pressed in a browser.
-   * If your event has a state object that you passed in, navigate to that page,
-   * otherwise navigate to 'home'.
-   *
-   * IMPORTANT: Pass in the boolean true as the second argument in navigate() here
-   * so your navigate() function does not add your going back action to the history,
-   * creating an infinite loop
-   */
   window.addEventListener('popstate', function (event) {
     if (event.state) {
       console.log('yesbbay')
