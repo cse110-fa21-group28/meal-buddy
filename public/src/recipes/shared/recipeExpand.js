@@ -33,7 +33,7 @@ class RecipeExpand extends HTMLElement {
       `
 
     // Append elements to the shadow root
-    this.shadowRoot.append(style, article)
+    this.shadowRoot.append(styles, article)
   }
 
   /**
