@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: public_recipe</title>
+    <title>JSDoc: Class: Router</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: public_recipe</h1>
+    <h1 class="page-title">Class: Router</h1>
 
     
 
@@ -28,6 +28,8 @@
 
 <header>
     
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-Router.html">Router</a>.</span>Router<span class="signature">(homeFunc)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -37,7 +39,142 @@
     
         
 
+    
+
+    
+    <h4 class="name" id="Router"><span class="type-signature"></span>new Router<span class="signature">(homeFunc)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sets up the home function, the page name should always be 'home', which
+is why no page name variable is passed in.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
         
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>homeFunc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to run to set the home route
+                           visually</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Router.js.html">components/Router.js</a>, <a href="components_Router.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -64,7 +201,7 @@
     
 
     
-    <h4 class="name" id="~get_public_recipe"><span class="type-signature">(async, inner) </span>get_public_recipe<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addPage"><span class="type-signature"></span>addPage<span class="signature">(page, pageFunc)</span><span class="type-signature"></span></h4>
     
 
     
@@ -72,7 +209,8 @@
 
 
 <div class="description">
-    Gets a specific public recipe
+    Adds a page name & function so to the router so that the function
+can be called later when the page is passed in
 </div>
 
 
@@ -108,7 +246,7 @@
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>page</code></td>
             
 
             <td class="type">
@@ -124,7 +262,31 @@
 
             
 
-            <td class="description last">the id of the public recipe</td>
+            <td class="description last">The name of the page to route to (this is used
+                     as the page's hash as well in the URL)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pageFunc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to run when the page is called</td>
         </tr>
 
     
@@ -165,7 +327,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="backend_public_recipe.js.html">backend/public_recipe.js</a>, <a href="backend_public_recipe.js.html#line75">line 75</a>
+        <a href="components_Router.js.html">components/Router.js</a>, <a href="components_Router.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -190,16 +352,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    the data of the request public recipe
-</div>
-
-
-
-    
 
 
 
@@ -211,7 +363,7 @@
     
 
     
-    <h4 class="name" id="~public_recipe"><span class="type-signature">(inner) </span>public_recipe<span class="signature">(name, recipe_category, description, calories, image_url, recipe_url, recipe_ingredient)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="navigate"><span class="type-signature"></span>navigate<span class="signature">(page, statePopped)</span><span class="type-signature"></span></h4>
     
 
     
@@ -219,7 +371,8 @@
 
 
 <div class="description">
-    Initializes the recipe JSON object
+    Changes the page visually to the page that has been passed in. statePopped
+is used to avoid pushing a new history state on back/forward button presses
 </div>
 
 
@@ -255,13 +408,13 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>page</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">String</span>
 
 
             
@@ -271,20 +424,20 @@
 
             
 
-            <td class="description last">the name of the recipe</td>
+            <td class="description last">The name of the page to route to</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>recipe_category</code></td>
+                <td class="name"><code>statePopped</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">Boolean</span>
 
 
             
@@ -294,122 +447,8 @@
 
             
 
-            <td class="description last">the categories of the recipe</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the description of the recipe</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>calories</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the calories of the recipe</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>image_url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the url to the image of the food</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>recipe_url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the url to the official recipe page</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>recipe_ingredient</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the ingredients of the recipe</td>
+            <td class="description last">True if this function is being called from a
+                             'popstate' event instead of a normal card click</td>
         </tr>
 
     
@@ -450,7 +489,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="backend_public_recipe.js.html">backend/public_recipe.js</a>, <a href="backend_public_recipe.js.html#line15">line 15</a>
+        <a href="components_Router.js.html">components/Router.js</a>, <a href="components_Router.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
