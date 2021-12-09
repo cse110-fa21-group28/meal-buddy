@@ -1,3 +1,17 @@
+/**
+ * @module public_recipe
+ */
+
+/**
+ * Initializes the recipe JSON object
+ * @param {*} name the name of the recipe
+ * @param {*} recipe_category the categories of the recipe
+ * @param {*} description the description of the recipe
+ * @param {*} calories the calories of the recipe
+ * @param {*} image_url the url to the image of the food
+ * @param {*} recipe_url the url to the official recipe page
+ * @param {*} recipe_ingredient the ingredients of the recipe
+ */
 function public_recipe (name, recipe_category, description, calories, image_url, recipe_url, recipe_ingredient) {
   this.name = name
   this.recipe_category = recipe_category
@@ -53,6 +67,11 @@ const p_recipe4 = new public_recipe(4, 'Fancy Ramen', ['Soups, Stews and Chili R
 
 const db = firebase.firestore()
 
+/**
+ * Gets a specific public recipe
+ * @param {String} id the id of the public recipe
+ * @returns the data of the request public recipe
+ */
 async function get_public_recipe (id) {
   const res = db.collection('public_recipe').doc(id)
   const doc = await res.get()
