@@ -1,6 +1,6 @@
 // publicRecipeCard.js
 /**
-  @module publicRecipeCard.js
+ * @module publicRecipeCard.js
  */
 
 class PublicRecipeCard extends HTMLElement {
