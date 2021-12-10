@@ -12,24 +12,29 @@ class RecipeExpand extends HTMLElement {
 
     // Fill in styles and root element
     article.innerHTML = `
-        <header>
-          <h1></h1>
-          <div class="meta--wrapper">
-            <p>calories: <span class="meta--calories"></span></p>
-          </div>
-          <p class="description"></p>
-          <img src="" alt="" class="thumbnail" />
-        </header>
-        <main>
-          <section class="section--ingredients">
-            <h2>INGREDIENTS</h2>
-            <ul></ul>
-          </section>
-          <section class="section--instructions">
-            <!--<h2>INSTRUCTIONS</h2>-->
-            <ol></ol>
-          </section>
-        </main>
+          <body>
+          <header>
+            <h1></h1>
+            
+            <img src="" alt="" class="thumbnail" />
+            <p class="description"></p>
+            <div>
+              <p> Calories: <span class="meta--calories"></span></p>
+              <button> + Add to plan</button>
+            </div>
+          </header>
+          <hr>
+          <main>
+            <section class="section--ingredients">
+              <h2>Ingredients</h2>
+              <ul></ul>
+            </section>
+            <section class="section--instructions">
+              <h2>Instructions</h2>
+              <ol></ol>
+            </section>
+          </main>
+        </body>
       `
 
     // Append elements to the shadow root
