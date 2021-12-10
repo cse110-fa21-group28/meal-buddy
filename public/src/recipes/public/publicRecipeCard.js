@@ -1,9 +1,6 @@
-// publicRecipeCard.js
 /**
  * @module publicRecipeCard
  */
-
-let customElements, HTMLElement
 
 class PublicRecipeCard extends HTMLElement {
   constructor () {

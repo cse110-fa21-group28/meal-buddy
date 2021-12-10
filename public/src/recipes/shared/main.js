@@ -4,7 +4,6 @@
 
 import { Router } from './Router.js'
 
-let firebase; let auth
 const recipes = []
 const publicRecipes = []
 

@@ -1,7 +1,6 @@
 import { addPrivateRecipe } from '../../../../backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
-let alert
 let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
 const obj = {}
 

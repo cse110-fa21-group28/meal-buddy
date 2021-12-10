@@ -2,8 +2,6 @@
  * @module recipeExpand
  */
 
-let customElements, HTMLElement
-
 class RecipeExpand extends HTMLElement {
   constructor () {
     super()
