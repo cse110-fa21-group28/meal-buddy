@@ -13,9 +13,7 @@ const auth = firebase.auth()
 async function getPrivateRecipes () {
   try {
     auth.onAuthStateChanged(user => {
-      if (!user) {
-        throw 'User not login'
-      } else {
+      if (user) {
         const data = []
         firebase.firestore()
           .collection('private_recipe')

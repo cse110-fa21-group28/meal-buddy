@@ -3,6 +3,8 @@
  * @module publicRecipeCard
  */
 
+let customElements, HTMLElement
+
 class PublicRecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement

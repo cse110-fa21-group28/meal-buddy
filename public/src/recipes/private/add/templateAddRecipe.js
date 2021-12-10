@@ -1,6 +1,7 @@
 import { addPrivateRecipe } from '../../../../backend/private_recipe.js'
 window.addEventListener('DOMContentLoaded', init)
 
+let alert
 let title, img, calorie, descr, ings, instrucs // MAYBE: add cook time?
 const obj = {}
 
@@ -40,7 +41,7 @@ async function init () {
 
   saveButton.addEventListener('click', function () {
     console.log('0')
-    if (Object.keys(obj).length == 6) {
+    if (Object.keys(obj).length === 6) {
       console.log('1')
       addPrivateRecipe(obj)
         .then(() => {

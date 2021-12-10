@@ -1,4 +1,5 @@
-// import { updatePrivateRecipe } from './backend/private_recipe.js'
+let firebase, localStorage
+
 window.addEventListener('DOMContentLoaded', init)
 
 let title, img, calorie, descr, ings, instrucs // maybe add cook time

@@ -2,6 +2,8 @@
  * @module recipeExpand
  */
 
+let customElements, HTMLElement
+
 class RecipeExpand extends HTMLElement {
   constructor () {
     super()
@@ -119,11 +121,11 @@ class RecipeExpand extends HTMLElement {
       const list = this.shadowRoot.querySelector('.section--instructions > ol')
       header.innerHTML = 'Recipe URL'
       list.parentElement.removeChild(list)
-      const recipe_url = document.createElement('a')
-      recipe_url.setAttribute('href', url)
-      recipe_url.setAttribute('target', '_blank')
-      recipe_url.innerHTML = url
-      this.shadowRoot.querySelector('.section--instructions').append(recipe_url)
+      const recipeUrl = document.createElement('a')
+      recipeUrl.setAttribute('href', url)
+      recipeUrl.setAttribute('target', '_blank')
+      recipeUrl.innerHTML = url
+      this.shadowRoot.querySelector('.section--instructions').append(recipeUrl)
     }
   }
 
@@ -202,7 +204,7 @@ function getIngredients (data) {
  * @returns {String} If found, returns the url of the recipe
  */
 function getUrl (data) {
-  if (data.recipe_url) return data.recipe_url
+  if (data.recipeUrl) return data.recipeUrl
   return null
 }
 
