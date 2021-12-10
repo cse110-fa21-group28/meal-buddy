@@ -33,7 +33,7 @@ class RecipeExpand extends HTMLElement {
               <h2>Ingredients</h2>
               <ul></ul>
             </section>
-            <section class="section--instructions">
+            <section class="sectionInstructions">
               <h2>Instructions</h2>
               <ol></ol>
             </section>
@@ -71,7 +71,7 @@ class RecipeExpand extends HTMLElement {
               <h2>Ingredients</h2>
               <ul></ul>
             </section>
-            <section class="section--instructions">
+            <section class="sectionInstructions">
               <h2>Instructions</h2>
               <ol></ol>
             </section>
@@ -112,18 +112,18 @@ class RecipeExpand extends HTMLElement {
       instructions.forEach(instruction => {
         const listItem = document.createElement('li')
         listItem.innerHTML = instruction
-        this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
+        this.shadowRoot.querySelector('.sectionInstructions > ol').append(listItem)
       })
     } else {
-      const header = this.shadowRoot.querySelector('.section--instructions > h2')
-      const list = this.shadowRoot.querySelector('.section--instructions > ol')
+      const header = this.shadowRoot.querySelector('.sectionInstructions > h2')
+      const list = this.shadowRoot.querySelector('.sectionInstructions > ol')
       header.innerHTML = 'Recipe URL'
       list.parentElement.removeChild(list)
       const recipeUrl = document.createElement('a')
       recipeUrl.setAttribute('href', url)
       recipeUrl.setAttribute('target', '_blank')
       recipeUrl.innerHTML = url
-      this.shadowRoot.querySelector('.section--instructions').append(recipeUrl)
+      this.shadowRoot.querySelector('.sectionInstructions').append(recipeUrl)
     }
   }
 
