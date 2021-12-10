@@ -34,3 +34,18 @@ body{
 img{
     margin: 20vh, 20vw, 20vh, 20vw;
 }
+
+#plan-button{
+    font-size: 18px;
+    color: whitesmoke;
+    background-color: #f17957;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin: 5px;
+    width: 150px;
+    text-align:center;
+}
+
+#plan-button:hover{
+    background-color: #e24d24;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Meal Buddy | Add to Plan</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to Firebase Hosting</title>
+
+       <!-- update the version number as needed -->
+       <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
+       <!-- include only the Firebase features as you need -->
+       <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-functions-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-messaging-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-storage-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
+       <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
+        
+         <!--<script defer src="backend/public_recipe.js"></script>
+        
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+        <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+        <script src="planRecipeCard.js" type="module"></script>
+        <script src="addToPlan.js" type="module"></script>
+        
+        <link rel="stylesheet" href="/assets/styles/navBar.css"/>
+        <link rel="stylesheet" href="/src/recipes/shared/main.css" />
+
+        <!-- <script defer src="app.js" > </script>  -->
+        <script type="module" defer src="addToPlan.js"> </script>
+        <script  type="text/javascript" src="/src/app.js" defer> </script>
+
+        <link rel="stylesheet" href="/assets/styles/addToPlan.css"/>
+        <!--<script defer src="backend/public_recipe.js"></script>
+        
+        
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+        -->
+    </head>
+    <body>
+        <div id = "navigation-bar">
+            <div id = "company">
+                <div id = "company-logo">
+                  <img src="/assets/images/logo.png" alt="logo">
+                </div>
+                <div id = "company-name">
+                    <h1>Meal Buddy</h1>
+                </div>
+            </div>
+            
+            <div id = navigation>
+                <!--<div class = "navigate" id = "home">
+                    <a href= home.html>Home</a>
+                </div>
+                <div class = "navigate" id = "recipe">
+                    <a href= recipes.html>Recipes</a>
+                </div>
+                <div class = "navigate" id = "my-recipes">
+                    <a href= my-recipes.html>My Recipes</a>
+                </div>-->
+                <button onclick="window.location.href = '/src/home.html'">Home</button>
+                <button onclick="window.location.href = '/src/recipes/public/recipes.html'">Recipes</button>
+                <button onclick="window.location.href = '/src/recipes/private/myRecipes.html'">My Recipes</button>
+                <button onclick="googleLogOut()">Logout</button>
+            </div>
+        </div>
+        <main id = "add-to-plan-page">
+            <div id = "calendar">
+                <div class = "day" id = "sunday">
+                  <h1 class = "day-label">Sunday</h1>
+                </div>
+                <div class = "day" id = "monday">
+                  <h1 class = "day-label">Monday</h1>
+                </div>
+                <div class = "day" id = "tuesday">
+                  <h1 class = "day-label">Tuesday</h1>
+                </div>
+                <div class = "day" id = "wednesday" >
+                  <h1 class = "day-label">Wednesday</h1>
+                </div>
+                <div class = "day" id = "thursday">
+                  <h1 class = "day-label">Thursday</h1>
+                </div>
+                <div class = "day" id = "friday">
+                  <h1 class = "day-label">Friday</h1>
+                </div>
+                <div class = "day" id = "saturday">
+                  <h1 class = "day-label">Saturday </h1>
+                </div>
+            </div>
+            <section id = "card-section" class="section--recipe-cards shown">
+              <div class="recipe-cards--wrapper">
+                <!-- Recipes Added Here -->
+              </div>
+          </section>
+        </main>
+        <button type="button" id="save-button" onclick="window.location.href = '/src/home.html'">Save</button>
+    </body>
+</html>
