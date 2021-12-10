@@ -1,4 +1,4 @@
-html{
+html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -9,7 +9,7 @@ body, main {
   width: 100%;
 }
 
-main{
+main {
   padding-top: 117px;
 }
 
@@ -41,6 +41,6 @@ body form {
   float:right;
 }
 
-#saveButton:hover{
+#saveButton:hover {
   background-color: #e24d24;
 }

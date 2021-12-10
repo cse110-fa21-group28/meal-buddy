@@ -1,8 +1,8 @@
-html{
+html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#loginContainer{
+#loginContainer {
   display: grid; 
   padding: 8vw 5vw;
   margin: 8vw;
@@ -13,8 +13,8 @@ html{
   border-radius: 10px;
 }
 
-button{
-  all:unset;
+button {
+  all: unset;
   font-size: 18px;
   color: whitesmoke;
   background-color: #f17958;
@@ -23,11 +23,11 @@ button{
   margin: 5px;
 }
 
-button:hover{
+button:hover {
   background-color: #e24d24;
 }
 
-#loginContainer img{
+#loginContainer img {
   height: 150px;
   width: auto;
   display: block;
