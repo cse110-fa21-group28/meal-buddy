@@ -61,7 +61,8 @@
       } else {
         hash = '#' + page;
       }
-  
+
+
       if (!statePopped && window.location.hash != hash){
         history.pushState({'page' : page},'',window.location.origin + window.location.pathname + hash);
       }
