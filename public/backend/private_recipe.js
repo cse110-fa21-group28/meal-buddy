@@ -27,8 +27,6 @@ async function getPrivateRecipes () {
               temp.id = doc.data().id
               data.push(temp)
             })
-            console.log('hello? did you get here?')
-            console.log(data)
             return data
           })
           .catch((error) => {
@@ -87,6 +85,7 @@ async function addPrivateRecipe (recipe) {
       throw 'User not sign in'
     }
     recipe.UID = user.uid
+    recipe.days = [false, false, false, false, false, false, false];
     await db.collection('private_recipe').add(recipe)
   } catch (error) {
     return error

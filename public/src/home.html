@@ -24,15 +24,16 @@
         -->
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-        <script defer src="recipes/private/recipeCard.js" type="module"></script> 
+        <script defer src="recipes/private/plan/planRecipeCard.js" type="module"></script> 
         <script defer src="recipes/shared/recipeExpand.js" type="module"></script>
         <script defer src="recipes/shared/Router.js" type="module"></script>
         <script defer src="recipes/shared/main.js" type="module"></script>
+        <script defer src="home.js" type="module"></script>
         <script defer type="module" src="/backend/private_recipe.js"></script>
         <script defer type="text/javascript" src="app.js"> </script>
 
-        <link rel="stylesheet" href="/assets/styles/home.css" />
         <link rel="stylesheet" href="/assets/styles/navBar.css" />
+        <link rel="stylesheet" href="/assets/styles/home.css"/>
     </head>
     <body>
         <div id = "navigation-bar">
@@ -55,25 +56,27 @@
 
         
         <div id = "home-page">
-            <!-- <div id="upcoming-meals">
+            <button id = plan-button onclick="window.location.href = 'recipes/private/plan/addToPlan.html'">Change Plans</button>
+            <div id="upcoming-meals">
                 <h1>Upcoming Meals</h1>
             </div>
             <div id="today" class="day">
-                <h2>Today | Nov 22, 2021</h2>
-                    <p>Add planned dishes here</p>
-                    <p>Add planned dishes here</p>
+                <h2 id = "today_h2">Today | Nov 22, 2021</h2>
+                    <div class="recipe-cards--wrapper" id = "today-recipes">
+                      <!-- Recipes Added Here -->
+                    </div>
             </div>
             <div id="tomorrow" class="day">
-                <h2>Tomorrow | Nov 23, 2021</h2>
-                    <p>Add planned dishes here</p>
-                    <p>Add planned dishes here</p>
+                <h2 id = "tomorrow_h2"><!-- Dates --></h2>
+                <div class="recipe-cards--wrapper" id = "tomorrow-recipes">
+                    <!-- Recipes Added Here -->
+                </div>
             </div>
             <br>
             <div id="previous-meals">
                 <h1>Previous Meals</h1>
-            </div> -->
-            <img src="../assets/images/Tutorial1.jpg" alt="tutorial">
-
+            </div>
+            
         </div>
     </body>
 </html>
