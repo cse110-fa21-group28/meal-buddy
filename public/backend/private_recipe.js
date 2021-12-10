@@ -1,3 +1,7 @@
+/**
+ * @module private_recipe
+ */
+
 const db = firebase.firestore()
 const auth = firebase.auth()
 
@@ -38,9 +42,9 @@ async function getPrivateRecipes () {
 }
 
 /**
- *
- * @param {*} recipeId
- * @returns recipe with recipeId
+ * Gets the requested private recipe
+ * @param {String} recipeId
+ * @returns the requested recipe data
  */
 async function getPrivateRecipe (recipeId) {
   try {
@@ -72,8 +76,8 @@ async function getPrivateRecipe (recipeId) {
 }
 
 /**
- *
- * @param {*} recipe => this is  JSON
+ * Addes a private recipe
+ * @param {JSON} recipe the JSON containing all the information about the recipe
  */
 async function addPrivateRecipe (recipe) {
   // Create with random ID
@@ -90,9 +94,9 @@ async function addPrivateRecipe (recipe) {
 }
 
 /**
- *
- * @param {*} id => Id of recipe that need to update
- * @param {*} new_recipe => this is a JSON
+ * Updated the specified recipe
+ * @param {String} id id of recipe that need to update
+ * @param {JSON} new_recipe the JSON of the new recipe
  */
 async function updatePrivateRecipe (recipeId, newRecipe) {
   try {
@@ -122,8 +126,8 @@ async function updatePrivateRecipe (recipeId, newRecipe) {
 }
 
 /**
- *
- * @param {*} id
+ * Deletes the specified recipe
+ * @param {String} id the id of the recipe
  */
 async function deletePrivateRecipe (id) {
   try {

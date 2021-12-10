@@ -1,4 +1,8 @@
 // publicRecipeCard.js
+/**
+ * @module publicRecipeCard
+ */
+
 class PublicRecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement
@@ -42,27 +46,6 @@ class PublicRecipeCard extends HTMLElement {
     // .json is also exposed so you can technically use that as well
     return this.json
   }
-}
-
-/**
-     * Recursively search for a key nested somewhere inside an object
-     * @param {Object} object the object with which you'd like to search
-     * @param {String} key the key that you are looking for in the object
-     * @returns {*} the value of the found key
-     */
-function searchForKey (object, key) {
-  let value
-  Object.keys(object).some(function (k) {
-    if (k === key) {
-      value = object[k]
-      return true
-    }
-    if (object[k] && typeof object[k] === 'object') {
-      value = searchForKey(object[k], key)
-      return value !== undefined
-    }
-  })
-  return value
 }
 
 /**
