@@ -15,8 +15,8 @@ body {
 
 .recipe-list {
   display: flex;
-  flex-wrap: wrap;
   flex-flow: row;
+  flex-wrap: wrap;
 }
 
 .recipe {
