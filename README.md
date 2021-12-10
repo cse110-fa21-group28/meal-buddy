@@ -7,16 +7,16 @@
 
 ## Overview
 ### Description
-**Meal Buddy** is a web application that allows users to maintain a feed explicitly for food recipes via Firebase. It allows users to create their own recipes and access many recipes through firebase's database. 
+**Meal Buddy** is a web application that allows users to maintain a feed explicitly for food recipes via Firebase. It allows users to create their own recipes and access many recipes through firebase's database.
 
 - **Category:** Food, Entertainment
 - **Mobile:** This app would be originally developed on the web, much like other recipe web applications (e.g., CookBook, etc). Meal Buddy is accessible from Chrome browser.
-- **Story:** Food is a large part of human life. Our app will allow people to easily create, view, and track the calories of the food they eat daily. The app allows a range of users, from talented cooks to busy college students, to benefit from our web app based on their needs. 
+- **Story:** Food is a large part of human life. Our app will allow people to easily create, view, and track the calories of the food they eat daily. The app allows a range of users, from talented cooks to busy college students, to benefit from our web app based on their needs.
 - **Market:** Anyone with a Google account can be the user of this app. Ability to create and view various recipes allows the users to organize and prepare their foods.
 - **Habit:** This app can be used as often as the user would like, depending on when/how often they want to use recipes. The web app is designed to make it possible for the user to personalize and interact with their recipe app however they prefer.
 - **Scope:** First we started with building the CRUD features to allow the users to interact with their own recipes on My Recipes Page, then we added more and more features to the Recipes Page and Home Page. We will update this repo as we make more improvements to the web app.
 
-## Developers 
+## Developers
 To get to know our team more, please visit our [private planning repository](https://github.com/cse110-fa21-group28/cse110-fa21-group28), where we have documented our progress and planning along the way. Below you can view the team 28 members and become familiar with the structure of our project repo.
 
 ### Team Members (sorted alphabetically)

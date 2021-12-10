@@ -1,87 +1,86 @@
-* {
-    font-family: sans-serif;
-  }
+*{
+  font-family: sans-serif;
+}
 
-  article {
-    align-items: center;
-    border: 1px solid rgb(223, 225, 229);
-    border-radius: 8px;
-    display: grid;
-    grid-template-rows: 20px, 15px, 40px, ;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: LemonChiffon;
-    width: 400px;
-    margin: 15px;
-  }
+article {
+  align-items: center;
+  border: 1px solid rgb(223, 225, 229);
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 20px, 15px, 40px, ;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: LemonChiffon;
+  width: 400px;
+  margin: 15px;
+}
 
-  article > img {
-    height: 190px;
-    /* overflow: hidden; */
-    object-fit: cover;
-    width: 100%;
-    grid-row: 1/ span 4;
-    grid-column: 1;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
+article > img {
+  height: 190px;
+  /* overflow: hidden; */
+  object-fit: cover;
+  width: 100%;
+  grid-row: 1/ span 4;
+  grid-column: 1;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
 
-  p.title {
-    margin-left: 10px;
-    font-size: 18px;
-    grid-row: 1;
-    grid-column: 2;
-    max-width: 200px;
-    max-height: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+p.title {
+  margin-left: 10px;
+  font-size: 18px;
+  grid-row: 1;
+  grid-column: 2;
+  max-width: 200px;
+  max-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-  p.calories{
-    margin-left: 10px;
-    color: #4e5357;
-    font-size: 12px;
-    grid-row: 2;
-    grid-column: 2;
-
-  }
+p.calories{
+  margin-left: 10px;
+  color: #4e5357;
+  font-size: 12px;
+  grid-row: 2;
+  grid-column: 2;
+}
 
 button{
-    all:unset;
+  all:unset;
 }
 
 .editButton{
-    grid-column: 2;
-    font-size: 16px;
-    text-align: center;
-    color: whitesmoke;
-    background-color: #f1b458;
-    padding: 10px 18px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    float:right;
+  grid-column: 2;
+  font-size: 16px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #f1b458;
+  padding: 10px 18px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  float:right;
 }
 
 .editButton:hover{
-    background-color: rgb(240, 139, 23);
+  background-color: rgb(240, 139, 23);
 }
 
 .deleteButton{
-    grid-column: 2;
-    font-size: 16px;
-    text-align: center;
-    color: whitesmoke;
-    background-color: #f17958;
-    padding: 10px 18px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    float:right;
+  grid-column: 2;
+  font-size: 16px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #f17958;
+  padding: 10px 18px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  float:right;
 }
 
 .deleteButton:hover{
-    background-color: #e24d24;
+  background-color: #e24d24;
 }

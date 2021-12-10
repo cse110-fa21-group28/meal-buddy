@@ -9,7 +9,7 @@ body {
 #home-page {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 117px;
   padding-left: 20px;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 .recipe {
-  background-color:lightyellow;
+  background-color: lightyellow;
   text-align: center;
   width: 400px;
   margin-right: 5%;
@@ -29,13 +29,9 @@ body {
 }
 
 .day {
-  text-indent: 50px
-}
-
-#home-page {
-  padding-top: 117px;
+  text-indent: 50px;
 }
 
 img {
-  margin: 20vh, 20vw, 20vh, 20vw;
+  margin: 20vh 20vw 20vh 20vw;
 }
