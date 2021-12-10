@@ -1,79 +1,27 @@
-/* main.css */
-
 * {
-    font-family: sans-serif;
-  }
+  font-family: sans-serif;
+}
+
+section:not(section.shown) {
+  display: none;
+} 
+
+.hidden {
+  display: none;
+} 
   
-  /* body, main {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  } */
+.recipe-cards--wrapper {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+  max-width: 80%;
+}
   
-  /* img.flipped {
-    margin-left: -116px !important;
-    transform: rotate(180deg);
-  } */
-  
-  section:not(section.shown) {
-    display: none;
-  } 
-  
-  /* .button--horizontal-line {
-    border-top: 1px solid rgb(223, 225, 229);
-    position: absolute;
-    margin: -16.5px 0 0 30px;
-    width: 696px;
-    z-index: 1;
-  } */
-/*   
-  .button--wrapper {
-    display: grid;
-    justify-items: center;
-    margin: 20px 0 0 30px;
-    width: 696px;
-  }
-  
-  .button--wrapper>button {
-    background-color: white;
-    border: 1px solid rgb(223, 225, 229);
-    border-radius: 40px;
-    padding: 8px 100px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .button--wrapper>button:hover {
-    cursor: pointer;
-    filter: brightness(96%);
-  }
-  
-  .button--wrapper>img {
-    filter: opacity(0.7);
-    margin-left: -120px;
-    margin-top: 11px;
-    position: absolute;
-    width: 13px;
-    z-index: 3;
-  }*/
-  
-  .hidden {
-    display: none;
-  } 
-  
-  .recipe-cards--wrapper {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    height: auto;
-    margin: 0px auto;
-    max-width: 80%;
-  }
-  
-  .section--recipe-expand {
-    height: 100%;
-    width: 100%;
-  }
+.section--recipe-expand {
+  height: 100%;
+  width: 100%;
+}

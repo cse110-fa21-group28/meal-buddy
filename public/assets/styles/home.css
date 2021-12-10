@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 #home-page {
@@ -16,7 +16,7 @@ body {
 .recipe-list {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap; /* used to be flex-wrap */
 }
 
 .recipe {

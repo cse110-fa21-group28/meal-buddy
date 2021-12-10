@@ -1,12 +1,12 @@
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 main {
   padding-top: 117px;
 }
 
-#addButton {
+#add-button {
   font-size: 18px;
   color: whitesmoke;
   background-color: #f17958;
@@ -16,6 +16,6 @@ main {
   float: right;
 }
 
-#addButton:hover {
+#add-button:hover {
   background-color: #e24d24;
 }

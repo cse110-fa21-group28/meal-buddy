@@ -2,8 +2,8 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#loginContainer {
-  display: grid; 
+#login-container {
+  display: grid;
   padding: 8vw 5vw;
   margin: 8vw;
   margin-left: 15vw;
@@ -27,7 +27,7 @@ button:hover {
   background-color: #e24d24;
 }
 
-#loginContainer img {
+#login-container img {
   height: 150px;
   width: auto;
   display: block;

@@ -13,9 +13,13 @@
 }
 
 #navigation {
-  position:relative;
+  position: relative;
   display: flex;
   flex-direction: row;
+}
+
+button {
+  all: unset;
 }
 
 #navigation button {
@@ -31,10 +35,6 @@
   background-color: #94d359;
 }
 
-button {
-  all: unset;
-}
-
 #company-logo img {
   width: auto;
   height: 64px;
@@ -44,5 +44,5 @@ button {
 }
 
 #navigation .logout:hover {
-  background-color: 	#DA2C43;
+  background-color:	#da2c43;
 }

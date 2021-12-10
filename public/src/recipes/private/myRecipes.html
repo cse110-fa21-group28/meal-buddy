@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- update the version number as needed -->
     <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
@@ -18,12 +16,6 @@
     <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
-    
-
-    <!--
-    initialize the SDK after all desired features are loaded, set useEmulator to false
-    to avoid connecting the SDK to running emulators.
-    -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
 
@@ -59,29 +51,16 @@
 
     <main>
         <span class="right">
-            <!-- <textarea name="Search" id="recipeSearch" cols="30" rows="1">Search</textarea> -->
-            <button id= addButton onclick="window.location.href = 'add/templateAddRecipe.html'"> + Add Recipe</button>
+            <button id= add-button onclick="window.location.href = 'add/templateAddRecipe.html'"> + Add Recipe</button>
         </span>
 
         <section class="section--recipe-cards shown">
             <div class="recipe-cards--wrapper">
-              <!-- Recipes Added Here -->
             </div>
-            <!-- <div class="button--wrapper">
-              <img src="assets/images/icons/arrow-down.png" alt="Arrow down" />
-              <button>Show more</button>
-            </div> -->
-            <!-- <div class="button--horizontal-line"></div> -->
           </section>
           <section class="section--recipe-expand">
             <recipe-expand></recipe-expand>
         </section>
-
-        <!-- <p class="recipe-card">Recipes go here</p>
-        <p class="recipe-card">Recipes go here</p>
-        <p class="recipe-card">Recipes go here</p>
-        <p class="recipe-card">Recipes go here</p>
-        <p class="recipe-card">Recipes go here</p> -->
     </main>
 </body>
 </html>

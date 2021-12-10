@@ -2,11 +2,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
   padding-top: 117px;
 }
 
-button{
+button {
   all: unset;
 }
 
@@ -22,12 +22,12 @@ header {
   row-gap: 10px;
   display: grid;
   grid-template-areas:
-  'title title'
-  'img desc'
-  'img button';
+    "title title"
+    "img desc"
+    "img button";
 }
 
-header p{
+header p {
   margin: 0;
   font-size: 1.1rem;
 }
@@ -81,8 +81,13 @@ main > .section--instructions {
   font-size: 1.1rem;
 }
 
-ol, ul {
+ol, 
+ul {
   margin-top: 10px;
+}
+
+ul li {
+  padding-left: 2px;
 }
 
 ol li:not(:first-child) {
@@ -91,10 +96,6 @@ ol li:not(:first-child) {
 
 ol li::marker {
   padding-right: 5px;
-}
-
-ul li {
-  padding-left: 2px;
 }
 
 ul li:not(:first-child) {
