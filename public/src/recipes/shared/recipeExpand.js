@@ -7,7 +7,7 @@ class RecipeExpand extends HTMLElement {
     const styles = document.createElement('link')
     styles.rel = 'stylesheet'
     styles.type = 'text/css'
-    styles.href = '../styles/recipeExpand.css'
+    styles.href = '/assets/styles/recipeExpand.css'
     const article = document.createElement('article')
 
     // Fill in styles and root element
@@ -206,7 +206,6 @@ function getIngredients (data) {
 
   return null
 }
-
 
 /**
  * Extract the url of the recipe from the given recipe schema JSON obejct

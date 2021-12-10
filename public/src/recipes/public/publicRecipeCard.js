@@ -1,47 +1,47 @@
 // publicRecipeCard.js
 class PublicRecipeCard extends HTMLElement {
-    constructor () {
-      super() // Inheret everything from HTMLElement
-      // Attach the shadow DOM and append this markup / stlying inside
-      // The shadow root will help us keep everything separated
-      this.attachShadow({ mode: 'open' })
-    }
-  
-    set data (data) {
-      if (!data) return
-  
-      // Used to access the actual data object
-      this.json = data
-  
-      const style = document.createElement('link')
-      style.rel = 'stylesheet'
-      style.type = 'text/css'
-      style.href = '/assets/styles/recipeCard.css' 
-      const card = document.createElement('article')
-      
-      // Grab the title
-      const titleText = getTitle(data)
-      const title = document.createElement('p')
-      title.classList.add('title')
-      title.innerText = titleText
-  
-      // Grab the thumbnail
-      const imageUrl = getImage(data)
-      const image = document.createElement('img')
-      image.setAttribute('src', imageUrl)
-      image.setAttribute('alt', titleText)
-  
-      // Add all of the elements to the card
-      card.appendChild(image)
-      card.appendChild(title)
-      this.shadowRoot.append(style, card)
-    }
+  constructor () {
+    super() // Inheret everything from HTMLElement
+    // Attach the shadow DOM and append this markup / stlying inside
+    // The shadow root will help us keep everything separated
+    this.attachShadow({ mode: 'open' })
+  }
 
-    get data () {
-      // Stored in .json to avoid calling set data() recursively in a loop.
-      // .json is also exposed so you can technically use that as well
-      return this.json
-    }
+  set data (data) {
+    if (!data) return
+
+    // Used to access the actual data object
+    this.json = data
+
+    const style = document.createElement('link')
+    style.rel = 'stylesheet'
+    style.type = 'text/css'
+    style.href = '/assets/styles/recipeCard.css'
+    const card = document.createElement('article')
+
+    // Grab the title
+    const titleText = getTitle(data)
+    const title = document.createElement('p')
+    title.classList.add('title')
+    title.innerText = titleText
+
+    // Grab the thumbnail
+    const imageUrl = getImage(data)
+    const image = document.createElement('img')
+    image.setAttribute('src', imageUrl)
+    image.setAttribute('alt', titleText)
+
+    // Add all of the elements to the card
+    card.appendChild(image)
+    card.appendChild(title)
+    this.shadowRoot.append(style, card)
+  }
+
+  get data () {
+    // Stored in .json to avoid calling set data() recursively in a loop.
+    // .json is also exposed so you can technically use that as well
+    return this.json
+  }
 }
 
 /**

@@ -14,11 +14,11 @@
   /* img.flipped {
     margin-left: -116px !important;
     transform: rotate(180deg);
-  }
+  } */
   
   section:not(section.shown) {
     display: none;
-  } */
+  } 
   
   /* .button--horizontal-line {
     border-top: 1px solid rgb(223, 225, 229);
@@ -56,11 +56,11 @@
     position: absolute;
     width: 13px;
     z-index: 3;
-  }
+  }*/
   
   .hidden {
     display: none;
-  } */
+  } 
   
   .recipe-cards--wrapper {
     align-items: center;
