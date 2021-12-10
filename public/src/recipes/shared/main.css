@@ -10,7 +10,7 @@ section:not(section.shown) {
   display: none;
 }
 
-.recipe-cards--wrapper {
+.recipeCardsWrapper {
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -21,7 +21,7 @@ section:not(section.shown) {
   max-width: 80%;
 }
 
-.section--recipe-expand {
+.sectionRecipeExpand {
   height: 100%;
   width: 100%;
 }

@@ -48,7 +48,7 @@ button {
   all: unset;
 }
 
-.edit-button {
+.editButton {
   grid-column: 2;
   font-size: 16px;
   text-align: center;
@@ -62,11 +62,11 @@ button {
   float: right;
 }
 
-.edit-button:hover {
+.editButton:hover {
   background-color: rgb(240 139 23);
 }
 
-.delete-button {
+.deleteButton {
   grid-column: 2;
   font-size: 16px;
   text-align: center;
@@ -80,6 +80,6 @@ button {
   float: right;
 }
 
-.delete-button:hover {
+.deleteButton:hover {
   background-color: #e24d24;
 }

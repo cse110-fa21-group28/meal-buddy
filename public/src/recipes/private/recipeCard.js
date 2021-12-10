@@ -42,7 +42,7 @@ class RecipeCard extends HTMLElement {
     // Button to edit recipe
     const editButton = document.createElement('button')
     editButton.innerText = 'Edit recipe'
-    editButton.classList.add('edit-button')
+    editButton.classList.add('editButton')
     editButton.addEventListener('click', (e) => {
       e.stopPropagation()
       window.location.href = 'edit/templateEditRecipe.html'
@@ -53,7 +53,7 @@ class RecipeCard extends HTMLElement {
     // Button to delete recipe
     const deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete recipe'
-    deleteButton.classList.add('delete-button')
+    deleteButton.classList.add('deleteButton')
     deleteButton.addEventListener('click', (e) => {
       e.stopPropagation()
       firebase.firestore().collection('private_recipe').doc(data.id.toString()).delete().then(function () {

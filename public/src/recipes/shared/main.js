@@ -8,8 +8,8 @@ const recipes = []
 const publicRecipes = []
 
 const router = new Router(function () {
-  document.querySelector('section.section--recipe-cards').classList.add('shown')
-  document.querySelector('section.section--recipe-expand').classList.remove('shown')
+  document.querySelector('section.sectionRecipeCards').classList.add('shown')
+  document.querySelector('section.sectionRecipeExpand').classList.remove('shown')
 })
 
 window.addEventListener('DOMContentLoaded', init)
@@ -95,13 +95,13 @@ function createPublicRecipeCards () {
     // then we'll grab the 'page-name' from it - in this case it will be 'ghostCookies'
     const page = publicRecipes[i].name
     router.addPage(page, function () {
-      document.querySelector('.section--recipe-cards').classList.remove('shown')
-      document.querySelector('.section--recipe-expand').classList.add('shown')
+      document.querySelector('.sectionRecipeCards').classList.remove('shown')
+      document.querySelector('.sectionRecipeExpand').classList.add('shown')
       document.querySelector('recipe-expand').data = publicRecipes[i]
     })
 
     bindRecipeCard(recipeCard, page)
-    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard)
+    document.querySelector('.recipeCardsWrapper').appendChild(recipeCard)
   }
 }
 
@@ -124,13 +124,13 @@ function createRecipeCards () {
     // then we'll grab the 'page-name' from it - in this case it will be 'ghostCookies'
     const page = recipes[i].name
     router.addPage(page, function () {
-      document.querySelector('.section--recipe-cards').classList.remove('shown')
-      document.querySelector('.section--recipe-expand').classList.add('shown')
+      document.querySelector('.sectionRecipeCards').classList.remove('shown')
+      document.querySelector('.sectionRecipeExpand').classList.add('shown')
       document.querySelector('recipe-expand').data = recipes[i]
     })
 
     bindRecipeCard(recipeCard, page)
-    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard)
+    document.querySelector('.recipeCardsWrapper').appendChild(recipeCard)
   }
 }
 
