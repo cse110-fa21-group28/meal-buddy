@@ -29,11 +29,11 @@ class RecipeExpand extends HTMLElement {
           </header>
           <hr>
           <main>
-            <section class="section--ingredients">
+            <section class="sectionIngredients">
               <h2>Ingredients</h2>
               <ul></ul>
             </section>
-            <section class="section--instructions">
+            <section class="sectionInstructions">
               <h2>Instructions</h2>
               <ol></ol>
             </section>
@@ -67,11 +67,11 @@ class RecipeExpand extends HTMLElement {
           </header>
           <hr>
           <main>
-            <section class="section--ingredients">
+            <section class="sectionIngredients">
               <h2>Ingredients</h2>
               <ul></ul>
             </section>
-            <section class="section--instructions">
+            <section class="sectionInstructions">
               <h2>Instructions</h2>
               <ol></ol>
             </section>
@@ -102,7 +102,7 @@ class RecipeExpand extends HTMLElement {
     ingredients.forEach(ingredient => {
       const listItem = document.createElement('li')
       listItem.innerHTML = ingredient
-      this.shadowRoot.querySelector('.section--ingredients > ul').append(listItem)
+      this.shadowRoot.querySelector('.sectionIngredients > ul').append(listItem)
     })
 
     // Set Instructions / URL
@@ -112,18 +112,18 @@ class RecipeExpand extends HTMLElement {
       instructions.forEach(instruction => {
         const listItem = document.createElement('li')
         listItem.innerHTML = instruction
-        this.shadowRoot.querySelector('.section--instructions > ol').append(listItem)
+        this.shadowRoot.querySelector('.sectionInstructions > ol').append(listItem)
       })
     } else {
-      const header = this.shadowRoot.querySelector('.section--instructions > h2')
-      const list = this.shadowRoot.querySelector('.section--instructions > ol')
+      const header = this.shadowRoot.querySelector('.sectionInstructions > h2')
+      const list = this.shadowRoot.querySelector('.sectionInstructions > ol')
       header.innerHTML = 'Recipe URL'
       list.parentElement.removeChild(list)
-      const recipe_url = document.createElement('a')
-      recipe_url.setAttribute('href', url)
-      recipe_url.setAttribute('target', '_blank')
-      recipe_url.innerHTML = url
-      this.shadowRoot.querySelector('.section--instructions').append(recipe_url)
+      const recipeUrl = document.createElement('a')
+      recipeUrl.setAttribute('href', url)
+      recipeUrl.setAttribute('target', '_blank')
+      recipeUrl.innerHTML = url
+      this.shadowRoot.querySelector('.sectionInstructions').append(recipeUrl)
     }
   }
 
@@ -202,7 +202,7 @@ function getIngredients (data) {
  * @returns {String} If found, returns the url of the recipe
  */
 function getUrl (data) {
-  if (data.recipe_url) return data.recipe_url
+  if (data.recipeUrl) return data.recipeUrl
   return null
 }
 

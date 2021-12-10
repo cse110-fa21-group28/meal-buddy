@@ -26,6 +26,7 @@ function searchForKey (object, key) {
       value = searchForKey(object[k], key)
       return value !== undefined
     }
+    return false
   })
   return value
 }

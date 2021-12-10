@@ -1,48 +1,48 @@
-html{
-    font-family: Arial, Helvetica, sans-serif;
+html {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body, main {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+body,
+main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-main{
-    padding-top: 117px;
+main {
+  padding-top: 117px;
 }
 
 form div {
-    display: grid; 
-    padding-top: 10px;
-    padding-bottom: 15px;
+  display: grid;
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
 
-form textarea, form input {
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+form textarea,
+form input {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body form {
-    display: grid; 
-    margin-right: 20vw;
-    margin-left: 20vw;
+  display: grid;
+  margin-right: 20vw;
+  margin-left: 20vw;
 }
 
 #saveButton {
-    font-size: 18px;
-    color: whitesmoke;
-    background-color: #f17958;
-    padding: 10px 18px;
-    border-radius: 10px;
-    margin: 5px;
-    margin-right: 20vw;
-    float:right;
+  font-size: 18px;
+  color: whitesmoke;
+  background-color: #f17958;
+  padding: 10px 18px;
+  border-radius: 10px;
+  margin: 5px;
+  margin-right: 20vw;
+  float: right;
 }
 
-#saveButton:hover{
-    background-color: #e24d24;
+#saveButton:hover {
+  background-color: #e24d24;
 }
-
-

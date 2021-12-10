@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Buddy | Recipes</title>
 
-    <!-- update the version number as needed -->
     <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
@@ -18,13 +16,6 @@
     <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
-    
-
-    <!--<script defer src="backend/public_recipe.js"></script>
-    
-    initialize the SDK after all desired features are loaded, set useEmulator to false
-    to avoid connecting the SDK to running emulators.
-    -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <script defer type="module" src="/src/recipes/public/publicRecipeCard.js"></script>
@@ -39,56 +30,35 @@
     <link rel="stylesheet" href="/assets/styles/navBar.css" />
 </head>
 <body>
-    <div id = "navigation-bar">
+    <div id = "navigationBar">
         <div id = "company">
-            <div id = "company-logo">
+            <div id = "companyLogo">
                 <img src="/assets/images/logo.png" alt="logo">
             </div> 
-            <div id = "company-name">
+            <div id = "companyName">
                 <h1>Meal Buddy</h1>
             </div>
         </div>
         
-        <div id = navigation>
-                <div id = navigation>
-                    <button onclick="window.location.href = '/src/home.html'">Home</button>
-                    <button class = active onclick="window.location.href = 'recipes.html'">Recipes</button>
-                    <button onclick="window.location.href = '/src/recipes/private/myRecipes.html'">My Recipes</button>
-                    <button class=logout onclick="googleLogOut()">Logout</button>
-                </div>
+        <div id = "navigation">
+            <button onclick="window.location.href = '/src/home.html'">Home</button>
+            <button class = "active" onclick="window.location.href = 'recipes.html'">Recipes</button>
+            <button onclick="window.location.href = '/src/recipes/private/myRecipes.html'">My Recipes</button>
+            <button class = "logout" onclick="googleLogOut()">Logout</button>
         </div>
         
     </div>
 
-    <!-- <div class="searchBar">
-        <textarea name="Search" id="recipeSearch" cols="30" rows="1">Search</textarea>
-    </div> -->
 
     <main>
-        <!-- <section class="section--recipe-cards shown">
-            <div class="recipe-cards--wrapper">
-            </div>
-            <div class="button--horizontal-line"></div>
-          </section>
-          <section class="section--recipe-expand">
-            <recipe-expand></recipe-expand>
-        </section> -->
         
-        <section class="section--recipe-cards shown">
-            <div class="recipe-cards--wrapper">
-              <!-- Recipes Added Here -->
+        <section class="sectionRecipeCards shown">
+            <div class="recipeCardsWrapper">
             </div>
-            <!-- <div class="button--wrapper">
-              <img src="assets/images/icons/arrow-down.png" alt="Arrow down" />
-              <button>Show more</button>
-            </div> -->
-            <!-- <div class="button--horizontal-line"></div> -->
           </section>
-          <section class="section--recipe-expand">
+          <section class="sectionRecipeExpand">
             <recipe-expand></recipe-expand>
         </section> 
-
-        <!-- <p class="recipe-card">Recipes go here</p> -->
     </main>
 </body>
 </html>

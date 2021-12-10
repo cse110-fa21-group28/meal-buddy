@@ -1,4 +1,3 @@
-// publicRecipeCard.js
 /**
  * @module publicRecipeCard
  */

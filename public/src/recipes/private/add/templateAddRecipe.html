@@ -2,12 +2,9 @@
 <html lang="en">
     <head>
         <title>Meal Buddy | Create New Recipe</title>
-        <!-- <link rel = "icon" href = ""> -->
         <link rel="stylesheet" href="styles/template.css">
 
-        <!-- update the version number as needed -->
         <script defer src="/__/firebase/9.4.1/firebase-app-compat.js"></script>
-        <!-- include only the Firebase features as you need -->
         <script defer src="/__/firebase/9.4.1/firebase-auth-compat.js"></script>
         <script defer src="/__/firebase/9.4.1/firebase-database-compat.js"></script>
         <script defer src="/__/firebase/9.4.1/firebase-firestore-compat.js"></script>
@@ -17,37 +14,30 @@
         <script defer src="/__/firebase/9.4.1/firebase-analytics-compat.js"></script>
         <script defer src="/__/firebase/9.4.1/firebase-remote-config-compat.js"></script>
         <script defer src="/__/firebase/9.4.1/firebase-performance-compat.js"></script>
-        
-
-        <!--<script defer src="backend/public_recipe.js"></script>
-        
-        initialize the SDK after all desired features are loaded, set useEmulator to false
-        to avoid connecting the SDK to running emulators.
-        -->
         <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-        <script defer type="text/javascript" src="/src/app.js" defer> </script>
+        <script defer type="text/javascript" src="/src/app.js"> </script>
         <script defer type="module" src="templateAddRecipe.js" ></script>
         <script defer type="module" src="/backend/private_recipe.js"></script>
         <link rel="stylesheet" href="/assets/styles/navBar.css"/>
         <link rel="stylesheet" href="/assets/styles/template.css"/>
     </head>
 
-    <div id = "navigation-bar">
+    <div id = "navigationBar">
         <div id = "company">
-            <div id = "company-logo">
+            <div id = "companyLogo">
                 <img src="/assets/images/logo.png" alt="logo">
             </div>
-            <div id = "company-name">
+            <div id = "companyName">
                 <h1>Meal Buddy</h1>
             </div>
         </div>
         
-        <div id = navigation>
+        <div id = "navigation">
             <button onclick="window.location.href = '/src/home.html'">Home</button>
             <button onclick="window.location.href = '/src/recipes/public/recipes.html'">Recipes</button>
             <button onclick="window.location.href = '/src/recipes/private/myRecipes.html'">My Recipes</button>
-            <button class=logout onclick="googleLogOut()">Logout</button>
+            <button class="logout" onclick="googleLogOut()">Logout</button>
         </div>
     </div>
     <body>

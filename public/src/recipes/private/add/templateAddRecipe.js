@@ -40,7 +40,7 @@ async function init () {
 
   saveButton.addEventListener('click', function () {
     console.log('0')
-    if (Object.keys(obj).length == 6) {
+    if (Object.keys(obj).length === 6) {
       console.log('1')
       addPrivateRecipe(obj)
         .then(() => {
