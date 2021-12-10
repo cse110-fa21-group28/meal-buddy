@@ -6,7 +6,6 @@
 2. [Developers](#Developers)
 
 ## Overview
-### Description
 **Meal Buddy** is a web application that allows users to maintain a feed explicitly for food recipes via Firebase. It allows users to create their own recipes and access many recipes through firebase's database.
 
 - **Category:** Food, Entertainment
