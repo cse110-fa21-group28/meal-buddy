@@ -26,118 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module recipeExpand
- */
-
-class RecipeExpand extends HTMLElement {
+            <pre class="prettyprint source linenums"><code>class RecipeExpand extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
 
     // Create styles and root element
-    const style = document.createElement('style')
-    // style.rel = 'stylesheet'
-    // style.type = 'text/css'
-    // style.href = '../styles/recipeExpand.css'
+    const styles = document.createElement('link')
+    styles.rel = 'stylesheet'
+    styles.type = 'text/css'
+    styles.href = '/assets/styles/recipeExpand.css'
     const article = document.createElement('article')
 
     // Fill in styles and root element
-    style.innerHTML = `
-        article {
-          background-color: LemonChiffon;
-          box-shadow: 0 0 10px rgb(0 0 0 / 15%);
-          margin: 30px auto;
-          max-width: 720px;
-          padding: 25px;
-          transition: all 0.2s ease;
-          width: 80%;
-        }
-        div.rating--wrapper {
-          align-items: center;
-          column-gap: 5px;
-          display: flex;
-          justify-items: center;
-          margin-top: 10px;
-        }
-        
-        div.rating--wrapper > img {
-          height: auto;
-          display: inline-block;
-          object-fit: scale-down;
-          width: 78px;
-        }
-        header {
-          align-items: flex-start;
-          column-gap: 10px;
-          display: grid;
-          grid-template-areas:
-           'title title img'
-           'meta meta img'
-           'desc desc img';
-        }
-        header p {
-          margin: 0;
-        }
-        header > h1 {
-          font-size: 2rem;
-          font-weight: 500;
-          grid-area: title;
-          margin: -10px 0 0 0;
-          padding: 0;
-        }
-        h2 {
-          font-size: 1.5rem;
-          font-weight: 500;
-          margin: 35px 0 0 0;
-        }
-        header > div.meta--wrapper {
-          display: grid;
-          grid-area: meta;
-          margin: 10px 0;
-          row-gap: 4px;
-        }
-        header > div.meta--wrapper p,
-        main > div.rating--wrapper {
-          color: gray;
-          font-style: italic;
-        }
-        header img.thumbnail {
-          aspect-ratio: 1;
-          grid-area: img;
-          object-fit: cover;
-          overflow: hidden;
-          width: 230px;
-        }
-        header p.description {
-          height: 62px;
-          line-height: 20px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        main > .section--ingredients,
-        main > .section--instructions {
-          font-size: 1.1rem;
-        }
-        span.rating-total {
-          margin-left: -2px;
-        }
-        ol, ul {
-          margin-top: 10px;
-        }
-        ol li:not(:first-child) {
-          margin-top: 15px;
-        }
-        ol li::marker {
-          padding-right: 5px;
-        }
-        ul li {
-          padding-left: 2px;
-        }
-        ul li:not(:first-child) {
-          margin-top: 8px;
-        }
-      `
     article.innerHTML = `
         &lt;header>
           &lt;h1>&lt;/h1>
@@ -160,7 +61,7 @@ class RecipeExpand extends HTMLElement {
       `
 
     // Append elements to the shadow root
-    this.shadowRoot.append(style, article)
+    this.shadowRoot.append(styles, article)
   }
 
   /**
@@ -172,28 +73,33 @@ class RecipeExpand extends HTMLElement {
 
     // Reset HTML
     this.shadowRoot.querySelector('article').innerHTML = `
-        &lt;header>
-          &lt;h1>&lt;/h1>
-          &lt;div class="meta--wrapper">
-            &lt;p>calories: &lt;span class="meta--calories">&lt;/span>&lt;/p>
-          &lt;/div>
-          &lt;p class="description">&lt;/p>
-          &lt;img src="" alt="" class="thumbnail" />
-        &lt;/header>
-        &lt;main>
-          &lt;section class="section--ingredients">
-            &lt;h2>INGREDIENTS&lt;/h2>
-            &lt;ul>&lt;/ul>
-          &lt;/section>
-          &lt;section class="section--instructions">
-            &lt;h2>INSTRUCTIONS&lt;/h2>
-            &lt;ol>&lt;/ol>
-          &lt;/section>
-        &lt;/main>
+        &lt;body>
+          &lt;header>
+            &lt;h1>&lt;/h1>
+            
+            &lt;img src="" alt="" class="thumbnail" />
+            &lt;p class="description">&lt;/p>
+            &lt;div>
+              &lt;p> Calories: &lt;span class="meta--calories">&lt;/span>&lt;/p>
+              &lt;button> + Add to plan&lt;/button>
+            &lt;/div>
+          &lt;/header>
+          &lt;hr>
+          &lt;main>
+            &lt;section class="section--ingredients">
+              &lt;h2>Ingredients&lt;/h2>
+              &lt;ul>&lt;/ul>
+            &lt;/section>
+            &lt;section class="section--instructions">
+              &lt;h2>Instructions&lt;/h2>
+              &lt;ol>&lt;/ol>
+            &lt;/section>
+          &lt;/main>
+        &lt;/body>
       `
 
     // Set Title
-    const title = getTitle(data).toUpperCase()
+    const title = getTitle(data)
     this.shadowRoot.querySelector('header > h1').innerHTML = title
 
     // Set Calories
@@ -246,6 +152,26 @@ class RecipeExpand extends HTMLElement {
   get data () {
     return this.json
   }
+}
+
+/**
+   * Recursively search for a key nested somewhere inside an object
+   * @param {Object} object the object with which you'd like to search
+   * @param {String} key the key that you are looking for in the object
+   * @returns {*} the value of the found key
+   */
+function searchForKey (object, key) {
+  let value
+  for (k in object) {
+    if (k === key) {
+      value = object[k]
+      break
+    }
+    if (object[k] &amp;&amp; typeof object[k] === 'object') {
+      value = searchForKey(object[k], key)
+    }
+  }
+  return value
 }
 
 /**
@@ -330,13 +256,13 @@ customElements.define('recipe-expand', RecipeExpand)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-main.html">main</a></li><li><a href="module-private_recipe.html">private_recipe</a></li><li><a href="module-public_recipe.html">public_recipe</a></li><li><a href="module-publicRecipeCard.html">publicRecipeCard</a></li><li><a href="module-recipeCard.html">recipeCard</a></li><li><a href="module-recipeExpand.html">recipeExpand</a></li><li><a href="module-Router.html">Router</a></li></ul><h3>Classes</h3><ul><li><a href="module-Router.Router.html">Router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 00:02:54 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 00:03:19 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

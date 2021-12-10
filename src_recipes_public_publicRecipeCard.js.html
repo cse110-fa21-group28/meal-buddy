@@ -27,10 +27,6 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// publicRecipeCard.js
-/**
- * @module publicRecipeCard
- */
-
 class PublicRecipeCard extends HTMLElement {
   constructor () {
     super() // Inheret everything from HTMLElement
@@ -45,64 +41,11 @@ class PublicRecipeCard extends HTMLElement {
     // Used to access the actual data object
     this.json = data
 
-    const style = document.createElement('style')
+    const style = document.createElement('link')
+    style.rel = 'stylesheet'
+    style.type = 'text/css'
+    style.href = '/assets/styles/recipeCard.css'
     const card = document.createElement('article')
-    style.innerHTML = `
-          * {
-            font-family: sans-serif;
-            margin: 5;
-            padding: 5;
-          }
-  
-          article {
-            align-items: center;
-            border: 1px solid rgb(223, 225, 229);
-            display: grid;
-            grid-template-rows: repeat(3, 1fr);
-            grid-template-columns: repeat(2, 1fr);
-  
-            height: 160px;
-            width: 400px;
-            background-color: LemonChiffon;
-            transition: all 0.2s ease;
-            user-select: none;
-          }
-  
-          article:hover {
-            border-radius: 8px;
-            cursor: pointer;
-            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            transition: all 0.2s ease;
-            transform: scale(1.02);
-          }
-  
-          article > img {
-            height: 160px;
-            object-fit: cover;
-            width: 200px;
-            grid-row: 1/ span 3;
-            grid-column: 1;
-            
-          }
-  
-          p.title {
-            grid-row: 1;
-            grid-column: 2;
-            
-          }
-          p:not(.title), span, time {
-            color: #70757A;
-            font-size: 12px;
-            grid-row: 2;
-            grid-column: 2;
-  
-          }
-  
-          button{
-            
-            grid-column: 2;
-          }
-        `
 
     // Grab the title
     const titleText = getTitle(data)
@@ -127,6 +70,27 @@ class PublicRecipeCard extends HTMLElement {
     // .json is also exposed so you can technically use that as well
     return this.json
   }
+}
+
+/**
+     * Recursively search for a key nested somewhere inside an object
+     * @param {Object} object the object with which you'd like to search
+     * @param {String} key the key that you are looking for in the object
+     * @returns {*} the value of the found key
+     */
+function searchForKey (object, key) {
+  let value
+  Object.keys(object).some(function (k) {
+    if (k === key) {
+      value = object[k]
+      return true
+    }
+    if (object[k] &amp;&amp; typeof object[k] === 'object') {
+      value = searchForKey(object[k], key)
+      return value !== undefined
+    }
+  })
+  return value
 }
 
 /**
@@ -161,13 +125,13 @@ customElements.define('public-recipe-card', PublicRecipeCard)
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-main.html">main</a></li><li><a href="module-private_recipe.html">private_recipe</a></li><li><a href="module-public_recipe.html">public_recipe</a></li><li><a href="module-publicRecipeCard.html">publicRecipeCard</a></li><li><a href="module-recipeCard.html">recipeCard</a></li><li><a href="module-recipeExpand.html">recipeExpand</a></li><li><a href="module-Router.html">Router</a></li></ul><h3>Classes</h3><ul><li><a href="module-Router.Router.html">Router</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Router.html">Router</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addPrivateRecipe">addPrivateRecipe</a></li><li><a href="global.html#bindPopstate">bindPopstate</a></li><li><a href="global.html#bindRecipeCard">bindRecipeCard</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#deletePrivateRecipe">deletePrivateRecipe</a></li><li><a href="global.html#fetchRecipes">fetchRecipes</a></li><li><a href="global.html#getCalories">getCalories</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#getImage">getImage</a></li><li><a href="global.html#getIngredients">getIngredients</a></li><li><a href="global.html#getInstructions">getInstructions</a></li><li><a href="global.html#getPrivateRecipe">getPrivateRecipe</a></li><li><a href="global.html#getPrivateRecipes">getPrivateRecipes</a></li><li><a href="global.html#getTitle">getTitle</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#googleLogIn">googleLogIn</a></li><li><a href="global.html#googleLogOut">googleLogOut</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#updatePrivateRecipe">updatePrivateRecipe</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 00:02:54 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 00:03:19 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
