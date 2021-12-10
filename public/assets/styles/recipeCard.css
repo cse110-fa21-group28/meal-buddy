@@ -7,20 +7,22 @@
     border: 1px solid rgb(223, 225, 229);
     border-radius: 8px;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 20px, 15px, 40px, ;
     grid-template-columns: repeat(2, 1fr);
     background-color: LemonChiffon;
     width: 400px;
+    margin: 15px;
   }
 
   article > img {
-    height: 100%;
-    /* overflow: auto; */
+    height: 190px;
+    /* overflow: hidden; */
     object-fit: cover;
-    width: 200px;
+    width: 100%;
     grid-row: 1/ span 4;
     grid-column: 1;
-    
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
 
   p.title {
@@ -56,6 +58,7 @@ button{
     background-color: #f1b458;
     padding: 10px 18px;
     border-radius: 10px;
+    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     float:right;
