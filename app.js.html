@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: app.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,63 +17,61 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: app.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Meal Buddy</h1>
-<p>This is a source code of <a href="https://meal-prep-web-app.web.app/">Meal Buddy</a></p>
-<h2>Local setup</h2>
-<ol>
-<li>Clone this repository</li>
-<li><code>npm ci</code> to install all dependencies (including firebase) of this project.</li>
-<li><code>sudo firebase login</code> to login firebase. Make sure you login with ucsd account.</li>
-<li><code>sudo firebase serve</code> to run locally.</li>
-</ol>
-<p>(Updating)</p>
-<h2>Workplace</h2>
-<ul>
-<li>Everything we need to do is in the <a href="https://github.com/cse110-fa21-group28/meal-buddy/tree/main/public">public</a> directory, the rest is the configuration files. Please look over <a href="https://github.com/cse110-fa21-group28/meal-buddy/blob/main/public/index.html">index.html</a>, this is the starting point of this project. And make sure to put your work in correct directories:
-<ul>
-<li><a href="https://github.com/cse110-fa21-group28/meal-buddy/tree/main/public/frontend">/frontend</a></li>
-<li><a href="https://github.com/cse110-fa21-group28/meal-buddyp/tree/main/public/backend">/backend</a></li>
-</ul>
-</li>
-</ul>
-<h2>Pre-implementation</h2>
-<ul>
-<li>Make sure you understand our <a href="https://docs.google.com/document/d/1dFS2DS8PwIx1vWgwY4m3hb6lBa2rxWlP7e4EZS3B-WE/edit">development practices</a></li>
-</ul>
-<h2>Documentation</h2>
-<ul>
-<li>Here is the <a href="https://cse110-fa21-group28.github.io/meal-buddy/">link</a> to the documentation</li>
-</ul>
-<p>Please let me know if you have anything question!</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>const auth = firebase.auth()
+
+/**
+ * Logs in the user with Google authentication
+ */
+function googleLogIn () {
+  const provider = new firebase.auth.GoogleAuthProvider()
+
+  auth.signInWithPopup(provider)
+    .then(result => {
+      const user = result.user
+      console.log(user)
+    })
+    .catch(console.log)
+}
+
+/**
+ * Logs out the user
+ */
+function googleLogOut () {
+  auth.signOut()
+    .then(function () {
+      console.log('signed out')
+      window.location.href = 'index.html'
+    })
+    .catch(console.log)
+}
+
+auth.onAuthStateChanged(user => {
+  if (!document.getElementById('whenSignedIn')) {
+    return
+  }
+  if (user) {
+    document.getElementById('whenSignedIn').hidden = false
+    document.getElementById('whenSignedOut').hidden = true
+    document.getElementById('userDetail').innerHTML = `&lt;h3> "Hello"  ${user.displayName} !&lt;h3> &lt;p>User ID: ${user.uid} &lt;/p>`
+    window.location.href = 'home.html'
+  } else {
+    document.getElementById('whenSignedIn').hidden = true
+    document.getElementById('whenSignedOut').hidden = false
+    document.getElementById('userDetail').innerHTML = ''
+  }
+})
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
