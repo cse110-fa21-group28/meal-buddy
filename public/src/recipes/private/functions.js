@@ -79,6 +79,5 @@ function getDescription (data) {
 
 function getUrl (data) {
   if (data.recipe_url) return data.recipe_url
-
   return null
 }
